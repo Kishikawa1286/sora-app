@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/pages/channel_manage/view.dart';
 import 'package:sora/pages/home/view_model.dart';
+import 'package:sora/pages/messages/view.dart';
 
 class Home extends HookConsumerWidget {
   const Home({
@@ -43,13 +44,13 @@ class Home extends HookConsumerWidget {
   Widget _getBody(int index) {
     switch (index) {
       case 0:
-        return const Center(child: Text('メッセージタブの内容'));
+        return const MessagesPage();
       case 1:
         return const ChannelManagePage();
       case 2:
         return const Center(child: Text('オプションタブの内容'));
       default:
-        return const Center(child: Text('メッセージタブの内容'));
+        return const MessagesPage();
     }
   }
 }

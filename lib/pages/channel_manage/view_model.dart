@@ -26,7 +26,7 @@ class ChannelManagePageViewModel extends StateNotifier<ChannelManagePageModel> {
     });
   }
 
-  final AuthRepository _authRepository;
+  final AuthRepositoryBase _authRepository;
   final SlackRepositoryBase _slackRepository;
   late final StreamSubscription<String?> _userIdStateSubscription;
   late final StreamSubscription<List<SlackUser?>> _slackUsersSubscription;
