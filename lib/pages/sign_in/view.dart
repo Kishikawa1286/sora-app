@@ -9,9 +9,10 @@ class SignInPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(signInPageViewModelProvider);
+    final model = ref.watch(signInPageViewModelProvider);
+    final authenticated = model.authenticated;
 
-    if (state.authenticated) {
+    if (authenticated) {
       WidgetsBinding.instance.addPostFrameCallback((duration) async {
         await Navigator.pushReplacementNamed(context, 'home');
       });

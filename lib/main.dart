@@ -7,8 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/color_schemes.g.dart';
 import 'package:sora/firebase_options.dart';
-import 'package:sora/pages/home/view.dart';
-import 'package:sora/pages/sign_in/view.dart';
+import 'package:sora/generate_route.dart';
 
 Future<void> main() async {
   await runZonedGuarded(
@@ -31,7 +30,7 @@ Future<void> main() async {
         ProviderScope(
           child: MaterialApp(
             title: 'mathlingo',
-            onGenerateRoute: _onGenerateRoute,
+            onGenerateRoute: generateRoute,
             initialRoute: 'home',
             theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
             darkTheme:
@@ -47,21 +46,3 @@ Future<void> main() async {
     },
   );
 }
-
-Route<dynamic> _onGenerateRoute(RouteSettings settings) =>
-    PageRouteBuilder<Widget>(
-      settings: settings,
-      pageBuilder: (_, __, ___) {
-        final name = settings.name;
-        if (name == null) {
-          return const Home();
-        }
-        if (name == 'home') {
-          return const Home();
-        }
-        if (name == 'sign_in') {
-          return const SignInPage();
-        }
-        return const Home();
-      },
-    );

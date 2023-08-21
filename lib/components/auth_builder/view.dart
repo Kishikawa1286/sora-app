@@ -16,8 +16,8 @@ class AuthBuilder extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final authState = ref.watch(authBuilderViewModelProvider);
-    final authenticated = authState.authenticated;
+    final model = ref.watch(authBuilderViewModelProvider);
+    final authenticated = model.authenticated;
 
     if (authenticated == null) {
       WidgetsBinding.instance.addPostFrameCallback((duration) async {
