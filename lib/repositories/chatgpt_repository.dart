@@ -1,17 +1,22 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/helpers/cloud_functions_helper.dart';
 
+abstract class ChatGPTRepositoryBase {
+  Future<String?> generateReply(String text);
+}
+
 final chatGPTRepositoryProvider = Provider<ChatGPTRepository>(
   (ref) => ChatGPTRepository(
     ref.read(cloudFunctionsHelperProvider),
   ),
 );
 
-class ChatGPTRepository {
-  ChatGPTRepository(this._cloudFunctionsHelper);
+class ChatGPTRepository implements ChatGPTRepositoryBase {
+  const ChatGPTRepository(this._cloudFunctionsHelper);
 
   final CloudFunctionsHelper _cloudFunctionsHelper;
 
+  @override
   Future<String?> generateReply(String text) async {
     try {
       final result = await _cloudFunctionsHelper.call<String>(

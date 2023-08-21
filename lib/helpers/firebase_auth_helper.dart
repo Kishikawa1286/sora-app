@@ -14,32 +14,22 @@ class FirebaseAuthHelper {
     required String email,
     required String password,
   }) async {
-    try {
-      final userCredential = await _auth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      return userCredential.user;
-    } on Exception catch (e) {
-      print(e);
-      return null;
-    }
+    final userCredential = await _auth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    return userCredential.user;
   }
 
   Future<User?> signInWithEmail({
     required String email,
     required String password,
   }) async {
-    try {
-      final userCredential = await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      return userCredential.user;
-    } on Exception catch (e) {
-      print(e);
-      return null;
-    }
+    final userCredential = await _auth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    return userCredential.user;
   }
 
   Future<void> signOut() => _auth.signOut();
