@@ -8,7 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/color_schemes.g.dart';
 import 'package:sora/firebase_options.dart';
 import 'package:sora/pages/home/view.dart';
-import 'package:sora/pages/loading_page/view.dart';
+import 'package:sora/pages/sign_in/view.dart';
 
 Future<void> main() async {
   await runZonedGuarded(
@@ -59,6 +59,9 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings) =>
         if (name == 'home') {
           return const Home();
         }
-        return const LoadingPage();
+        if (name == 'sign_in') {
+          return const SignInPage();
+        }
+        return const Home();
       },
     );
