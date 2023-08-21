@@ -31,7 +31,13 @@ class SlackUser {
   const SlackUser({
     required this.id,
     required this.userId,
-    required this.slack_team_id,
+    required this.slackTeamId,
+    required this.slackTeamAvatarBaseUrl,
+    required this.slackTeamDiscoverable,
+    required this.slackTeamDomain,
+    required this.slackTeamIconUrl,
+    required this.slackTeamName,
+    required this.language,
     required this.createdAt,
     required this.lastUpdatedAt,
   });
@@ -40,7 +46,18 @@ class SlackUser {
   @JsonKey(name: 'user_id')
   final String userId;
   @JsonKey(name: 'slack_team_id')
-  final String slack_team_id;
+  final String slackTeamId;
+  @JsonKey(name: 'slack_team_avatar_base_url')
+  final String? slackTeamAvatarBaseUrl;
+  @JsonKey(name: 'slack_team_discoverable')
+  final String? slackTeamDiscoverable;
+  @JsonKey(name: 'slack_team_domain')
+  final String slackTeamDomain;
+  @JsonKey(name: 'slack_team_icon_url')
+  final String? slackTeamIconUrl;
+  @JsonKey(name: 'slack_team_name')
+  final String slackTeamName;
+  final String language;
   @JsonKey(name: 'created_at')
   final Timestamp createdAt;
   @JsonKey(name: 'last_updated_at')
@@ -85,7 +102,7 @@ class Message {
   @JsonKey(name: 'sender_name')
   final String senderName;
   @JsonKey(name: 'sender_icon_url')
-  final String senderIconUrl;
+  final String? senderIconUrl;
   @JsonKey(name: 'image_urls')
   final List<String> imageUrls;
   @JsonKey(name: 'file_attached')
@@ -116,6 +133,9 @@ class SlackMessage {
     required this.imageUrls,
     required this.fileAttached,
     required this.slackTeamId,
+    required this.slackTeamDomain,
+    required this.slackTeamIconUrl,
+    required this.slackTeamName,
     required this.slackUserId,
     required this.slackSenderUserId,
     required this.slackChannelId,
@@ -139,13 +159,19 @@ class SlackMessage {
   @JsonKey(name: 'sender_name')
   final String senderName;
   @JsonKey(name: 'sender_icon_url')
-  final String senderIconUrl;
+  final String? senderIconUrl;
   @JsonKey(name: 'image_urls')
   final List<String> imageUrls;
   @JsonKey(name: 'file_attached')
   final bool fileAttached;
   @JsonKey(name: 'slack_team_id')
   final String slackTeamId;
+  @JsonKey(name: 'slack_team_domain')
+  final String slackTeamDomain;
+  @JsonKey(name: 'slack_team_icon_url')
+  final String? slackTeamIconUrl;
+  @JsonKey(name: 'slack_team_name')
+  final String slackTeamName;
   @JsonKey(name: 'slack_user_id')
   final String slackUserId;
   @JsonKey(name: 'slack_sender_user_id')
@@ -169,21 +195,24 @@ const slackMessagesCollection =
 class Sender {
   const Sender({
     required this.id,
-    required this.sender_name,
-    required this.icon_url,
+    required this.senderName,
+    required this.iconUrl,
     required this.description,
     required this.type,
-    required this.group_ids,
+    required this.groupIds,
     required this.createdAt,
     required this.lastUpdatedAt,
   });
 
   final String id;
-  final String sender_name;
-  final String icon_url;
+  @JsonKey(name: 'sender_name')
+  final String senderName;
   final String description;
   final String type;
-  final List<String> group_ids;
+  @JsonKey(name: 'group_ids')
+  final List<String> groupIds;
+  @JsonKey(name: 'icon_url')
+  final String? iconUrl;
   @JsonKey(name: 'created_at')
   final Timestamp createdAt;
   @JsonKey(name: 'last_updated_at')
@@ -198,8 +227,12 @@ class SlackSender {
     required this.id,
     required this.senderId,
     required this.senderName,
+    required this.description,
+    required this.iconUrl,
     required this.slackTeamId,
-    required this.slackEmail,
+    required this.slackTeamDomain,
+    required this.slackTeamIconUrl,
+    required this.slackTeamName,
     required this.createdAt,
     required this.lastUpdatedAt,
   });
@@ -209,10 +242,17 @@ class SlackSender {
   final String senderId;
   @JsonKey(name: 'sender_name')
   final String senderName;
+  final String description;
+  @JsonKey(name: 'icon_url')
+  final String? iconUrl;
   @JsonKey(name: 'slack_team_id')
   final String slackTeamId;
-  @JsonKey(name: 'slack_email')
-  final String slackEmail;
+  @JsonKey(name: 'slack_team_domain')
+  final String slackTeamDomain;
+  @JsonKey(name: 'slack_team_icon_url')
+  final String? slackTeamIconUrl;
+  @JsonKey(name: 'slack_team_name')
+  final String slackTeamName;
   @JsonKey(name: 'created_at')
   final Timestamp createdAt;
   @JsonKey(name: 'last_updated_at')

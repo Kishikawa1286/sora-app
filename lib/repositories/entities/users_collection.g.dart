@@ -1372,8 +1372,20 @@ abstract class SlackUserDocumentReference
     FieldValue idFieldValue,
     String userId,
     FieldValue userIdFieldValue,
-    String slack_team_id,
-    FieldValue slack_team_idFieldValue,
+    String slackTeamId,
+    FieldValue slackTeamIdFieldValue,
+    String? slackTeamAvatarBaseUrl,
+    FieldValue slackTeamAvatarBaseUrlFieldValue,
+    String? slackTeamDiscoverable,
+    FieldValue slackTeamDiscoverableFieldValue,
+    String slackTeamDomain,
+    FieldValue slackTeamDomainFieldValue,
+    String? slackTeamIconUrl,
+    FieldValue slackTeamIconUrlFieldValue,
+    String slackTeamName,
+    FieldValue slackTeamNameFieldValue,
+    String language,
+    FieldValue languageFieldValue,
     Timestamp createdAt,
     FieldValue createdAtFieldValue,
     Timestamp lastUpdatedAt,
@@ -1389,8 +1401,20 @@ abstract class SlackUserDocumentReference
     FieldValue idFieldValue,
     String userId,
     FieldValue userIdFieldValue,
-    String slack_team_id,
-    FieldValue slack_team_idFieldValue,
+    String slackTeamId,
+    FieldValue slackTeamIdFieldValue,
+    String? slackTeamAvatarBaseUrl,
+    FieldValue slackTeamAvatarBaseUrlFieldValue,
+    String? slackTeamDiscoverable,
+    FieldValue slackTeamDiscoverableFieldValue,
+    String slackTeamDomain,
+    FieldValue slackTeamDomainFieldValue,
+    String? slackTeamIconUrl,
+    FieldValue slackTeamIconUrlFieldValue,
+    String slackTeamName,
+    FieldValue slackTeamNameFieldValue,
+    String language,
+    FieldValue languageFieldValue,
     Timestamp createdAt,
     FieldValue createdAtFieldValue,
     Timestamp lastUpdatedAt,
@@ -1436,8 +1460,20 @@ class _$SlackUserDocumentReference
     FieldValue? idFieldValue,
     Object? userId = _sentinel,
     FieldValue? userIdFieldValue,
-    Object? slack_team_id = _sentinel,
-    FieldValue? slack_team_idFieldValue,
+    Object? slackTeamId = _sentinel,
+    FieldValue? slackTeamIdFieldValue,
+    Object? slackTeamAvatarBaseUrl = _sentinel,
+    FieldValue? slackTeamAvatarBaseUrlFieldValue,
+    Object? slackTeamDiscoverable = _sentinel,
+    FieldValue? slackTeamDiscoverableFieldValue,
+    Object? slackTeamDomain = _sentinel,
+    FieldValue? slackTeamDomainFieldValue,
+    Object? slackTeamIconUrl = _sentinel,
+    FieldValue? slackTeamIconUrlFieldValue,
+    Object? slackTeamName = _sentinel,
+    FieldValue? slackTeamNameFieldValue,
+    Object? language = _sentinel,
+    FieldValue? languageFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
     Object? lastUpdatedAt = _sentinel,
@@ -1452,8 +1488,34 @@ class _$SlackUserDocumentReference
       "Cannot specify both userId and userIdFieldValue",
     );
     assert(
-      slack_team_id == _sentinel || slack_team_idFieldValue == null,
-      "Cannot specify both slack_team_id and slack_team_idFieldValue",
+      slackTeamId == _sentinel || slackTeamIdFieldValue == null,
+      "Cannot specify both slackTeamId and slackTeamIdFieldValue",
+    );
+    assert(
+      slackTeamAvatarBaseUrl == _sentinel ||
+          slackTeamAvatarBaseUrlFieldValue == null,
+      "Cannot specify both slackTeamAvatarBaseUrl and slackTeamAvatarBaseUrlFieldValue",
+    );
+    assert(
+      slackTeamDiscoverable == _sentinel ||
+          slackTeamDiscoverableFieldValue == null,
+      "Cannot specify both slackTeamDiscoverable and slackTeamDiscoverableFieldValue",
+    );
+    assert(
+      slackTeamDomain == _sentinel || slackTeamDomainFieldValue == null,
+      "Cannot specify both slackTeamDomain and slackTeamDomainFieldValue",
+    );
+    assert(
+      slackTeamIconUrl == _sentinel || slackTeamIconUrlFieldValue == null,
+      "Cannot specify both slackTeamIconUrl and slackTeamIconUrlFieldValue",
+    );
+    assert(
+      slackTeamName == _sentinel || slackTeamNameFieldValue == null,
+      "Cannot specify both slackTeamName and slackTeamNameFieldValue",
+    );
+    assert(
+      language == _sentinel || languageFieldValue == null,
+      "Cannot specify both language and languageFieldValue",
     );
     assert(
       createdAt == _sentinel || createdAtFieldValue == null,
@@ -1469,10 +1531,38 @@ class _$SlackUserDocumentReference
       if (userId != _sentinel) _$SlackUserFieldMap['userId']!: userId as String,
       if (userIdFieldValue != null)
         _$SlackUserFieldMap['userId']!: userIdFieldValue,
-      if (slack_team_id != _sentinel)
-        _$SlackUserFieldMap['slack_team_id']!: slack_team_id as String,
-      if (slack_team_idFieldValue != null)
-        _$SlackUserFieldMap['slack_team_id']!: slack_team_idFieldValue,
+      if (slackTeamId != _sentinel)
+        _$SlackUserFieldMap['slackTeamId']!: slackTeamId as String,
+      if (slackTeamIdFieldValue != null)
+        _$SlackUserFieldMap['slackTeamId']!: slackTeamIdFieldValue,
+      if (slackTeamAvatarBaseUrl != _sentinel)
+        _$SlackUserFieldMap['slackTeamAvatarBaseUrl']!:
+            slackTeamAvatarBaseUrl as String?,
+      if (slackTeamAvatarBaseUrlFieldValue != null)
+        _$SlackUserFieldMap['slackTeamAvatarBaseUrl']!:
+            slackTeamAvatarBaseUrlFieldValue,
+      if (slackTeamDiscoverable != _sentinel)
+        _$SlackUserFieldMap['slackTeamDiscoverable']!:
+            slackTeamDiscoverable as String?,
+      if (slackTeamDiscoverableFieldValue != null)
+        _$SlackUserFieldMap['slackTeamDiscoverable']!:
+            slackTeamDiscoverableFieldValue,
+      if (slackTeamDomain != _sentinel)
+        _$SlackUserFieldMap['slackTeamDomain']!: slackTeamDomain as String,
+      if (slackTeamDomainFieldValue != null)
+        _$SlackUserFieldMap['slackTeamDomain']!: slackTeamDomainFieldValue,
+      if (slackTeamIconUrl != _sentinel)
+        _$SlackUserFieldMap['slackTeamIconUrl']!: slackTeamIconUrl as String?,
+      if (slackTeamIconUrlFieldValue != null)
+        _$SlackUserFieldMap['slackTeamIconUrl']!: slackTeamIconUrlFieldValue,
+      if (slackTeamName != _sentinel)
+        _$SlackUserFieldMap['slackTeamName']!: slackTeamName as String,
+      if (slackTeamNameFieldValue != null)
+        _$SlackUserFieldMap['slackTeamName']!: slackTeamNameFieldValue,
+      if (language != _sentinel)
+        _$SlackUserFieldMap['language']!: language as String,
+      if (languageFieldValue != null)
+        _$SlackUserFieldMap['language']!: languageFieldValue,
       if (createdAt != _sentinel)
         _$SlackUserFieldMap['createdAt']!: createdAt as Timestamp,
       if (createdAtFieldValue != null)
@@ -1492,8 +1582,20 @@ class _$SlackUserDocumentReference
     FieldValue? idFieldValue,
     Object? userId = _sentinel,
     FieldValue? userIdFieldValue,
-    Object? slack_team_id = _sentinel,
-    FieldValue? slack_team_idFieldValue,
+    Object? slackTeamId = _sentinel,
+    FieldValue? slackTeamIdFieldValue,
+    Object? slackTeamAvatarBaseUrl = _sentinel,
+    FieldValue? slackTeamAvatarBaseUrlFieldValue,
+    Object? slackTeamDiscoverable = _sentinel,
+    FieldValue? slackTeamDiscoverableFieldValue,
+    Object? slackTeamDomain = _sentinel,
+    FieldValue? slackTeamDomainFieldValue,
+    Object? slackTeamIconUrl = _sentinel,
+    FieldValue? slackTeamIconUrlFieldValue,
+    Object? slackTeamName = _sentinel,
+    FieldValue? slackTeamNameFieldValue,
+    Object? language = _sentinel,
+    FieldValue? languageFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
     Object? lastUpdatedAt = _sentinel,
@@ -1508,8 +1610,34 @@ class _$SlackUserDocumentReference
       "Cannot specify both userId and userIdFieldValue",
     );
     assert(
-      slack_team_id == _sentinel || slack_team_idFieldValue == null,
-      "Cannot specify both slack_team_id and slack_team_idFieldValue",
+      slackTeamId == _sentinel || slackTeamIdFieldValue == null,
+      "Cannot specify both slackTeamId and slackTeamIdFieldValue",
+    );
+    assert(
+      slackTeamAvatarBaseUrl == _sentinel ||
+          slackTeamAvatarBaseUrlFieldValue == null,
+      "Cannot specify both slackTeamAvatarBaseUrl and slackTeamAvatarBaseUrlFieldValue",
+    );
+    assert(
+      slackTeamDiscoverable == _sentinel ||
+          slackTeamDiscoverableFieldValue == null,
+      "Cannot specify both slackTeamDiscoverable and slackTeamDiscoverableFieldValue",
+    );
+    assert(
+      slackTeamDomain == _sentinel || slackTeamDomainFieldValue == null,
+      "Cannot specify both slackTeamDomain and slackTeamDomainFieldValue",
+    );
+    assert(
+      slackTeamIconUrl == _sentinel || slackTeamIconUrlFieldValue == null,
+      "Cannot specify both slackTeamIconUrl and slackTeamIconUrlFieldValue",
+    );
+    assert(
+      slackTeamName == _sentinel || slackTeamNameFieldValue == null,
+      "Cannot specify both slackTeamName and slackTeamNameFieldValue",
+    );
+    assert(
+      language == _sentinel || languageFieldValue == null,
+      "Cannot specify both language and languageFieldValue",
     );
     assert(
       createdAt == _sentinel || createdAtFieldValue == null,
@@ -1525,10 +1653,38 @@ class _$SlackUserDocumentReference
       if (userId != _sentinel) _$SlackUserFieldMap['userId']!: userId as String,
       if (userIdFieldValue != null)
         _$SlackUserFieldMap['userId']!: userIdFieldValue,
-      if (slack_team_id != _sentinel)
-        _$SlackUserFieldMap['slack_team_id']!: slack_team_id as String,
-      if (slack_team_idFieldValue != null)
-        _$SlackUserFieldMap['slack_team_id']!: slack_team_idFieldValue,
+      if (slackTeamId != _sentinel)
+        _$SlackUserFieldMap['slackTeamId']!: slackTeamId as String,
+      if (slackTeamIdFieldValue != null)
+        _$SlackUserFieldMap['slackTeamId']!: slackTeamIdFieldValue,
+      if (slackTeamAvatarBaseUrl != _sentinel)
+        _$SlackUserFieldMap['slackTeamAvatarBaseUrl']!:
+            slackTeamAvatarBaseUrl as String?,
+      if (slackTeamAvatarBaseUrlFieldValue != null)
+        _$SlackUserFieldMap['slackTeamAvatarBaseUrl']!:
+            slackTeamAvatarBaseUrlFieldValue,
+      if (slackTeamDiscoverable != _sentinel)
+        _$SlackUserFieldMap['slackTeamDiscoverable']!:
+            slackTeamDiscoverable as String?,
+      if (slackTeamDiscoverableFieldValue != null)
+        _$SlackUserFieldMap['slackTeamDiscoverable']!:
+            slackTeamDiscoverableFieldValue,
+      if (slackTeamDomain != _sentinel)
+        _$SlackUserFieldMap['slackTeamDomain']!: slackTeamDomain as String,
+      if (slackTeamDomainFieldValue != null)
+        _$SlackUserFieldMap['slackTeamDomain']!: slackTeamDomainFieldValue,
+      if (slackTeamIconUrl != _sentinel)
+        _$SlackUserFieldMap['slackTeamIconUrl']!: slackTeamIconUrl as String?,
+      if (slackTeamIconUrlFieldValue != null)
+        _$SlackUserFieldMap['slackTeamIconUrl']!: slackTeamIconUrlFieldValue,
+      if (slackTeamName != _sentinel)
+        _$SlackUserFieldMap['slackTeamName']!: slackTeamName as String,
+      if (slackTeamNameFieldValue != null)
+        _$SlackUserFieldMap['slackTeamName']!: slackTeamNameFieldValue,
+      if (language != _sentinel)
+        _$SlackUserFieldMap['language']!: language as String,
+      if (languageFieldValue != null)
+        _$SlackUserFieldMap['language']!: languageFieldValue,
       if (createdAt != _sentinel)
         _$SlackUserFieldMap['createdAt']!: createdAt as Timestamp,
       if (createdAtFieldValue != null)
@@ -1660,7 +1816,73 @@ abstract class SlackUserQuery
     List<String>? whereIn,
     List<String>? whereNotIn,
   });
-  SlackUserQuery whereSlack_team_id({
+  SlackUserQuery whereSlackTeamId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  });
+  SlackUserQuery whereSlackTeamAvatarBaseUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  });
+  SlackUserQuery whereSlackTeamDiscoverable({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  });
+  SlackUserQuery whereSlackTeamDomain({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  });
+  SlackUserQuery whereSlackTeamIconUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  });
+  SlackUserQuery whereSlackTeamName({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  });
+  SlackUserQuery whereLanguage({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -1730,7 +1952,79 @@ abstract class SlackUserQuery
     SlackUserDocumentSnapshot? startAfterDocument,
   });
 
-  SlackUserQuery orderBySlack_team_id({
+  SlackUserQuery orderBySlackTeamId({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    SlackUserDocumentSnapshot? startAtDocument,
+    SlackUserDocumentSnapshot? endAtDocument,
+    SlackUserDocumentSnapshot? endBeforeDocument,
+    SlackUserDocumentSnapshot? startAfterDocument,
+  });
+
+  SlackUserQuery orderBySlackTeamAvatarBaseUrl({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    SlackUserDocumentSnapshot? startAtDocument,
+    SlackUserDocumentSnapshot? endAtDocument,
+    SlackUserDocumentSnapshot? endBeforeDocument,
+    SlackUserDocumentSnapshot? startAfterDocument,
+  });
+
+  SlackUserQuery orderBySlackTeamDiscoverable({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    SlackUserDocumentSnapshot? startAtDocument,
+    SlackUserDocumentSnapshot? endAtDocument,
+    SlackUserDocumentSnapshot? endBeforeDocument,
+    SlackUserDocumentSnapshot? startAfterDocument,
+  });
+
+  SlackUserQuery orderBySlackTeamDomain({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    SlackUserDocumentSnapshot? startAtDocument,
+    SlackUserDocumentSnapshot? endAtDocument,
+    SlackUserDocumentSnapshot? endBeforeDocument,
+    SlackUserDocumentSnapshot? startAfterDocument,
+  });
+
+  SlackUserQuery orderBySlackTeamIconUrl({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    SlackUserDocumentSnapshot? startAtDocument,
+    SlackUserDocumentSnapshot? endAtDocument,
+    SlackUserDocumentSnapshot? endBeforeDocument,
+    SlackUserDocumentSnapshot? startAfterDocument,
+  });
+
+  SlackUserQuery orderBySlackTeamName({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    SlackUserDocumentSnapshot? startAtDocument,
+    SlackUserDocumentSnapshot? endAtDocument,
+    SlackUserDocumentSnapshot? endBeforeDocument,
+    SlackUserDocumentSnapshot? startAfterDocument,
+  });
+
+  SlackUserQuery orderByLanguage({
     bool descending = false,
     String startAt,
     String startAfter,
@@ -2003,7 +2297,7 @@ class _$SlackUserQuery extends QueryReference<SlackUser, SlackUserQuerySnapshot>
     );
   }
 
-  SlackUserQuery whereSlack_team_id({
+  SlackUserQuery whereSlackTeamId({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -2017,7 +2311,181 @@ class _$SlackUserQuery extends QueryReference<SlackUser, SlackUserQuerySnapshot>
     return _$SlackUserQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$SlackUserFieldMap['slack_team_id']!,
+        _$SlackUserFieldMap['slackTeamId']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  SlackUserQuery whereSlackTeamAvatarBaseUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  }) {
+    return _$SlackUserQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SlackUserFieldMap['slackTeamAvatarBaseUrl']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  SlackUserQuery whereSlackTeamDiscoverable({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  }) {
+    return _$SlackUserQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SlackUserFieldMap['slackTeamDiscoverable']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  SlackUserQuery whereSlackTeamDomain({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  }) {
+    return _$SlackUserQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SlackUserFieldMap['slackTeamDomain']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  SlackUserQuery whereSlackTeamIconUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  }) {
+    return _$SlackUserQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SlackUserFieldMap['slackTeamIconUrl']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  SlackUserQuery whereSlackTeamName({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  }) {
+    return _$SlackUserQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SlackUserFieldMap['slackTeamName']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  SlackUserQuery whereLanguage({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  }) {
+    return _$SlackUserQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SlackUserFieldMap['language']!,
         isEqualTo: isEqualTo,
         isNotEqualTo: isNotEqualTo,
         isLessThan: isLessThan,
@@ -2306,7 +2774,7 @@ class _$SlackUserQuery extends QueryReference<SlackUser, SlackUserQuerySnapshot>
     );
   }
 
-  SlackUserQuery orderBySlack_team_id({
+  SlackUserQuery orderBySlackTeamId({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -2318,7 +2786,443 @@ class _$SlackUserQuery extends QueryReference<SlackUser, SlackUserQuerySnapshot>
     SlackUserDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor
-        .orderBy(_$SlackUserFieldMap['slack_team_id']!, descending: descending);
+        .orderBy(_$SlackUserFieldMap['slackTeamId']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SlackUserQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  SlackUserQuery orderBySlackTeamAvatarBaseUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SlackUserDocumentSnapshot? startAtDocument,
+    SlackUserDocumentSnapshot? endAtDocument,
+    SlackUserDocumentSnapshot? endBeforeDocument,
+    SlackUserDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$SlackUserFieldMap['slackTeamAvatarBaseUrl']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SlackUserQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  SlackUserQuery orderBySlackTeamDiscoverable({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SlackUserDocumentSnapshot? startAtDocument,
+    SlackUserDocumentSnapshot? endAtDocument,
+    SlackUserDocumentSnapshot? endBeforeDocument,
+    SlackUserDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$SlackUserFieldMap['slackTeamDiscoverable']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SlackUserQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  SlackUserQuery orderBySlackTeamDomain({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SlackUserDocumentSnapshot? startAtDocument,
+    SlackUserDocumentSnapshot? endAtDocument,
+    SlackUserDocumentSnapshot? endBeforeDocument,
+    SlackUserDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$SlackUserFieldMap['slackTeamDomain']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SlackUserQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  SlackUserQuery orderBySlackTeamIconUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SlackUserDocumentSnapshot? startAtDocument,
+    SlackUserDocumentSnapshot? endAtDocument,
+    SlackUserDocumentSnapshot? endBeforeDocument,
+    SlackUserDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$SlackUserFieldMap['slackTeamIconUrl']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SlackUserQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  SlackUserQuery orderBySlackTeamName({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SlackUserDocumentSnapshot? startAtDocument,
+    SlackUserDocumentSnapshot? endAtDocument,
+    SlackUserDocumentSnapshot? endBeforeDocument,
+    SlackUserDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$SlackUserFieldMap['slackTeamName']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SlackUserQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  SlackUserQuery orderByLanguage({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SlackUserDocumentSnapshot? startAtDocument,
+    SlackUserDocumentSnapshot? endAtDocument,
+    SlackUserDocumentSnapshot? endBeforeDocument,
+    SlackUserDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$SlackUserFieldMap['language']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -2764,7 +3668,7 @@ abstract class MessageDocumentReference
     FieldValue senderIdFieldValue,
     String senderName,
     FieldValue senderNameFieldValue,
-    String senderIconUrl,
+    String? senderIconUrl,
     FieldValue senderIconUrlFieldValue,
     List<String> imageUrls,
     FieldValue imageUrlsFieldValue,
@@ -2805,7 +3709,7 @@ abstract class MessageDocumentReference
     FieldValue senderIdFieldValue,
     String senderName,
     FieldValue senderNameFieldValue,
-    String senderIconUrl,
+    String? senderIconUrl,
     FieldValue senderIconUrlFieldValue,
     List<String> imageUrls,
     FieldValue imageUrlsFieldValue,
@@ -2997,7 +3901,7 @@ class _$MessageDocumentReference
       if (senderNameFieldValue != null)
         _$MessageFieldMap['senderName']!: senderNameFieldValue,
       if (senderIconUrl != _sentinel)
-        _$MessageFieldMap['senderIconUrl']!: senderIconUrl as String,
+        _$MessageFieldMap['senderIconUrl']!: senderIconUrl as String?,
       if (senderIconUrlFieldValue != null)
         _$MessageFieldMap['senderIconUrl']!: senderIconUrlFieldValue,
       if (imageUrls != _sentinel)
@@ -3166,7 +4070,7 @@ class _$MessageDocumentReference
       if (senderNameFieldValue != null)
         _$MessageFieldMap['senderName']!: senderNameFieldValue,
       if (senderIconUrl != _sentinel)
-        _$MessageFieldMap['senderIconUrl']!: senderIconUrl as String,
+        _$MessageFieldMap['senderIconUrl']!: senderIconUrl as String?,
       if (senderIconUrlFieldValue != null)
         _$MessageFieldMap['senderIconUrl']!: senderIconUrlFieldValue,
       if (imageUrls != _sentinel)
@@ -3402,8 +4306,8 @@ abstract class MessageQuery
     String? isGreaterThan,
     String? isGreaterThanOrEqualTo,
     bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
   });
   MessageQuery whereImageUrls({
     List<String>? isEqualTo,
@@ -3605,10 +4509,10 @@ abstract class MessageQuery
 
   MessageQuery orderBySenderIconUrl({
     bool descending = false,
-    String startAt,
-    String startAfter,
-    String endAt,
-    String endBefore,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
     MessageDocumentSnapshot? startAtDocument,
     MessageDocumentSnapshot? endAtDocument,
     MessageDocumentSnapshot? endBeforeDocument,
@@ -4145,8 +5049,8 @@ class _$MessageQuery extends QueryReference<Message, MessageQuerySnapshot>
     String? isGreaterThan,
     String? isGreaterThanOrEqualTo,
     bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
   }) {
     return _$MessageQuery(
       _collection,
@@ -5903,7 +6807,7 @@ abstract class SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue senderIdFieldValue,
     String senderName,
     FieldValue senderNameFieldValue,
-    String senderIconUrl,
+    String? senderIconUrl,
     FieldValue senderIconUrlFieldValue,
     List<String> imageUrls,
     FieldValue imageUrlsFieldValue,
@@ -5911,6 +6815,12 @@ abstract class SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue fileAttachedFieldValue,
     String slackTeamId,
     FieldValue slackTeamIdFieldValue,
+    String slackTeamDomain,
+    FieldValue slackTeamDomainFieldValue,
+    String? slackTeamIconUrl,
+    FieldValue slackTeamIconUrlFieldValue,
+    String slackTeamName,
+    FieldValue slackTeamNameFieldValue,
     String slackUserId,
     FieldValue slackUserIdFieldValue,
     String slackSenderUserId,
@@ -5948,7 +6858,7 @@ abstract class SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue senderIdFieldValue,
     String senderName,
     FieldValue senderNameFieldValue,
-    String senderIconUrl,
+    String? senderIconUrl,
     FieldValue senderIconUrlFieldValue,
     List<String> imageUrls,
     FieldValue imageUrlsFieldValue,
@@ -5956,6 +6866,12 @@ abstract class SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue fileAttachedFieldValue,
     String slackTeamId,
     FieldValue slackTeamIdFieldValue,
+    String slackTeamDomain,
+    FieldValue slackTeamDomainFieldValue,
+    String? slackTeamIconUrl,
+    FieldValue slackTeamIconUrlFieldValue,
+    String slackTeamName,
+    FieldValue slackTeamNameFieldValue,
     String slackUserId,
     FieldValue slackUserIdFieldValue,
     String slackSenderUserId,
@@ -6031,6 +6947,12 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue? fileAttachedFieldValue,
     Object? slackTeamId = _sentinel,
     FieldValue? slackTeamIdFieldValue,
+    Object? slackTeamDomain = _sentinel,
+    FieldValue? slackTeamDomainFieldValue,
+    Object? slackTeamIconUrl = _sentinel,
+    FieldValue? slackTeamIconUrlFieldValue,
+    Object? slackTeamName = _sentinel,
+    FieldValue? slackTeamNameFieldValue,
     Object? slackUserId = _sentinel,
     FieldValue? slackUserIdFieldValue,
     Object? slackSenderUserId = _sentinel,
@@ -6095,6 +7017,18 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both slackTeamId and slackTeamIdFieldValue",
     );
     assert(
+      slackTeamDomain == _sentinel || slackTeamDomainFieldValue == null,
+      "Cannot specify both slackTeamDomain and slackTeamDomainFieldValue",
+    );
+    assert(
+      slackTeamIconUrl == _sentinel || slackTeamIconUrlFieldValue == null,
+      "Cannot specify both slackTeamIconUrl and slackTeamIconUrlFieldValue",
+    );
+    assert(
+      slackTeamName == _sentinel || slackTeamNameFieldValue == null,
+      "Cannot specify both slackTeamName and slackTeamNameFieldValue",
+    );
+    assert(
       slackUserId == _sentinel || slackUserIdFieldValue == null,
       "Cannot specify both slackUserId and slackUserIdFieldValue",
     );
@@ -6154,7 +7088,7 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
       if (senderNameFieldValue != null)
         _$SlackMessageFieldMap['senderName']!: senderNameFieldValue,
       if (senderIconUrl != _sentinel)
-        _$SlackMessageFieldMap['senderIconUrl']!: senderIconUrl as String,
+        _$SlackMessageFieldMap['senderIconUrl']!: senderIconUrl as String?,
       if (senderIconUrlFieldValue != null)
         _$SlackMessageFieldMap['senderIconUrl']!: senderIconUrlFieldValue,
       if (imageUrls != _sentinel)
@@ -6169,6 +7103,19 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
         _$SlackMessageFieldMap['slackTeamId']!: slackTeamId as String,
       if (slackTeamIdFieldValue != null)
         _$SlackMessageFieldMap['slackTeamId']!: slackTeamIdFieldValue,
+      if (slackTeamDomain != _sentinel)
+        _$SlackMessageFieldMap['slackTeamDomain']!: slackTeamDomain as String,
+      if (slackTeamDomainFieldValue != null)
+        _$SlackMessageFieldMap['slackTeamDomain']!: slackTeamDomainFieldValue,
+      if (slackTeamIconUrl != _sentinel)
+        _$SlackMessageFieldMap['slackTeamIconUrl']!:
+            slackTeamIconUrl as String?,
+      if (slackTeamIconUrlFieldValue != null)
+        _$SlackMessageFieldMap['slackTeamIconUrl']!: slackTeamIconUrlFieldValue,
+      if (slackTeamName != _sentinel)
+        _$SlackMessageFieldMap['slackTeamName']!: slackTeamName as String,
+      if (slackTeamNameFieldValue != null)
+        _$SlackMessageFieldMap['slackTeamName']!: slackTeamNameFieldValue,
       if (slackUserId != _sentinel)
         _$SlackMessageFieldMap['slackUserId']!: slackUserId as String,
       if (slackUserIdFieldValue != null)
@@ -6230,6 +7177,12 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue? fileAttachedFieldValue,
     Object? slackTeamId = _sentinel,
     FieldValue? slackTeamIdFieldValue,
+    Object? slackTeamDomain = _sentinel,
+    FieldValue? slackTeamDomainFieldValue,
+    Object? slackTeamIconUrl = _sentinel,
+    FieldValue? slackTeamIconUrlFieldValue,
+    Object? slackTeamName = _sentinel,
+    FieldValue? slackTeamNameFieldValue,
     Object? slackUserId = _sentinel,
     FieldValue? slackUserIdFieldValue,
     Object? slackSenderUserId = _sentinel,
@@ -6294,6 +7247,18 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both slackTeamId and slackTeamIdFieldValue",
     );
     assert(
+      slackTeamDomain == _sentinel || slackTeamDomainFieldValue == null,
+      "Cannot specify both slackTeamDomain and slackTeamDomainFieldValue",
+    );
+    assert(
+      slackTeamIconUrl == _sentinel || slackTeamIconUrlFieldValue == null,
+      "Cannot specify both slackTeamIconUrl and slackTeamIconUrlFieldValue",
+    );
+    assert(
+      slackTeamName == _sentinel || slackTeamNameFieldValue == null,
+      "Cannot specify both slackTeamName and slackTeamNameFieldValue",
+    );
+    assert(
       slackUserId == _sentinel || slackUserIdFieldValue == null,
       "Cannot specify both slackUserId and slackUserIdFieldValue",
     );
@@ -6353,7 +7318,7 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
       if (senderNameFieldValue != null)
         _$SlackMessageFieldMap['senderName']!: senderNameFieldValue,
       if (senderIconUrl != _sentinel)
-        _$SlackMessageFieldMap['senderIconUrl']!: senderIconUrl as String,
+        _$SlackMessageFieldMap['senderIconUrl']!: senderIconUrl as String?,
       if (senderIconUrlFieldValue != null)
         _$SlackMessageFieldMap['senderIconUrl']!: senderIconUrlFieldValue,
       if (imageUrls != _sentinel)
@@ -6368,6 +7333,19 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
         _$SlackMessageFieldMap['slackTeamId']!: slackTeamId as String,
       if (slackTeamIdFieldValue != null)
         _$SlackMessageFieldMap['slackTeamId']!: slackTeamIdFieldValue,
+      if (slackTeamDomain != _sentinel)
+        _$SlackMessageFieldMap['slackTeamDomain']!: slackTeamDomain as String,
+      if (slackTeamDomainFieldValue != null)
+        _$SlackMessageFieldMap['slackTeamDomain']!: slackTeamDomainFieldValue,
+      if (slackTeamIconUrl != _sentinel)
+        _$SlackMessageFieldMap['slackTeamIconUrl']!:
+            slackTeamIconUrl as String?,
+      if (slackTeamIconUrlFieldValue != null)
+        _$SlackMessageFieldMap['slackTeamIconUrl']!: slackTeamIconUrlFieldValue,
+      if (slackTeamName != _sentinel)
+        _$SlackMessageFieldMap['slackTeamName']!: slackTeamName as String,
+      if (slackTeamNameFieldValue != null)
+        _$SlackMessageFieldMap['slackTeamName']!: slackTeamNameFieldValue,
       if (slackUserId != _sentinel)
         _$SlackMessageFieldMap['slackUserId']!: slackUserId as String,
       if (slackUserIdFieldValue != null)
@@ -6595,8 +7573,8 @@ abstract class SlackMessageQuery
     String? isGreaterThan,
     String? isGreaterThanOrEqualTo,
     bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
   });
   SlackMessageQuery whereImageUrls({
     List<String>? isEqualTo,
@@ -6621,6 +7599,39 @@ abstract class SlackMessageQuery
     List<bool>? whereNotIn,
   });
   SlackMessageQuery whereSlackTeamId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  });
+  SlackMessageQuery whereSlackTeamDomain({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  });
+  SlackMessageQuery whereSlackTeamIconUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  });
+  SlackMessageQuery whereSlackTeamName({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -6819,10 +7830,10 @@ abstract class SlackMessageQuery
 
   SlackMessageQuery orderBySenderIconUrl({
     bool descending = false,
-    String startAt,
-    String startAfter,
-    String endAt,
-    String endBefore,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
     SlackMessageDocumentSnapshot? startAtDocument,
     SlackMessageDocumentSnapshot? endAtDocument,
     SlackMessageDocumentSnapshot? endBeforeDocument,
@@ -6854,6 +7865,42 @@ abstract class SlackMessageQuery
   });
 
   SlackMessageQuery orderBySlackTeamId({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    SlackMessageDocumentSnapshot? startAtDocument,
+    SlackMessageDocumentSnapshot? endAtDocument,
+    SlackMessageDocumentSnapshot? endBeforeDocument,
+    SlackMessageDocumentSnapshot? startAfterDocument,
+  });
+
+  SlackMessageQuery orderBySlackTeamDomain({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    SlackMessageDocumentSnapshot? startAtDocument,
+    SlackMessageDocumentSnapshot? endAtDocument,
+    SlackMessageDocumentSnapshot? endBeforeDocument,
+    SlackMessageDocumentSnapshot? startAfterDocument,
+  });
+
+  SlackMessageQuery orderBySlackTeamIconUrl({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    SlackMessageDocumentSnapshot? startAtDocument,
+    SlackMessageDocumentSnapshot? endAtDocument,
+    SlackMessageDocumentSnapshot? endBeforeDocument,
+    SlackMessageDocumentSnapshot? startAfterDocument,
+  });
+
+  SlackMessageQuery orderBySlackTeamName({
     bool descending = false,
     String startAt,
     String startAfter,
@@ -7371,8 +8418,8 @@ class _$SlackMessageQuery
     String? isGreaterThan,
     String? isGreaterThanOrEqualTo,
     bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
   }) {
     return _$SlackMessageQuery(
       _collection,
@@ -7465,6 +8512,93 @@ class _$SlackMessageQuery
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$SlackMessageFieldMap['slackTeamId']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  SlackMessageQuery whereSlackTeamDomain({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  }) {
+    return _$SlackMessageQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SlackMessageFieldMap['slackTeamDomain']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  SlackMessageQuery whereSlackTeamIconUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  }) {
+    return _$SlackMessageQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SlackMessageFieldMap['slackTeamIconUrl']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  SlackMessageQuery whereSlackTeamName({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  }) {
+    return _$SlackMessageQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SlackMessageFieldMap['slackTeamName']!,
         isEqualTo: isEqualTo,
         isNotEqualTo: isNotEqualTo,
         isLessThan: isLessThan,
@@ -8621,6 +9755,225 @@ class _$SlackMessageQuery
     );
   }
 
+  SlackMessageQuery orderBySlackTeamDomain({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SlackMessageDocumentSnapshot? startAtDocument,
+    SlackMessageDocumentSnapshot? endAtDocument,
+    SlackMessageDocumentSnapshot? endBeforeDocument,
+    SlackMessageDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$SlackMessageFieldMap['slackTeamDomain']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SlackMessageQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  SlackMessageQuery orderBySlackTeamIconUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SlackMessageDocumentSnapshot? startAtDocument,
+    SlackMessageDocumentSnapshot? endAtDocument,
+    SlackMessageDocumentSnapshot? endBeforeDocument,
+    SlackMessageDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$SlackMessageFieldMap['slackTeamIconUrl']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SlackMessageQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  SlackMessageQuery orderBySlackTeamName({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SlackMessageDocumentSnapshot? startAtDocument,
+    SlackMessageDocumentSnapshot? endAtDocument,
+    SlackMessageDocumentSnapshot? endBeforeDocument,
+    SlackMessageDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$SlackMessageFieldMap['slackTeamName']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SlackMessageQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
   SlackMessageQuery orderBySlackUserId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -9359,16 +10712,16 @@ abstract class SenderDocumentReference
   Future<void> update({
     String id,
     FieldValue idFieldValue,
-    String sender_name,
-    FieldValue sender_nameFieldValue,
-    String icon_url,
-    FieldValue icon_urlFieldValue,
+    String senderName,
+    FieldValue senderNameFieldValue,
     String description,
     FieldValue descriptionFieldValue,
     String type,
     FieldValue typeFieldValue,
-    List<String> group_ids,
-    FieldValue group_idsFieldValue,
+    List<String> groupIds,
+    FieldValue groupIdsFieldValue,
+    String? iconUrl,
+    FieldValue iconUrlFieldValue,
     Timestamp createdAt,
     FieldValue createdAtFieldValue,
     Timestamp lastUpdatedAt,
@@ -9382,16 +10735,16 @@ abstract class SenderDocumentReference
     Transaction transaction, {
     String id,
     FieldValue idFieldValue,
-    String sender_name,
-    FieldValue sender_nameFieldValue,
-    String icon_url,
-    FieldValue icon_urlFieldValue,
+    String senderName,
+    FieldValue senderNameFieldValue,
     String description,
     FieldValue descriptionFieldValue,
     String type,
     FieldValue typeFieldValue,
-    List<String> group_ids,
-    FieldValue group_idsFieldValue,
+    List<String> groupIds,
+    FieldValue groupIdsFieldValue,
+    String? iconUrl,
+    FieldValue iconUrlFieldValue,
     Timestamp createdAt,
     FieldValue createdAtFieldValue,
     Timestamp lastUpdatedAt,
@@ -9440,16 +10793,16 @@ class _$SenderDocumentReference
   Future<void> update({
     Object? id = _sentinel,
     FieldValue? idFieldValue,
-    Object? sender_name = _sentinel,
-    FieldValue? sender_nameFieldValue,
-    Object? icon_url = _sentinel,
-    FieldValue? icon_urlFieldValue,
+    Object? senderName = _sentinel,
+    FieldValue? senderNameFieldValue,
     Object? description = _sentinel,
     FieldValue? descriptionFieldValue,
     Object? type = _sentinel,
     FieldValue? typeFieldValue,
-    Object? group_ids = _sentinel,
-    FieldValue? group_idsFieldValue,
+    Object? groupIds = _sentinel,
+    FieldValue? groupIdsFieldValue,
+    Object? iconUrl = _sentinel,
+    FieldValue? iconUrlFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
     Object? lastUpdatedAt = _sentinel,
@@ -9460,12 +10813,8 @@ class _$SenderDocumentReference
       "Cannot specify both id and idFieldValue",
     );
     assert(
-      sender_name == _sentinel || sender_nameFieldValue == null,
-      "Cannot specify both sender_name and sender_nameFieldValue",
-    );
-    assert(
-      icon_url == _sentinel || icon_urlFieldValue == null,
-      "Cannot specify both icon_url and icon_urlFieldValue",
+      senderName == _sentinel || senderNameFieldValue == null,
+      "Cannot specify both senderName and senderNameFieldValue",
     );
     assert(
       description == _sentinel || descriptionFieldValue == null,
@@ -9476,8 +10825,12 @@ class _$SenderDocumentReference
       "Cannot specify both type and typeFieldValue",
     );
     assert(
-      group_ids == _sentinel || group_idsFieldValue == null,
-      "Cannot specify both group_ids and group_idsFieldValue",
+      groupIds == _sentinel || groupIdsFieldValue == null,
+      "Cannot specify both groupIds and groupIdsFieldValue",
+    );
+    assert(
+      iconUrl == _sentinel || iconUrlFieldValue == null,
+      "Cannot specify both iconUrl and iconUrlFieldValue",
     );
     assert(
       createdAt == _sentinel || createdAtFieldValue == null,
@@ -9490,24 +10843,24 @@ class _$SenderDocumentReference
     final json = {
       if (id != _sentinel) _$SenderFieldMap['id']!: id as String,
       if (idFieldValue != null) _$SenderFieldMap['id']!: idFieldValue,
-      if (sender_name != _sentinel)
-        _$SenderFieldMap['sender_name']!: sender_name as String,
-      if (sender_nameFieldValue != null)
-        _$SenderFieldMap['sender_name']!: sender_nameFieldValue,
-      if (icon_url != _sentinel)
-        _$SenderFieldMap['icon_url']!: icon_url as String,
-      if (icon_urlFieldValue != null)
-        _$SenderFieldMap['icon_url']!: icon_urlFieldValue,
+      if (senderName != _sentinel)
+        _$SenderFieldMap['senderName']!: senderName as String,
+      if (senderNameFieldValue != null)
+        _$SenderFieldMap['senderName']!: senderNameFieldValue,
       if (description != _sentinel)
         _$SenderFieldMap['description']!: description as String,
       if (descriptionFieldValue != null)
         _$SenderFieldMap['description']!: descriptionFieldValue,
       if (type != _sentinel) _$SenderFieldMap['type']!: type as String,
       if (typeFieldValue != null) _$SenderFieldMap['type']!: typeFieldValue,
-      if (group_ids != _sentinel)
-        _$SenderFieldMap['group_ids']!: group_ids as List<String>,
-      if (group_idsFieldValue != null)
-        _$SenderFieldMap['group_ids']!: group_idsFieldValue,
+      if (groupIds != _sentinel)
+        _$SenderFieldMap['groupIds']!: groupIds as List<String>,
+      if (groupIdsFieldValue != null)
+        _$SenderFieldMap['groupIds']!: groupIdsFieldValue,
+      if (iconUrl != _sentinel)
+        _$SenderFieldMap['iconUrl']!: iconUrl as String?,
+      if (iconUrlFieldValue != null)
+        _$SenderFieldMap['iconUrl']!: iconUrlFieldValue,
       if (createdAt != _sentinel)
         _$SenderFieldMap['createdAt']!: createdAt as Timestamp,
       if (createdAtFieldValue != null)
@@ -9525,16 +10878,16 @@ class _$SenderDocumentReference
     Transaction transaction, {
     Object? id = _sentinel,
     FieldValue? idFieldValue,
-    Object? sender_name = _sentinel,
-    FieldValue? sender_nameFieldValue,
-    Object? icon_url = _sentinel,
-    FieldValue? icon_urlFieldValue,
+    Object? senderName = _sentinel,
+    FieldValue? senderNameFieldValue,
     Object? description = _sentinel,
     FieldValue? descriptionFieldValue,
     Object? type = _sentinel,
     FieldValue? typeFieldValue,
-    Object? group_ids = _sentinel,
-    FieldValue? group_idsFieldValue,
+    Object? groupIds = _sentinel,
+    FieldValue? groupIdsFieldValue,
+    Object? iconUrl = _sentinel,
+    FieldValue? iconUrlFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
     Object? lastUpdatedAt = _sentinel,
@@ -9545,12 +10898,8 @@ class _$SenderDocumentReference
       "Cannot specify both id and idFieldValue",
     );
     assert(
-      sender_name == _sentinel || sender_nameFieldValue == null,
-      "Cannot specify both sender_name and sender_nameFieldValue",
-    );
-    assert(
-      icon_url == _sentinel || icon_urlFieldValue == null,
-      "Cannot specify both icon_url and icon_urlFieldValue",
+      senderName == _sentinel || senderNameFieldValue == null,
+      "Cannot specify both senderName and senderNameFieldValue",
     );
     assert(
       description == _sentinel || descriptionFieldValue == null,
@@ -9561,8 +10910,12 @@ class _$SenderDocumentReference
       "Cannot specify both type and typeFieldValue",
     );
     assert(
-      group_ids == _sentinel || group_idsFieldValue == null,
-      "Cannot specify both group_ids and group_idsFieldValue",
+      groupIds == _sentinel || groupIdsFieldValue == null,
+      "Cannot specify both groupIds and groupIdsFieldValue",
+    );
+    assert(
+      iconUrl == _sentinel || iconUrlFieldValue == null,
+      "Cannot specify both iconUrl and iconUrlFieldValue",
     );
     assert(
       createdAt == _sentinel || createdAtFieldValue == null,
@@ -9575,24 +10928,24 @@ class _$SenderDocumentReference
     final json = {
       if (id != _sentinel) _$SenderFieldMap['id']!: id as String,
       if (idFieldValue != null) _$SenderFieldMap['id']!: idFieldValue,
-      if (sender_name != _sentinel)
-        _$SenderFieldMap['sender_name']!: sender_name as String,
-      if (sender_nameFieldValue != null)
-        _$SenderFieldMap['sender_name']!: sender_nameFieldValue,
-      if (icon_url != _sentinel)
-        _$SenderFieldMap['icon_url']!: icon_url as String,
-      if (icon_urlFieldValue != null)
-        _$SenderFieldMap['icon_url']!: icon_urlFieldValue,
+      if (senderName != _sentinel)
+        _$SenderFieldMap['senderName']!: senderName as String,
+      if (senderNameFieldValue != null)
+        _$SenderFieldMap['senderName']!: senderNameFieldValue,
       if (description != _sentinel)
         _$SenderFieldMap['description']!: description as String,
       if (descriptionFieldValue != null)
         _$SenderFieldMap['description']!: descriptionFieldValue,
       if (type != _sentinel) _$SenderFieldMap['type']!: type as String,
       if (typeFieldValue != null) _$SenderFieldMap['type']!: typeFieldValue,
-      if (group_ids != _sentinel)
-        _$SenderFieldMap['group_ids']!: group_ids as List<String>,
-      if (group_idsFieldValue != null)
-        _$SenderFieldMap['group_ids']!: group_idsFieldValue,
+      if (groupIds != _sentinel)
+        _$SenderFieldMap['groupIds']!: groupIds as List<String>,
+      if (groupIdsFieldValue != null)
+        _$SenderFieldMap['groupIds']!: groupIdsFieldValue,
+      if (iconUrl != _sentinel)
+        _$SenderFieldMap['iconUrl']!: iconUrl as String?,
+      if (iconUrlFieldValue != null)
+        _$SenderFieldMap['iconUrl']!: iconUrlFieldValue,
       if (createdAt != _sentinel)
         _$SenderFieldMap['createdAt']!: createdAt as Timestamp,
       if (createdAtFieldValue != null)
@@ -9713,18 +11066,7 @@ abstract class SenderQuery
     List<String>? whereIn,
     List<String>? whereNotIn,
   });
-  SenderQuery whereSender_name({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  SenderQuery whereIcon_url({
+  SenderQuery whereSenderName({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -9757,7 +11099,7 @@ abstract class SenderQuery
     List<String>? whereIn,
     List<String>? whereNotIn,
   });
-  SenderQuery whereGroup_ids({
+  SenderQuery whereGroupIds({
     List<String>? isEqualTo,
     List<String>? isNotEqualTo,
     List<String>? isLessThan,
@@ -9767,6 +11109,17 @@ abstract class SenderQuery
     bool? isNull,
     String? arrayContains,
     List<String>? arrayContainsAny,
+  });
+  SenderQuery whereIconUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
   });
   SenderQuery whereCreatedAt({
     Timestamp? isEqualTo,
@@ -9815,19 +11168,7 @@ abstract class SenderQuery
     SenderDocumentSnapshot? startAfterDocument,
   });
 
-  SenderQuery orderBySender_name({
-    bool descending = false,
-    String startAt,
-    String startAfter,
-    String endAt,
-    String endBefore,
-    SenderDocumentSnapshot? startAtDocument,
-    SenderDocumentSnapshot? endAtDocument,
-    SenderDocumentSnapshot? endBeforeDocument,
-    SenderDocumentSnapshot? startAfterDocument,
-  });
-
-  SenderQuery orderByIcon_url({
+  SenderQuery orderBySenderName({
     bool descending = false,
     String startAt,
     String startAfter,
@@ -9863,12 +11204,24 @@ abstract class SenderQuery
     SenderDocumentSnapshot? startAfterDocument,
   });
 
-  SenderQuery orderByGroup_ids({
+  SenderQuery orderByGroupIds({
     bool descending = false,
     List<String> startAt,
     List<String> startAfter,
     List<String> endAt,
     List<String> endBefore,
+    SenderDocumentSnapshot? startAtDocument,
+    SenderDocumentSnapshot? endAtDocument,
+    SenderDocumentSnapshot? endBeforeDocument,
+    SenderDocumentSnapshot? startAfterDocument,
+  });
+
+  SenderQuery orderByIconUrl({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
     SenderDocumentSnapshot? startAtDocument,
     SenderDocumentSnapshot? endAtDocument,
     SenderDocumentSnapshot? endBeforeDocument,
@@ -10105,7 +11458,7 @@ class _$SenderQuery extends QueryReference<Sender, SenderQuerySnapshot>
     );
   }
 
-  SenderQuery whereSender_name({
+  SenderQuery whereSenderName({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -10119,36 +11472,7 @@ class _$SenderQuery extends QueryReference<Sender, SenderQuerySnapshot>
     return _$SenderQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$SenderFieldMap['sender_name']!,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  SenderQuery whereIcon_url({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$SenderQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$SenderFieldMap['icon_url']!,
+        _$SenderFieldMap['senderName']!,
         isEqualTo: isEqualTo,
         isNotEqualTo: isNotEqualTo,
         isLessThan: isLessThan,
@@ -10221,7 +11545,7 @@ class _$SenderQuery extends QueryReference<Sender, SenderQuerySnapshot>
     );
   }
 
-  SenderQuery whereGroup_ids({
+  SenderQuery whereGroupIds({
     List<String>? isEqualTo,
     List<String>? isNotEqualTo,
     List<String>? isLessThan,
@@ -10235,7 +11559,7 @@ class _$SenderQuery extends QueryReference<Sender, SenderQuerySnapshot>
     return _$SenderQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$SenderFieldMap['group_ids']!,
+        _$SenderFieldMap['groupIds']!,
         isEqualTo: isEqualTo,
         isNotEqualTo: isNotEqualTo,
         isLessThan: isLessThan,
@@ -10245,6 +11569,35 @@ class _$SenderQuery extends QueryReference<Sender, SenderQuerySnapshot>
         isNull: isNull,
         arrayContains: arrayContains,
         arrayContainsAny: arrayContainsAny,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  SenderQuery whereIconUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  }) {
+    return _$SenderQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SenderFieldMap['iconUrl']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
       ),
       $queryCursor: $queryCursor,
     );
@@ -10452,7 +11805,7 @@ class _$SenderQuery extends QueryReference<Sender, SenderQuerySnapshot>
     );
   }
 
-  SenderQuery orderBySender_name({
+  SenderQuery orderBySenderName({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -10464,79 +11817,7 @@ class _$SenderQuery extends QueryReference<Sender, SenderQuerySnapshot>
     SenderDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor
-        .orderBy(_$SenderFieldMap['sender_name']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$SenderQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  SenderQuery orderByIcon_url({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    SenderDocumentSnapshot? startAtDocument,
-    SenderDocumentSnapshot? endAtDocument,
-    SenderDocumentSnapshot? endBeforeDocument,
-    SenderDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor.orderBy(_$SenderFieldMap['icon_url']!,
-        descending: descending);
+        .orderBy(_$SenderFieldMap['senderName']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -10740,7 +12021,7 @@ class _$SenderQuery extends QueryReference<Sender, SenderQuerySnapshot>
     );
   }
 
-  SenderQuery orderByGroup_ids({
+  SenderQuery orderByGroupIds({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -10751,8 +12032,80 @@ class _$SenderQuery extends QueryReference<Sender, SenderQuerySnapshot>
     SenderDocumentSnapshot? endBeforeDocument,
     SenderDocumentSnapshot? startAfterDocument,
   }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$SenderFieldMap['group_ids']!, descending: descending);
+    final query = $referenceWithoutCursor.orderBy(_$SenderFieldMap['groupIds']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SenderQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  SenderQuery orderByIconUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SenderDocumentSnapshot? startAtDocument,
+    SenderDocumentSnapshot? endAtDocument,
+    SenderDocumentSnapshot? endBeforeDocument,
+    SenderDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(_$SenderFieldMap['iconUrl']!,
+        descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -11183,10 +12536,18 @@ abstract class SlackSenderDocumentReference extends FirestoreDocumentReference<
     FieldValue senderIdFieldValue,
     String senderName,
     FieldValue senderNameFieldValue,
+    String description,
+    FieldValue descriptionFieldValue,
+    String? iconUrl,
+    FieldValue iconUrlFieldValue,
     String slackTeamId,
     FieldValue slackTeamIdFieldValue,
-    String slackEmail,
-    FieldValue slackEmailFieldValue,
+    String slackTeamDomain,
+    FieldValue slackTeamDomainFieldValue,
+    String? slackTeamIconUrl,
+    FieldValue slackTeamIconUrlFieldValue,
+    String slackTeamName,
+    FieldValue slackTeamNameFieldValue,
     Timestamp createdAt,
     FieldValue createdAtFieldValue,
     Timestamp lastUpdatedAt,
@@ -11204,10 +12565,18 @@ abstract class SlackSenderDocumentReference extends FirestoreDocumentReference<
     FieldValue senderIdFieldValue,
     String senderName,
     FieldValue senderNameFieldValue,
+    String description,
+    FieldValue descriptionFieldValue,
+    String? iconUrl,
+    FieldValue iconUrlFieldValue,
     String slackTeamId,
     FieldValue slackTeamIdFieldValue,
-    String slackEmail,
-    FieldValue slackEmailFieldValue,
+    String slackTeamDomain,
+    FieldValue slackTeamDomainFieldValue,
+    String? slackTeamIconUrl,
+    FieldValue slackTeamIconUrlFieldValue,
+    String slackTeamName,
+    FieldValue slackTeamNameFieldValue,
     Timestamp createdAt,
     FieldValue createdAtFieldValue,
     Timestamp lastUpdatedAt,
@@ -11255,10 +12624,18 @@ class _$SlackSenderDocumentReference
     FieldValue? senderIdFieldValue,
     Object? senderName = _sentinel,
     FieldValue? senderNameFieldValue,
+    Object? description = _sentinel,
+    FieldValue? descriptionFieldValue,
+    Object? iconUrl = _sentinel,
+    FieldValue? iconUrlFieldValue,
     Object? slackTeamId = _sentinel,
     FieldValue? slackTeamIdFieldValue,
-    Object? slackEmail = _sentinel,
-    FieldValue? slackEmailFieldValue,
+    Object? slackTeamDomain = _sentinel,
+    FieldValue? slackTeamDomainFieldValue,
+    Object? slackTeamIconUrl = _sentinel,
+    FieldValue? slackTeamIconUrlFieldValue,
+    Object? slackTeamName = _sentinel,
+    FieldValue? slackTeamNameFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
     Object? lastUpdatedAt = _sentinel,
@@ -11277,12 +12654,28 @@ class _$SlackSenderDocumentReference
       "Cannot specify both senderName and senderNameFieldValue",
     );
     assert(
+      description == _sentinel || descriptionFieldValue == null,
+      "Cannot specify both description and descriptionFieldValue",
+    );
+    assert(
+      iconUrl == _sentinel || iconUrlFieldValue == null,
+      "Cannot specify both iconUrl and iconUrlFieldValue",
+    );
+    assert(
       slackTeamId == _sentinel || slackTeamIdFieldValue == null,
       "Cannot specify both slackTeamId and slackTeamIdFieldValue",
     );
     assert(
-      slackEmail == _sentinel || slackEmailFieldValue == null,
-      "Cannot specify both slackEmail and slackEmailFieldValue",
+      slackTeamDomain == _sentinel || slackTeamDomainFieldValue == null,
+      "Cannot specify both slackTeamDomain and slackTeamDomainFieldValue",
+    );
+    assert(
+      slackTeamIconUrl == _sentinel || slackTeamIconUrlFieldValue == null,
+      "Cannot specify both slackTeamIconUrl and slackTeamIconUrlFieldValue",
+    );
+    assert(
+      slackTeamName == _sentinel || slackTeamNameFieldValue == null,
+      "Cannot specify both slackTeamName and slackTeamNameFieldValue",
     );
     assert(
       createdAt == _sentinel || createdAtFieldValue == null,
@@ -11303,14 +12696,30 @@ class _$SlackSenderDocumentReference
         _$SlackSenderFieldMap['senderName']!: senderName as String,
       if (senderNameFieldValue != null)
         _$SlackSenderFieldMap['senderName']!: senderNameFieldValue,
+      if (description != _sentinel)
+        _$SlackSenderFieldMap['description']!: description as String,
+      if (descriptionFieldValue != null)
+        _$SlackSenderFieldMap['description']!: descriptionFieldValue,
+      if (iconUrl != _sentinel)
+        _$SlackSenderFieldMap['iconUrl']!: iconUrl as String?,
+      if (iconUrlFieldValue != null)
+        _$SlackSenderFieldMap['iconUrl']!: iconUrlFieldValue,
       if (slackTeamId != _sentinel)
         _$SlackSenderFieldMap['slackTeamId']!: slackTeamId as String,
       if (slackTeamIdFieldValue != null)
         _$SlackSenderFieldMap['slackTeamId']!: slackTeamIdFieldValue,
-      if (slackEmail != _sentinel)
-        _$SlackSenderFieldMap['slackEmail']!: slackEmail as String,
-      if (slackEmailFieldValue != null)
-        _$SlackSenderFieldMap['slackEmail']!: slackEmailFieldValue,
+      if (slackTeamDomain != _sentinel)
+        _$SlackSenderFieldMap['slackTeamDomain']!: slackTeamDomain as String,
+      if (slackTeamDomainFieldValue != null)
+        _$SlackSenderFieldMap['slackTeamDomain']!: slackTeamDomainFieldValue,
+      if (slackTeamIconUrl != _sentinel)
+        _$SlackSenderFieldMap['slackTeamIconUrl']!: slackTeamIconUrl as String?,
+      if (slackTeamIconUrlFieldValue != null)
+        _$SlackSenderFieldMap['slackTeamIconUrl']!: slackTeamIconUrlFieldValue,
+      if (slackTeamName != _sentinel)
+        _$SlackSenderFieldMap['slackTeamName']!: slackTeamName as String,
+      if (slackTeamNameFieldValue != null)
+        _$SlackSenderFieldMap['slackTeamName']!: slackTeamNameFieldValue,
       if (createdAt != _sentinel)
         _$SlackSenderFieldMap['createdAt']!: createdAt as Timestamp,
       if (createdAtFieldValue != null)
@@ -11332,10 +12741,18 @@ class _$SlackSenderDocumentReference
     FieldValue? senderIdFieldValue,
     Object? senderName = _sentinel,
     FieldValue? senderNameFieldValue,
+    Object? description = _sentinel,
+    FieldValue? descriptionFieldValue,
+    Object? iconUrl = _sentinel,
+    FieldValue? iconUrlFieldValue,
     Object? slackTeamId = _sentinel,
     FieldValue? slackTeamIdFieldValue,
-    Object? slackEmail = _sentinel,
-    FieldValue? slackEmailFieldValue,
+    Object? slackTeamDomain = _sentinel,
+    FieldValue? slackTeamDomainFieldValue,
+    Object? slackTeamIconUrl = _sentinel,
+    FieldValue? slackTeamIconUrlFieldValue,
+    Object? slackTeamName = _sentinel,
+    FieldValue? slackTeamNameFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
     Object? lastUpdatedAt = _sentinel,
@@ -11354,12 +12771,28 @@ class _$SlackSenderDocumentReference
       "Cannot specify both senderName and senderNameFieldValue",
     );
     assert(
+      description == _sentinel || descriptionFieldValue == null,
+      "Cannot specify both description and descriptionFieldValue",
+    );
+    assert(
+      iconUrl == _sentinel || iconUrlFieldValue == null,
+      "Cannot specify both iconUrl and iconUrlFieldValue",
+    );
+    assert(
       slackTeamId == _sentinel || slackTeamIdFieldValue == null,
       "Cannot specify both slackTeamId and slackTeamIdFieldValue",
     );
     assert(
-      slackEmail == _sentinel || slackEmailFieldValue == null,
-      "Cannot specify both slackEmail and slackEmailFieldValue",
+      slackTeamDomain == _sentinel || slackTeamDomainFieldValue == null,
+      "Cannot specify both slackTeamDomain and slackTeamDomainFieldValue",
+    );
+    assert(
+      slackTeamIconUrl == _sentinel || slackTeamIconUrlFieldValue == null,
+      "Cannot specify both slackTeamIconUrl and slackTeamIconUrlFieldValue",
+    );
+    assert(
+      slackTeamName == _sentinel || slackTeamNameFieldValue == null,
+      "Cannot specify both slackTeamName and slackTeamNameFieldValue",
     );
     assert(
       createdAt == _sentinel || createdAtFieldValue == null,
@@ -11380,14 +12813,30 @@ class _$SlackSenderDocumentReference
         _$SlackSenderFieldMap['senderName']!: senderName as String,
       if (senderNameFieldValue != null)
         _$SlackSenderFieldMap['senderName']!: senderNameFieldValue,
+      if (description != _sentinel)
+        _$SlackSenderFieldMap['description']!: description as String,
+      if (descriptionFieldValue != null)
+        _$SlackSenderFieldMap['description']!: descriptionFieldValue,
+      if (iconUrl != _sentinel)
+        _$SlackSenderFieldMap['iconUrl']!: iconUrl as String?,
+      if (iconUrlFieldValue != null)
+        _$SlackSenderFieldMap['iconUrl']!: iconUrlFieldValue,
       if (slackTeamId != _sentinel)
         _$SlackSenderFieldMap['slackTeamId']!: slackTeamId as String,
       if (slackTeamIdFieldValue != null)
         _$SlackSenderFieldMap['slackTeamId']!: slackTeamIdFieldValue,
-      if (slackEmail != _sentinel)
-        _$SlackSenderFieldMap['slackEmail']!: slackEmail as String,
-      if (slackEmailFieldValue != null)
-        _$SlackSenderFieldMap['slackEmail']!: slackEmailFieldValue,
+      if (slackTeamDomain != _sentinel)
+        _$SlackSenderFieldMap['slackTeamDomain']!: slackTeamDomain as String,
+      if (slackTeamDomainFieldValue != null)
+        _$SlackSenderFieldMap['slackTeamDomain']!: slackTeamDomainFieldValue,
+      if (slackTeamIconUrl != _sentinel)
+        _$SlackSenderFieldMap['slackTeamIconUrl']!: slackTeamIconUrl as String?,
+      if (slackTeamIconUrlFieldValue != null)
+        _$SlackSenderFieldMap['slackTeamIconUrl']!: slackTeamIconUrlFieldValue,
+      if (slackTeamName != _sentinel)
+        _$SlackSenderFieldMap['slackTeamName']!: slackTeamName as String,
+      if (slackTeamNameFieldValue != null)
+        _$SlackSenderFieldMap['slackTeamName']!: slackTeamNameFieldValue,
       if (createdAt != _sentinel)
         _$SlackSenderFieldMap['createdAt']!: createdAt as Timestamp,
       if (createdAtFieldValue != null)
@@ -11530,6 +12979,28 @@ abstract class SlackSenderQuery
     List<String>? whereIn,
     List<String>? whereNotIn,
   });
+  SlackSenderQuery whereDescription({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  });
+  SlackSenderQuery whereIconUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  });
   SlackSenderQuery whereSlackTeamId({
     String? isEqualTo,
     String? isNotEqualTo,
@@ -11541,7 +13012,29 @@ abstract class SlackSenderQuery
     List<String>? whereIn,
     List<String>? whereNotIn,
   });
-  SlackSenderQuery whereSlackEmail({
+  SlackSenderQuery whereSlackTeamDomain({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  });
+  SlackSenderQuery whereSlackTeamIconUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  });
+  SlackSenderQuery whereSlackTeamName({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -11623,6 +13116,30 @@ abstract class SlackSenderQuery
     SlackSenderDocumentSnapshot? startAfterDocument,
   });
 
+  SlackSenderQuery orderByDescription({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    SlackSenderDocumentSnapshot? startAtDocument,
+    SlackSenderDocumentSnapshot? endAtDocument,
+    SlackSenderDocumentSnapshot? endBeforeDocument,
+    SlackSenderDocumentSnapshot? startAfterDocument,
+  });
+
+  SlackSenderQuery orderByIconUrl({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    SlackSenderDocumentSnapshot? startAtDocument,
+    SlackSenderDocumentSnapshot? endAtDocument,
+    SlackSenderDocumentSnapshot? endBeforeDocument,
+    SlackSenderDocumentSnapshot? startAfterDocument,
+  });
+
   SlackSenderQuery orderBySlackTeamId({
     bool descending = false,
     String startAt,
@@ -11635,7 +13152,31 @@ abstract class SlackSenderQuery
     SlackSenderDocumentSnapshot? startAfterDocument,
   });
 
-  SlackSenderQuery orderBySlackEmail({
+  SlackSenderQuery orderBySlackTeamDomain({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    SlackSenderDocumentSnapshot? startAtDocument,
+    SlackSenderDocumentSnapshot? endAtDocument,
+    SlackSenderDocumentSnapshot? endBeforeDocument,
+    SlackSenderDocumentSnapshot? startAfterDocument,
+  });
+
+  SlackSenderQuery orderBySlackTeamIconUrl({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    SlackSenderDocumentSnapshot? startAtDocument,
+    SlackSenderDocumentSnapshot? endAtDocument,
+    SlackSenderDocumentSnapshot? endBeforeDocument,
+    SlackSenderDocumentSnapshot? startAfterDocument,
+  });
+
+  SlackSenderQuery orderBySlackTeamName({
     bool descending = false,
     String startAt,
     String startAfter,
@@ -11940,6 +13481,64 @@ class _$SlackSenderQuery
     );
   }
 
+  SlackSenderQuery whereDescription({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  }) {
+    return _$SlackSenderQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SlackSenderFieldMap['description']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  SlackSenderQuery whereIconUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  }) {
+    return _$SlackSenderQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SlackSenderFieldMap['iconUrl']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
   SlackSenderQuery whereSlackTeamId({
     String? isEqualTo,
     String? isNotEqualTo,
@@ -11969,7 +13568,7 @@ class _$SlackSenderQuery
     );
   }
 
-  SlackSenderQuery whereSlackEmail({
+  SlackSenderQuery whereSlackTeamDomain({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -11983,7 +13582,65 @@ class _$SlackSenderQuery
     return _$SlackSenderQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$SlackSenderFieldMap['slackEmail']!,
+        _$SlackSenderFieldMap['slackTeamDomain']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  SlackSenderQuery whereSlackTeamIconUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  }) {
+    return _$SlackSenderQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SlackSenderFieldMap['slackTeamIconUrl']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  SlackSenderQuery whereSlackTeamName({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  }) {
+    return _$SlackSenderQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SlackSenderFieldMap['slackTeamName']!,
         isEqualTo: isEqualTo,
         isNotEqualTo: isNotEqualTo,
         isLessThan: isLessThan,
@@ -12344,6 +14001,150 @@ class _$SlackSenderQuery
     );
   }
 
+  SlackSenderQuery orderByDescription({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SlackSenderDocumentSnapshot? startAtDocument,
+    SlackSenderDocumentSnapshot? endAtDocument,
+    SlackSenderDocumentSnapshot? endBeforeDocument,
+    SlackSenderDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$SlackSenderFieldMap['description']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SlackSenderQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  SlackSenderQuery orderByIconUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SlackSenderDocumentSnapshot? startAtDocument,
+    SlackSenderDocumentSnapshot? endAtDocument,
+    SlackSenderDocumentSnapshot? endBeforeDocument,
+    SlackSenderDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$SlackSenderFieldMap['iconUrl']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SlackSenderQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
   SlackSenderQuery orderBySlackTeamId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -12416,7 +14217,7 @@ class _$SlackSenderQuery
     );
   }
 
-  SlackSenderQuery orderBySlackEmail({
+  SlackSenderQuery orderBySlackTeamDomain({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -12427,8 +14228,155 @@ class _$SlackSenderQuery
     SlackSenderDocumentSnapshot? endBeforeDocument,
     SlackSenderDocumentSnapshot? startAfterDocument,
   }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$SlackSenderFieldMap['slackEmail']!, descending: descending);
+    final query = $referenceWithoutCursor.orderBy(
+        _$SlackSenderFieldMap['slackTeamDomain']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SlackSenderQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  SlackSenderQuery orderBySlackTeamIconUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SlackSenderDocumentSnapshot? startAtDocument,
+    SlackSenderDocumentSnapshot? endAtDocument,
+    SlackSenderDocumentSnapshot? endBeforeDocument,
+    SlackSenderDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$SlackSenderFieldMap['slackTeamIconUrl']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SlackSenderQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  SlackSenderQuery orderBySlackTeamName({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SlackSenderDocumentSnapshot? startAtDocument,
+    SlackSenderDocumentSnapshot? endAtDocument,
+    SlackSenderDocumentSnapshot? endBeforeDocument,
+    SlackSenderDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$SlackSenderFieldMap['slackTeamName']!,
+        descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -12760,7 +14708,13 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
 SlackUser _$SlackUserFromJson(Map<String, dynamic> json) => SlackUser(
       id: json['id'] as String,
       userId: json['user_id'] as String,
-      slack_team_id: json['slack_team_id'] as String,
+      slackTeamId: json['slack_team_id'] as String,
+      slackTeamAvatarBaseUrl: json['slack_team_avatar_base_url'] as String?,
+      slackTeamDiscoverable: json['slack_team_discoverable'] as String?,
+      slackTeamDomain: json['slack_team_domain'] as String,
+      slackTeamIconUrl: json['slack_team_icon_url'] as String?,
+      slackTeamName: json['slack_team_name'] as String,
+      language: json['language'] as String,
       createdAt: const FirestoreTimestampConverter()
           .fromJson(json['created_at'] as Timestamp),
       lastUpdatedAt: const FirestoreTimestampConverter()
@@ -12770,7 +14724,13 @@ SlackUser _$SlackUserFromJson(Map<String, dynamic> json) => SlackUser(
 const _$SlackUserFieldMap = <String, String>{
   'id': 'id',
   'userId': 'user_id',
-  'slack_team_id': 'slack_team_id',
+  'slackTeamId': 'slack_team_id',
+  'slackTeamAvatarBaseUrl': 'slack_team_avatar_base_url',
+  'slackTeamDiscoverable': 'slack_team_discoverable',
+  'slackTeamDomain': 'slack_team_domain',
+  'slackTeamIconUrl': 'slack_team_icon_url',
+  'slackTeamName': 'slack_team_name',
+  'language': 'language',
   'createdAt': 'created_at',
   'lastUpdatedAt': 'last_updated_at',
 };
@@ -12778,7 +14738,13 @@ const _$SlackUserFieldMap = <String, String>{
 Map<String, dynamic> _$SlackUserToJson(SlackUser instance) => <String, dynamic>{
       'id': instance.id,
       'user_id': instance.userId,
-      'slack_team_id': instance.slack_team_id,
+      'slack_team_id': instance.slackTeamId,
+      'slack_team_avatar_base_url': instance.slackTeamAvatarBaseUrl,
+      'slack_team_discoverable': instance.slackTeamDiscoverable,
+      'slack_team_domain': instance.slackTeamDomain,
+      'slack_team_icon_url': instance.slackTeamIconUrl,
+      'slack_team_name': instance.slackTeamName,
+      'language': instance.language,
       'created_at':
           const FirestoreTimestampConverter().toJson(instance.createdAt),
       'last_updated_at':
@@ -12795,7 +14761,7 @@ Message _$MessageFromJson(Map<String, dynamic> json) => Message(
       reply: json['reply'] as String,
       senderId: json['sender_id'] as String,
       senderName: json['sender_name'] as String,
-      senderIconUrl: json['sender_icon_url'] as String,
+      senderIconUrl: json['sender_icon_url'] as String?,
       imageUrls: (json['image_urls'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
@@ -12860,12 +14826,15 @@ SlackMessage _$SlackMessageFromJson(Map<String, dynamic> json) => SlackMessage(
       botMessage: json['bot_message'] as String,
       senderId: json['sender_id'] as String,
       senderName: json['sender_name'] as String,
-      senderIconUrl: json['sender_icon_url'] as String,
+      senderIconUrl: json['sender_icon_url'] as String?,
       imageUrls: (json['image_urls'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
       fileAttached: json['file_attached'] as bool,
       slackTeamId: json['slack_team_id'] as String,
+      slackTeamDomain: json['slack_team_domain'] as String,
+      slackTeamIconUrl: json['slack_team_icon_url'] as String?,
+      slackTeamName: json['slack_team_name'] as String,
       slackUserId: json['slack_user_id'] as String,
       slackSenderUserId: json['slack_sender_user_id'] as String,
       slackChannelId: json['slack_channel_id'] as String,
@@ -12890,6 +14859,9 @@ const _$SlackMessageFieldMap = <String, String>{
   'imageUrls': 'image_urls',
   'fileAttached': 'file_attached',
   'slackTeamId': 'slack_team_id',
+  'slackTeamDomain': 'slack_team_domain',
+  'slackTeamIconUrl': 'slack_team_icon_url',
+  'slackTeamName': 'slack_team_name',
   'slackUserId': 'slack_user_id',
   'slackSenderUserId': 'slack_sender_user_id',
   'slackChannelId': 'slack_channel_id',
@@ -12913,6 +14885,9 @@ Map<String, dynamic> _$SlackMessageToJson(SlackMessage instance) =>
       'image_urls': instance.imageUrls,
       'file_attached': instance.fileAttached,
       'slack_team_id': instance.slackTeamId,
+      'slack_team_domain': instance.slackTeamDomain,
+      'slack_team_icon_url': instance.slackTeamIconUrl,
+      'slack_team_name': instance.slackTeamName,
       'slack_user_id': instance.slackUserId,
       'slack_sender_user_id': instance.slackSenderUserId,
       'slack_channel_id': instance.slackChannelId,
@@ -12926,11 +14901,11 @@ Map<String, dynamic> _$SlackMessageToJson(SlackMessage instance) =>
 
 Sender _$SenderFromJson(Map<String, dynamic> json) => Sender(
       id: json['id'] as String,
-      sender_name: json['sender_name'] as String,
-      icon_url: json['icon_url'] as String,
+      senderName: json['sender_name'] as String,
+      iconUrl: json['icon_url'] as String?,
       description: json['description'] as String,
       type: json['type'] as String,
-      group_ids:
+      groupIds:
           (json['group_ids'] as List<dynamic>).map((e) => e as String).toList(),
       createdAt: const FirestoreTimestampConverter()
           .fromJson(json['created_at'] as Timestamp),
@@ -12940,22 +14915,22 @@ Sender _$SenderFromJson(Map<String, dynamic> json) => Sender(
 
 const _$SenderFieldMap = <String, String>{
   'id': 'id',
-  'sender_name': 'sender_name',
-  'icon_url': 'icon_url',
+  'senderName': 'sender_name',
   'description': 'description',
   'type': 'type',
-  'group_ids': 'group_ids',
+  'groupIds': 'group_ids',
+  'iconUrl': 'icon_url',
   'createdAt': 'created_at',
   'lastUpdatedAt': 'last_updated_at',
 };
 
 Map<String, dynamic> _$SenderToJson(Sender instance) => <String, dynamic>{
       'id': instance.id,
-      'sender_name': instance.sender_name,
-      'icon_url': instance.icon_url,
+      'sender_name': instance.senderName,
       'description': instance.description,
       'type': instance.type,
-      'group_ids': instance.group_ids,
+      'group_ids': instance.groupIds,
+      'icon_url': instance.iconUrl,
       'created_at':
           const FirestoreTimestampConverter().toJson(instance.createdAt),
       'last_updated_at':
@@ -12966,8 +14941,12 @@ SlackSender _$SlackSenderFromJson(Map<String, dynamic> json) => SlackSender(
       id: json['id'] as String,
       senderId: json['sender_id'] as String,
       senderName: json['sender_name'] as String,
+      description: json['description'] as String,
+      iconUrl: json['icon_url'] as String?,
       slackTeamId: json['slack_team_id'] as String,
-      slackEmail: json['slack_email'] as String,
+      slackTeamDomain: json['slack_team_domain'] as String,
+      slackTeamIconUrl: json['slack_team_icon_url'] as String?,
+      slackTeamName: json['slack_team_name'] as String,
       createdAt: const FirestoreTimestampConverter()
           .fromJson(json['created_at'] as Timestamp),
       lastUpdatedAt: const FirestoreTimestampConverter()
@@ -12978,8 +14957,12 @@ const _$SlackSenderFieldMap = <String, String>{
   'id': 'id',
   'senderId': 'sender_id',
   'senderName': 'sender_name',
+  'description': 'description',
+  'iconUrl': 'icon_url',
   'slackTeamId': 'slack_team_id',
-  'slackEmail': 'slack_email',
+  'slackTeamDomain': 'slack_team_domain',
+  'slackTeamIconUrl': 'slack_team_icon_url',
+  'slackTeamName': 'slack_team_name',
   'createdAt': 'created_at',
   'lastUpdatedAt': 'last_updated_at',
 };
@@ -12989,8 +14972,12 @@ Map<String, dynamic> _$SlackSenderToJson(SlackSender instance) =>
       'id': instance.id,
       'sender_id': instance.senderId,
       'sender_name': instance.senderName,
+      'description': instance.description,
+      'icon_url': instance.iconUrl,
       'slack_team_id': instance.slackTeamId,
-      'slack_email': instance.slackEmail,
+      'slack_team_domain': instance.slackTeamDomain,
+      'slack_team_icon_url': instance.slackTeamIconUrl,
+      'slack_team_name': instance.slackTeamName,
       'created_at':
           const FirestoreTimestampConverter().toJson(instance.createdAt),
       'last_updated_at':

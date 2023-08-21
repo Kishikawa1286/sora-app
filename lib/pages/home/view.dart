@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sora/pages/channel_manage/view.dart';
 import 'package:sora/pages/home/view_model.dart';
 
 class Home extends HookConsumerWidget {
@@ -44,7 +45,7 @@ class Home extends HookConsumerWidget {
       case 0:
         return const Center(child: Text('メッセージタブの内容'));
       case 1:
-        return const Center(child: Text('チャンネル管理タブの内容'));
+        return const ChannelManagePage();
       case 2:
         return const Center(child: Text('オプションタブの内容'));
       default:
