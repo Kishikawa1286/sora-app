@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore_odm/cloud_firestore_odm.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final firestoreHelperProvider = Provider<FirestoreHelper>(
@@ -8,49 +8,33 @@ final firestoreHelperProvider = Provider<FirestoreHelper>(
 class FirestoreHelper {
   const FirestoreHelper();
 
-  FirebaseFirestore get _firestore => FirebaseFirestore.instance;
+  Stream<List<T?>> queryStream<T>(
+    QueryReference<T, FirestoreQuerySnapshot<T, FirestoreDocumentSnapshot<T>>>
+        queryReference,
+  ) =>
+      queryReference
+          .snapshots()
+          .map((snapshot) => snapshot.docs.map((doc) => doc.data).toList());
 
-  Future<void> addData(String collection, Map<String, dynamic> data) async {
-    try {
-      await _firestore.collection(collection).add(data);
-    } on Exception catch (e) {
-      print(e);
-    }
-  }
-
-  Future<DocumentSnapshot?> getData(
-    String collection,
-    String documentId,
+  Future<List<T?>> query<T>(
+    QueryReference<T, FirestoreQuerySnapshot<T, FirestoreDocumentSnapshot<T>>>
+        queryReference,
   ) async {
-    try {
-      return await _firestore.collection(collection).doc(documentId).get();
-    } on Exception catch (e) {
-      print(e);
-      return null;
-    }
+    final snapshot = await queryReference.get();
+    return snapshot.docs.map((doc) => doc.data).toList();
   }
 
-  Future<void> updateData(
-    String collection,
-    String documentId,
-    Map<String, dynamic> data,
+  Stream<T?> documentStream<T>(
+    FirestoreDocumentReference<T, FirestoreDocumentSnapshot<T>>
+        documentReference,
+  ) =>
+      documentReference.snapshots().map((snapshot) => snapshot.data);
+
+  Future<T?> document<T>(
+    FirestoreDocumentReference<T, FirestoreDocumentSnapshot<T>>
+        documentReference,
   ) async {
-    try {
-      await _firestore.collection(collection).doc(documentId).update(data);
-    } on Exception catch (e) {
-      print(e);
-    }
+    final snapshot = await documentReference.get();
+    return snapshot.data;
   }
-
-  Future<void> deleteData(String collection, String documentId) async {
-    try {
-      await _firestore.collection(collection).doc(documentId).delete();
-    } on Exception catch (e) {
-      print(e);
-    }
-  }
-
-  // データの変更を監視する Stream を返す
-  Stream<QuerySnapshot> streamData(String collection) =>
-      _firestore.collection(collection).snapshots();
 }
