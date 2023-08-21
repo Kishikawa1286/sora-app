@@ -24,9 +24,14 @@ class SignInPageViewModel extends StateNotifier<SignInPageModel> {
   late final StreamSubscription<String?> _authStateSubscription;
 
   void _handleAuthResult(AuthResult result) {
-    final success = result.success;
+    if (result.success) {
+      return;
+    }
+    if (result.code == 'loading') {
+      return;
+    }
     final errorMessage = result.errorMessage;
-    if (!success && errorMessage != null) {
+    if (errorMessage != null) {
       state = state.copyWith(errorMessage: errorMessage);
     }
   }
