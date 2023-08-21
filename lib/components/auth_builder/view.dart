@@ -1,0 +1,36 @@
+import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sora/components/auth_builder/view_model.dart';
+
+class AuthBuilder extends HookConsumerWidget {
+  const AuthBuilder({
+    required this.builder,
+    this.redirectRoute = 'sign_in',
+    this.placeholder,
+    super.key,
+  });
+
+  final Widget Function(BuildContext context) builder;
+  final String redirectRoute;
+  final Widget? placeholder;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final authState = ref.watch(authBuilderViewModelProvider);
+    final authenticated = authState.authenticated;
+
+    if (authenticated == null) {
+      WidgetsBinding.instance.addPostFrameCallback((duration) async {
+        await Navigator.pushReplacementNamed(context, redirectRoute);
+      });
+      return const Scaffold();
+    }
+
+    if (!authenticated) {
+      return placeholder ??
+          const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+
+    return Builder(builder: builder);
+  }
+}
