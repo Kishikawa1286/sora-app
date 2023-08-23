@@ -84,6 +84,9 @@ class Message {
     required this.replied,
     required this.archived,
     required this.read,
+    required this.positiveReply,
+    required this.negativeReply,
+    required this.isScheduleAdjustment,
     required this.createdAt,
     required this.lastUpdatedAt,
   });
@@ -110,6 +113,12 @@ class Message {
   final bool replied;
   final bool archived;
   final bool read;
+  @JsonKey(name: 'positive_reply')
+  final String positiveReply;
+  @JsonKey(name: 'negative_reply')
+  final String negativeReply;
+  @JsonKey(name: 'is_schedule_adjustment')
+  final bool isScheduleAdjustment;
   @JsonKey(name: 'created_at')
   final Timestamp createdAt;
   @JsonKey(name: 'last_updated_at')

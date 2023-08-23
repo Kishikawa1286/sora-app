@@ -3680,6 +3680,12 @@ abstract class MessageDocumentReference
     FieldValue archivedFieldValue,
     bool read,
     FieldValue readFieldValue,
+    String positiveReply,
+    FieldValue positiveReplyFieldValue,
+    String negativeReply,
+    FieldValue negativeReplyFieldValue,
+    bool isScheduleAdjustment,
+    FieldValue isScheduleAdjustmentFieldValue,
     Timestamp createdAt,
     FieldValue createdAtFieldValue,
     Timestamp lastUpdatedAt,
@@ -3721,6 +3727,12 @@ abstract class MessageDocumentReference
     FieldValue archivedFieldValue,
     bool read,
     FieldValue readFieldValue,
+    String positiveReply,
+    FieldValue positiveReplyFieldValue,
+    String negativeReply,
+    FieldValue negativeReplyFieldValue,
+    bool isScheduleAdjustment,
+    FieldValue isScheduleAdjustmentFieldValue,
     Timestamp createdAt,
     FieldValue createdAtFieldValue,
     Timestamp lastUpdatedAt,
@@ -3797,6 +3809,12 @@ class _$MessageDocumentReference
     FieldValue? archivedFieldValue,
     Object? read = _sentinel,
     FieldValue? readFieldValue,
+    Object? positiveReply = _sentinel,
+    FieldValue? positiveReplyFieldValue,
+    Object? negativeReply = _sentinel,
+    FieldValue? negativeReplyFieldValue,
+    Object? isScheduleAdjustment = _sentinel,
+    FieldValue? isScheduleAdjustmentFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
     Object? lastUpdatedAt = _sentinel,
@@ -3863,6 +3881,19 @@ class _$MessageDocumentReference
       "Cannot specify both read and readFieldValue",
     );
     assert(
+      positiveReply == _sentinel || positiveReplyFieldValue == null,
+      "Cannot specify both positiveReply and positiveReplyFieldValue",
+    );
+    assert(
+      negativeReply == _sentinel || negativeReplyFieldValue == null,
+      "Cannot specify both negativeReply and negativeReplyFieldValue",
+    );
+    assert(
+      isScheduleAdjustment == _sentinel ||
+          isScheduleAdjustmentFieldValue == null,
+      "Cannot specify both isScheduleAdjustment and isScheduleAdjustmentFieldValue",
+    );
+    assert(
       createdAt == _sentinel || createdAtFieldValue == null,
       "Cannot specify both createdAt and createdAtFieldValue",
     );
@@ -3921,6 +3952,20 @@ class _$MessageDocumentReference
         _$MessageFieldMap['archived']!: archivedFieldValue,
       if (read != _sentinel) _$MessageFieldMap['read']!: read as bool,
       if (readFieldValue != null) _$MessageFieldMap['read']!: readFieldValue,
+      if (positiveReply != _sentinel)
+        _$MessageFieldMap['positiveReply']!: positiveReply as String,
+      if (positiveReplyFieldValue != null)
+        _$MessageFieldMap['positiveReply']!: positiveReplyFieldValue,
+      if (negativeReply != _sentinel)
+        _$MessageFieldMap['negativeReply']!: negativeReply as String,
+      if (negativeReplyFieldValue != null)
+        _$MessageFieldMap['negativeReply']!: negativeReplyFieldValue,
+      if (isScheduleAdjustment != _sentinel)
+        _$MessageFieldMap['isScheduleAdjustment']!:
+            isScheduleAdjustment as bool,
+      if (isScheduleAdjustmentFieldValue != null)
+        _$MessageFieldMap['isScheduleAdjustment']!:
+            isScheduleAdjustmentFieldValue,
       if (createdAt != _sentinel)
         _$MessageFieldMap['createdAt']!: createdAt as Timestamp,
       if (createdAtFieldValue != null)
@@ -3966,6 +4011,12 @@ class _$MessageDocumentReference
     FieldValue? archivedFieldValue,
     Object? read = _sentinel,
     FieldValue? readFieldValue,
+    Object? positiveReply = _sentinel,
+    FieldValue? positiveReplyFieldValue,
+    Object? negativeReply = _sentinel,
+    FieldValue? negativeReplyFieldValue,
+    Object? isScheduleAdjustment = _sentinel,
+    FieldValue? isScheduleAdjustmentFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
     Object? lastUpdatedAt = _sentinel,
@@ -4032,6 +4083,19 @@ class _$MessageDocumentReference
       "Cannot specify both read and readFieldValue",
     );
     assert(
+      positiveReply == _sentinel || positiveReplyFieldValue == null,
+      "Cannot specify both positiveReply and positiveReplyFieldValue",
+    );
+    assert(
+      negativeReply == _sentinel || negativeReplyFieldValue == null,
+      "Cannot specify both negativeReply and negativeReplyFieldValue",
+    );
+    assert(
+      isScheduleAdjustment == _sentinel ||
+          isScheduleAdjustmentFieldValue == null,
+      "Cannot specify both isScheduleAdjustment and isScheduleAdjustmentFieldValue",
+    );
+    assert(
       createdAt == _sentinel || createdAtFieldValue == null,
       "Cannot specify both createdAt and createdAtFieldValue",
     );
@@ -4090,6 +4154,20 @@ class _$MessageDocumentReference
         _$MessageFieldMap['archived']!: archivedFieldValue,
       if (read != _sentinel) _$MessageFieldMap['read']!: read as bool,
       if (readFieldValue != null) _$MessageFieldMap['read']!: readFieldValue,
+      if (positiveReply != _sentinel)
+        _$MessageFieldMap['positiveReply']!: positiveReply as String,
+      if (positiveReplyFieldValue != null)
+        _$MessageFieldMap['positiveReply']!: positiveReplyFieldValue,
+      if (negativeReply != _sentinel)
+        _$MessageFieldMap['negativeReply']!: negativeReply as String,
+      if (negativeReplyFieldValue != null)
+        _$MessageFieldMap['negativeReply']!: negativeReplyFieldValue,
+      if (isScheduleAdjustment != _sentinel)
+        _$MessageFieldMap['isScheduleAdjustment']!:
+            isScheduleAdjustment as bool,
+      if (isScheduleAdjustmentFieldValue != null)
+        _$MessageFieldMap['isScheduleAdjustment']!:
+            isScheduleAdjustmentFieldValue,
       if (createdAt != _sentinel)
         _$MessageFieldMap['createdAt']!: createdAt as Timestamp,
       if (createdAtFieldValue != null)
@@ -4364,6 +4442,39 @@ abstract class MessageQuery
     List<bool>? whereIn,
     List<bool>? whereNotIn,
   });
+  MessageQuery wherePositiveReply({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  });
+  MessageQuery whereNegativeReply({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  });
+  MessageQuery whereIsScheduleAdjustment({
+    bool? isEqualTo,
+    bool? isNotEqualTo,
+    bool? isLessThan,
+    bool? isLessThanOrEqualTo,
+    bool? isGreaterThan,
+    bool? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<bool>? whereIn,
+    List<bool>? whereNotIn,
+  });
   MessageQuery whereCreatedAt({
     Timestamp? isEqualTo,
     Timestamp? isNotEqualTo,
@@ -4568,6 +4679,42 @@ abstract class MessageQuery
   });
 
   MessageQuery orderByRead({
+    bool descending = false,
+    bool startAt,
+    bool startAfter,
+    bool endAt,
+    bool endBefore,
+    MessageDocumentSnapshot? startAtDocument,
+    MessageDocumentSnapshot? endAtDocument,
+    MessageDocumentSnapshot? endBeforeDocument,
+    MessageDocumentSnapshot? startAfterDocument,
+  });
+
+  MessageQuery orderByPositiveReply({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    MessageDocumentSnapshot? startAtDocument,
+    MessageDocumentSnapshot? endAtDocument,
+    MessageDocumentSnapshot? endBeforeDocument,
+    MessageDocumentSnapshot? startAfterDocument,
+  });
+
+  MessageQuery orderByNegativeReply({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    MessageDocumentSnapshot? startAtDocument,
+    MessageDocumentSnapshot? endAtDocument,
+    MessageDocumentSnapshot? endBeforeDocument,
+    MessageDocumentSnapshot? startAfterDocument,
+  });
+
+  MessageQuery orderByIsScheduleAdjustment({
     bool descending = false,
     bool startAt,
     bool startAfter,
@@ -5201,6 +5348,93 @@ class _$MessageQuery extends QueryReference<Message, MessageQuerySnapshot>
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$MessageFieldMap['read']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  MessageQuery wherePositiveReply({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  }) {
+    return _$MessageQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$MessageFieldMap['positiveReply']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  MessageQuery whereNegativeReply({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  }) {
+    return _$MessageQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$MessageFieldMap['negativeReply']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  MessageQuery whereIsScheduleAdjustment({
+    bool? isEqualTo,
+    bool? isNotEqualTo,
+    bool? isLessThan,
+    bool? isLessThanOrEqualTo,
+    bool? isGreaterThan,
+    bool? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<bool>? whereIn,
+    List<bool>? whereNotIn,
+  }) {
+    return _$MessageQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$MessageFieldMap['isScheduleAdjustment']!,
         isEqualTo: isEqualTo,
         isNotEqualTo: isNotEqualTo,
         isLessThan: isLessThan,
@@ -6365,6 +6599,223 @@ class _$MessageQuery extends QueryReference<Message, MessageQuerySnapshot>
     MessageDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor.orderBy(_$MessageFieldMap['read']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$MessageQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  MessageQuery orderByPositiveReply({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    MessageDocumentSnapshot? startAtDocument,
+    MessageDocumentSnapshot? endAtDocument,
+    MessageDocumentSnapshot? endBeforeDocument,
+    MessageDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$MessageFieldMap['positiveReply']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$MessageQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  MessageQuery orderByNegativeReply({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    MessageDocumentSnapshot? startAtDocument,
+    MessageDocumentSnapshot? endAtDocument,
+    MessageDocumentSnapshot? endBeforeDocument,
+    MessageDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$MessageFieldMap['negativeReply']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$MessageQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  MessageQuery orderByIsScheduleAdjustment({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    MessageDocumentSnapshot? startAtDocument,
+    MessageDocumentSnapshot? endAtDocument,
+    MessageDocumentSnapshot? endBeforeDocument,
+    MessageDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$MessageFieldMap['isScheduleAdjustment']!,
         descending: descending);
     var queryCursor = $queryCursor;
 
@@ -14769,6 +15220,9 @@ Message _$MessageFromJson(Map<String, dynamic> json) => Message(
       replied: json['replied'] as bool,
       archived: json['archived'] as bool,
       read: json['read'] as bool,
+      positiveReply: json['positive_reply'] as String,
+      negativeReply: json['negative_reply'] as String,
+      isScheduleAdjustment: json['is_schedule_adjustment'] as bool,
       createdAt: const FirestoreTimestampConverter()
           .fromJson(json['created_at'] as Timestamp),
       lastUpdatedAt: const FirestoreTimestampConverter()
@@ -14791,6 +15245,9 @@ const _$MessageFieldMap = <String, String>{
   'replied': 'replied',
   'archived': 'archived',
   'read': 'read',
+  'positiveReply': 'positive_reply',
+  'negativeReply': 'negative_reply',
+  'isScheduleAdjustment': 'is_schedule_adjustment',
   'createdAt': 'created_at',
   'lastUpdatedAt': 'last_updated_at',
 };
@@ -14811,6 +15268,9 @@ Map<String, dynamic> _$MessageToJson(Message instance) => <String, dynamic>{
       'replied': instance.replied,
       'archived': instance.archived,
       'read': instance.read,
+      'positive_reply': instance.positiveReply,
+      'negative_reply': instance.negativeReply,
+      'is_schedule_adjustment': instance.isScheduleAdjustment,
       'created_at':
           const FirestoreTimestampConverter().toJson(instance.createdAt),
       'last_updated_at':
