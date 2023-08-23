@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sora/pages/card_messages/view.dart';
 import 'package:sora/pages/channel_manage/view.dart';
 import 'package:sora/pages/home/view_model.dart';
 import 'package:sora/pages/messages/view.dart';
@@ -29,12 +30,12 @@ class Home extends HookConsumerWidget {
             label: 'メッセージ',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.manage_accounts),
-            label: 'チャンネル管理',
+            icon: Icon(Icons.view_carousel),
+            label: 'カードメッセージ',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'オプション',
+            icon: Icon(Icons.manage_accounts),
+            label: 'チャンネル管理',
           ),
         ],
       ),
@@ -46,8 +47,10 @@ class Home extends HookConsumerWidget {
       case 0:
         return const MessagesPage();
       case 1:
-        return const ChannelManagePage();
+        return const CardMessagesPage();
       case 2:
+        return const ChannelManagePage();
+      case 3:
         return const Center(child: Text('オプションタブの内容'));
       default:
         return const MessagesPage();

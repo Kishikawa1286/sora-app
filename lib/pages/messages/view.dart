@@ -57,6 +57,53 @@ class MessagesPage extends HookConsumerWidget {
           );
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.reply),
+        onPressed: () async {
+          await showDialog<void>(
+            context: context,
+            builder: (context) {
+              final autoReplyController =
+                  TextEditingController(text: viewModel.autoReplyMessage);
+              return AlertDialog(
+                title: const Text('自動返信設定'),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SwitchListTile(
+                      title: const Text('自動返信を有効にする'),
+                      value: viewModel.isAutoReplyEnabled,
+                      onChanged: viewModel.setAutoReplyEnabled,
+                    ),
+                    if (viewModel.isAutoReplyEnabled)
+                      TextField(
+                        controller: autoReplyController,
+                        decoration: const InputDecoration(
+                          labelText: '返信メッセージ',
+                        ),
+                        onChanged: viewModel.setAutoReplyMessage,
+                      ),
+                  ],
+                ),
+                actions: [
+                  TextButton(
+                    child: const Text('キャンセル'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  TextButton(
+                    child: const Text('保存'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }

@@ -6,16 +6,16 @@ import 'package:sora/repositories/auth_repository/auth_repository.dart';
 import 'package:sora/repositories/entities/users_collection.dart';
 import 'package:sora/repositories/message_repository.dart';
 
-final messagesPageViewModelProvider =
-    StateNotifierProvider.autoDispose<MessagesPageViewModel, MessagesPageModel>(
-  MessagesPageViewModel.new,
+final CardMessagesPageViewModelProvider = StateNotifierProvider.autoDispose<
+    CardMessagesPageViewModel, MessagesPageModel>(
+  CardMessagesPageViewModel.new,
 );
 
 final autoReplyProvider = StateProvider.autoDispose<bool>((ref) => false);
 final autoReplyMessageProvider = StateProvider.autoDispose<String>((ref) => '');
 
-class MessagesPageViewModel extends StateNotifier<MessagesPageModel> {
-  MessagesPageViewModel(Ref ref)
+class CardMessagesPageViewModel extends StateNotifier<MessagesPageModel> {
+  CardMessagesPageViewModel(Ref ref)
       : _authRepository = ref.read(authRepositoryProvider),
         _messageRepository = ref.read(messageRepositoryProvider),
         super(const MessagesPageModel()) {
