@@ -53,50 +53,52 @@ class CardMessagesPage extends HookConsumerWidget {
             final iconUrl = message.senderIconUrl;
             return Card(
               color: Theme.of(context).colorScheme.primaryContainer,
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.8,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ListTile(
-                      leading: iconUrl != null
-                          ? ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.network(
-                                iconUrl,
-                                width: 40,
-                                height: 40,
-                              ),
-                            )
-                          : null,
-                      title: Text(message.senderName),
-                      subtitle: Text(
-                        formatWithWeekday(message.createdAt.toDate()),
-                      ),
-                    ),
-                    Expanded(
-                      child: SingleChildScrollView(
-                        // SingleChildScrollViewをこの位置に移動
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 16),
-                              child: Text(message.summary),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 16,
-                                vertical: 8,
-                              ),
-                              child: Text(message.message),
-                            ),
-                          ],
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 16),
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.8,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ListTile(
+                        leading: iconUrl != null
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: Image.network(
+                                  iconUrl,
+                                  width: 40,
+                                  height: 40,
+                                ),
+                              )
+                            : null,
+                        title: Text(message.senderName),
+                        subtitle: Text(
+                          formatWithWeekday(message.createdAt.toDate()),
                         ),
                       ),
-                    ),
-                  ],
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 16),
+                                child: Text(message.summary),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 8,
+                                ),
+                                child: Text(message.message),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             );
