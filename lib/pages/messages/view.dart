@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/pages/messages/view_model.dart';
+import 'package:sora/repositories/entities/users_collection.dart';
 
 class MessagesPage extends HookConsumerWidget {
   const MessagesPage({super.key});
@@ -18,7 +19,9 @@ class MessagesPage extends HookConsumerWidget {
       final ampm = date.hour < 12 ? '午前' : '午後';
       final adjustedHour = date.hour <= 12 ? date.hour : date.hour - 12;
 
-      if (date.year == now.year && date.month == now.month && date.day == now.day) {
+      if (date.year == now.year &&
+          date.month == now.month &&
+          date.day == now.day) {
         return '$ampm $adjustedHour:${date.minute.toString().padLeft(2, '0')}';
       } else {
         return '${date.month}/${date.day}($weekday)';
@@ -86,9 +89,11 @@ class MessagesPage extends HookConsumerWidget {
               startActionPane: ActionPane(
                 extentRatio: 0.2,
                 motion: const DrawerMotion(),
-                dismissible: DismissiblePane(onDismissed: () {
-                  _showMyModalBottomSheetBad(context);
-                },),
+                dismissible: DismissiblePane(
+                  onDismissed: () async {
+                    await _showMyModalBottomSheetBad(context, message: message);
+                  },
+                ),
                 children: [
                   SlidableAction(
                     onPressed: (context) async {
@@ -104,12 +109,14 @@ class MessagesPage extends HookConsumerWidget {
               endActionPane: ActionPane(
                 extentRatio: 0.2,
                 motion: const ScrollMotion(),
-                dismissible: DismissiblePane(onDismissed: () {
-                  _showMyModalBottomSheetGood(context);
-                },),
+                dismissible: DismissiblePane(
+                  onDismissed: () async {
+                    await _showMyModalBottomSheetGood(context, message: message);
+                  },
+                ),
                 children: [
                   SlidableAction(
-                    onPressed: (context) async{
+                    onPressed: (context) async {
                       _onSlidableActionTriggered(context, 'good');
                     },
                     backgroundColor: const Color.fromARGB(255, 255, 115, 0),
@@ -132,12 +139,15 @@ class MessagesPage extends HookConsumerWidget {
                     : null,
                 title: Row(
                   children: [
-                    Text(message.senderName, style: const TextStyle(fontSize: 16)),
+                    Text(message.senderName,
+                        style: const TextStyle(fontSize: 16),),
                     const Expanded(child: SizedBox()),
-                    Text(formatWithWeekday(message.createdAt.toDate()), style: const TextStyle(fontSize: 12)),
+                    Text(formatWithWeekday(message.createdAt.toDate()),
+                        style: const TextStyle(fontSize: 12),),
                   ],
                 ),
-                subtitle: Text(message.summary, style: const TextStyle(fontSize: 16)),
+                subtitle:
+                    Text(message.summary, style: const TextStyle(fontSize: 16)),
               ),
             ),
           );
@@ -146,35 +156,32 @@ class MessagesPage extends HookConsumerWidget {
     );
   }
 
-  void _showMyModalBottomSheetBad(BuildContext context) {
-    showModalBottomSheet(
+  Future<void> _showMyModalBottomSheetBad(BuildContext context,{required Message message,})
+    async {
+      await showModalBottomSheet(
       context: context,
-      builder: (context) {
-        return Container(
-          height: 506,
-          width: 370,
-          color: Colors.white,
-          child: Center(
-            child: Text('これはモーダルの内容です！'),
-          ),
-        );
-      },
+      builder: (context) => Container(
+        height: 506,
+        width: 370,
+        color: Colors.white,
+        child: Center(
+          child: Text(message.positiveReply),
+        ),
+      ),
     );
   }
 
-  void _showMyModalBottomSheetGood(BuildContext context) {
-    showModalBottomSheet(
+  Future<void> _showMyModalBottomSheetGood(BuildContext context,{required Message message,}) async {
+    await showModalBottomSheet(
       context: context,
-      builder: (context) {
-        return Container(
-          height: 506,
-          width: 370,
-          color: Colors.white,
-          child: Center(
-            child: Text('これはモーダルの内容です！'),
-          ),
-        );
-      },
+      builder: (context) => Container(
+        height: 506,
+        width: 370,
+        color: Colors.white,
+        child: Center(
+          child: Text(message.negativeReply),
+        ),
+      ),
     );
   }
 

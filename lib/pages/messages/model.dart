@@ -10,5 +10,6 @@ abstract class MessagesPageModel with _$MessagesPageModel {
     String? userId,
     @Default([]) List<Message?> messages,
     Timestamp? lastMessageCreatedAt,
+    Message? modalMessage,
   }) = _MessagesPageModel;
 }
