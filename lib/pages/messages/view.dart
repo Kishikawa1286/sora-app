@@ -79,7 +79,6 @@ class MessagesPage extends HookConsumerWidget {
           }
 
           final iconUrl = message.senderIconUrl;
-
           return InkWell(
             onTap: () => (),
             child: Slidable(
