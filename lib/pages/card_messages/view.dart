@@ -44,12 +44,11 @@ class CardMessagesPage extends HookConsumerWidget {
     final viewModel = ref.watch(CardMessagesPageViewModelProvider.notifier);
     final model = ref.watch(CardMessagesPageViewModelProvider);
     final messages = model.messages;
-    final swipeOffset = model.swipeOffset;
 
     final scaffoldBackgroundColor =
         _calculateBackgroundColor(model.swipeOffset);
     print('test: ${model.swipeOffset}');
-    final double circleRadius = 200.0;
+    const circleRadius = 200.0;
 
     if (messages.isEmpty) {
       return Scaffold(
