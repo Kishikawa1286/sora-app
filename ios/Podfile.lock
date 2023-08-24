@@ -157,7 +157,7 @@ SPEC CHECKSUMS:
   FirebaseCore: f86a1394906b97ac445ae49c92552a9425831bed
   FirebaseCoreExtension: ce60f9db46d83944cf444664d6d587474128eeca
   FirebaseCoreInternal: b342e37cd4f5b4454ec34308f073420e7920858e
-  FirebaseFirestore: 5d42819d1b219bc20e91c0cc854ed562680f31da
+  FirebaseFirestore: 8d9dd05bb50e0891ebe4fdd9bd0f9b9d22ea5556
   FirebaseFunctions: d49c7920b289d85029882927e4056ad04a906e19
   FirebaseMessagingInterop: 593e501af43b6d8df45d7323a0803d496b179ba3
   FirebaseSharedSwift: 5c4906ecf0441ed23efff399454dc791eff8ad54
