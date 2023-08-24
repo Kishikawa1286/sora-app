@@ -1,9 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/pages/card_messages/view_model.dart';
-import 'package:sora/repositories/entities/users_collection.dart';
 import 'package:sora/utils/format/date_formatting.dart';
 import 'package:sora/utils/format/string_operations.dart';
 
@@ -45,57 +43,8 @@ class CardMessagesPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.watch(CardMessagesPageViewModelProvider.notifier);
     final model = ref.watch(CardMessagesPageViewModelProvider);
-    // final messages = model.messages;
+    final messages = model.messages;
     final swipeOffset = model.swipeOffset;
-
-    // 以下はハリボテのメッセージ
-    final messages = <Message>[
-      Message(
-        id: '1',
-        userId: 'user1',
-        type: 'text',
-        message: 'こんにちは、これはテストメッセージです。',
-        summary: 'テストメッセージ1',
-        botMessage: 'こんにちは！',
-        reply: '返信1',
-        senderId: 'sender1',
-        senderName: '送信者1',
-        senderIconUrl: 'https://placehold.jp/3d4070/ffffff/150x150.png',
-        imageUrls: [],
-        fileAttached: false,
-        replied: false,
-        archived: false,
-        read: true,
-        positiveReply: '良い返信1',
-        negativeReply: '悪い返信1',
-        isScheduleAdjustment: false,
-        createdAt: Timestamp.now(),
-        lastUpdatedAt: Timestamp.now(),
-      ),
-      Message(
-        id: '2',
-        userId: 'user2',
-        type: 'text',
-        message: 'これは別のテストメッセージです。',
-        summary: 'テストメッセージ2',
-        botMessage: 'こんにちは、ユーザー2！',
-        reply: '返信2',
-        senderId: 'sender2',
-        senderName: '送信者2',
-        senderIconUrl: 'https://placehold.jp/3d4070/ffffff/150x150.png',
-        imageUrls: [],
-        fileAttached: false,
-        replied: false,
-        archived: false,
-        read: false,
-        positiveReply: '良い返信2',
-        negativeReply: '悪い返信2',
-        isScheduleAdjustment: false,
-        createdAt: Timestamp.now(),
-        lastUpdatedAt: Timestamp.now(),
-      ),
-      // 以下、必要な分だけメッセージを追加してください
-    ];
 
     final scaffoldBackgroundColor =
         _calculateBackgroundColor(model.swipeOffset);

@@ -21,12 +21,12 @@ class Home extends HookConsumerWidget {
     final currentTab = model.currentTab;
 
     return Scaffold(
-      backgroundColor: Colors.white10,
+      backgroundColor: Colors.white,
       body: _getBody(currentTab),
       bottomNavigationBar: ClipRRect(
         borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(30),
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
         ),
         child: BottomNavigationBar(
           showSelectedLabels: false,
