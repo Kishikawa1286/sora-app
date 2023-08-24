@@ -94,12 +94,25 @@ class CardMessagesPage extends HookConsumerWidget {
                 Card(
                   color: Theme.of(context).colorScheme.primaryContainer,
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 16),
+                    padding: const EdgeInsets.only(bottom: 16, top: 16),
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * 0.8,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 8,
+                            ),
+                            child: Text(
+                              message.summary,
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
                           ListTile(
                             leading: iconUrl != null
                                 ? ClipRRect(
@@ -121,12 +134,6 @@ class CardMessagesPage extends HookConsumerWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 16,
-                                    ),
-                                    child: Text(message.summary),
-                                  ),
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 16,
