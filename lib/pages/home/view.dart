@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/pages/card_messages/view.dart';
 import 'package:sora/pages/channel_manage/view.dart';
@@ -22,19 +23,36 @@ class Home extends HookConsumerWidget {
     return Scaffold(
       body: _getBody(currentTab),
       bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         currentIndex: currentTab,
         onTap: viewModel.updateCurrentTab,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.message),
-            label: 'メッセージ',
+            icon: SvgPicture.asset(
+              'assets/images/slider-icon/Sora-icon-mono.svg',
+            ),
+            activeIcon: SvgPicture.asset(
+              'assets/images/slider-icon/Sora-icon-color.svg',
+            ),
+            label: 'message',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.view_carousel),
+            icon: SvgPicture.asset(
+              'assets/images/slider-icon/slider-icon-mono.svg',
+            ),
+            activeIcon: SvgPicture.asset(
+              'assets/images/slider-icon/slider-icon-color.svg',
+            ),
             label: 'カードメッセージ',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.manage_accounts),
+            icon: SvgPicture.asset(
+              'assets/images/slider-icon/setting-icon-mono.svg',
+            ),
+            activeIcon: SvgPicture.asset(
+              'assets/images/slider-icon/setting-icon-color.svg',
+            ),
             label: 'チャンネル管理',
           ),
         ],
