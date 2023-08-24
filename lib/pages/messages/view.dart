@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sora/pages/card_message/card_message.dart';
+// import 'package:sora/pages/card_message/view.dart';
 import 'package:sora/pages/messages/view_model.dart';
 
 class MessagesPage extends HookConsumerWidget {
@@ -12,11 +12,41 @@ class MessagesPage extends HookConsumerWidget {
     final model = ref.watch(messagesPageViewModelProvider);
     final messages = model.messages;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('メッセージ'),
+    return Scaffold(//全体
+      appBar: AppBar(//header
+        title: Row(
+          children: [
+            ElevatedButton(
+              onPressed: () {},
+              style: ButtonStyle(
+                padding: MaterialStateProperty.all<EdgeInsets>(
+                  const EdgeInsets.symmetric(horizontal: 24),
+                ),
+              ),
+              child: const Text('All', style: TextStyle(fontSize: 16)),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              style: ButtonStyle(
+                padding: MaterialStateProperty.all<EdgeInsets>(
+                  const EdgeInsets.symmetric(horizontal: 24),
+                ),
+              ),
+              child: const Text('Slack', style: TextStyle(fontSize: 16)),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              style: ButtonStyle(
+                padding: MaterialStateProperty.all<EdgeInsets>(
+                  const EdgeInsets.symmetric(horizontal: 24),
+                ),
+              ),
+              child: const Text('LINE', style: TextStyle(fontSize: 16)),
+            ),
+          ],
+        ),
       ),
-      body: ListView.builder(
+      body: ListView.builder(//中身
         itemCount: messages.length,
         itemBuilder: (context, index) {
           final message = messages[index];
@@ -26,57 +56,50 @@ class MessagesPage extends HookConsumerWidget {
 
           final iconUrl = message.senderIconUrl;
 
-          return Slidable(
+          return Slidable(//スライド部分
+            key: ValueKey(index),
             startActionPane: ActionPane(
+              extentRatio: 0.2,
               motion: const ScrollMotion(),
               dismissible: DismissiblePane(onDismissed: () {
                 // Handle dismiss action here
               }),
               children: [
                 SlidableAction(
-                  onPressed: (context) {},
-                  backgroundColor: const Color(0xFFFE4A49),
+                  onPressed: (context) async {},
+                  backgroundColor: const Color.fromARGB(255, 0, 149, 255),
                   foregroundColor: Colors.white,
-                  icon: Icons.delete,
-                  label: 'Delete',
+                  icon: Icons.thumb_down,
+                  label: 'bad',
                 ),
               ],
             ),
             endActionPane: ActionPane(
+              extentRatio: 0.2,
               motion: const ScrollMotion(),
               children: [
                 SlidableAction(
                   onPressed: (context) {},
-                  backgroundColor: Color(0xFF0392CF),
+                  backgroundColor: const Color.fromARGB(255, 255, 115, 0),
                   foregroundColor: Colors.white,
-                  icon: Icons.save,
-                  label: 'Save',
+                  icon: Icons.thumb_up,
+                  label: 'good',
                 ),
               ],
             ),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CardMessage(message: message),
-                  ),
-                );
-              },
-              child: ListTile(
-                leading: iconUrl != null
-                    ? ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.network(
-                          iconUrl,
-                          width: 40,
-                          height: 40,
-                        ),
-                      )
-                    : null,
-                title: Text(message.senderName),
-                subtitle: Text(message.createdAt.toDate().toIso8601String()),
-              ),
+            child: ListTile(//中身
+              leading: iconUrl != null
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.network(
+                        iconUrl,
+                        width: 56,
+                        height: 56,
+                      ),
+                    )
+                  : null,
+              title: Text(message.senderName),
+              subtitle: Text(message.createdAt.toDate().toIso8601String()),
             ),
           );
         },

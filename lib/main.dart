@@ -32,7 +32,7 @@ Future<void> main() async {
             title: 'mathlingo',
             onGenerateRoute: generateRoute,
             initialRoute: 'home',
-            theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
+            theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme,fontFamily: 'Noto_Sans_JP'),
             darkTheme:
                 ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
           ),
