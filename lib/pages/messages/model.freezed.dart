@@ -19,6 +19,8 @@ mixin _$MessagesPageModel {
   String? get userId => throw _privateConstructorUsedError;
   List<Message?> get messages => throw _privateConstructorUsedError;
   Timestamp? get lastMessageCreatedAt => throw _privateConstructorUsedError;
+  Message? get modalMessage => throw _privateConstructorUsedError;
+  List<String> get dismissedMessageIds => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MessagesPageModelCopyWith<MessagesPageModel> get copyWith =>
@@ -34,7 +36,9 @@ abstract class $MessagesPageModelCopyWith<$Res> {
   $Res call(
       {String? userId,
       List<Message?> messages,
-      Timestamp? lastMessageCreatedAt});
+      Timestamp? lastMessageCreatedAt,
+      Message? modalMessage,
+      List<String> dismissedMessageIds});
 }
 
 /// @nodoc
@@ -53,6 +57,8 @@ class _$MessagesPageModelCopyWithImpl<$Res, $Val extends MessagesPageModel>
     Object? userId = freezed,
     Object? messages = null,
     Object? lastMessageCreatedAt = freezed,
+    Object? modalMessage = freezed,
+    Object? dismissedMessageIds = null,
   }) {
     return _then(_value.copyWith(
       userId: freezed == userId
@@ -67,6 +73,14 @@ class _$MessagesPageModelCopyWithImpl<$Res, $Val extends MessagesPageModel>
           ? _value.lastMessageCreatedAt
           : lastMessageCreatedAt // ignore: cast_nullable_to_non_nullable
               as Timestamp?,
+      modalMessage: freezed == modalMessage
+          ? _value.modalMessage
+          : modalMessage // ignore: cast_nullable_to_non_nullable
+              as Message?,
+      dismissedMessageIds: null == dismissedMessageIds
+          ? _value.dismissedMessageIds
+          : dismissedMessageIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -82,7 +96,9 @@ abstract class _$$_MessagesPageModelCopyWith<$Res>
   $Res call(
       {String? userId,
       List<Message?> messages,
-      Timestamp? lastMessageCreatedAt});
+      Timestamp? lastMessageCreatedAt,
+      Message? modalMessage,
+      List<String> dismissedMessageIds});
 }
 
 /// @nodoc
@@ -99,6 +115,8 @@ class __$$_MessagesPageModelCopyWithImpl<$Res>
     Object? userId = freezed,
     Object? messages = null,
     Object? lastMessageCreatedAt = freezed,
+    Object? modalMessage = freezed,
+    Object? dismissedMessageIds = null,
   }) {
     return _then(_$_MessagesPageModel(
       userId: freezed == userId
@@ -113,6 +131,14 @@ class __$$_MessagesPageModelCopyWithImpl<$Res>
           ? _value.lastMessageCreatedAt
           : lastMessageCreatedAt // ignore: cast_nullable_to_non_nullable
               as Timestamp?,
+      modalMessage: freezed == modalMessage
+          ? _value.modalMessage
+          : modalMessage // ignore: cast_nullable_to_non_nullable
+              as Message?,
+      dismissedMessageIds: null == dismissedMessageIds
+          ? _value._dismissedMessageIds
+          : dismissedMessageIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -123,8 +149,11 @@ class _$_MessagesPageModel implements _MessagesPageModel {
   const _$_MessagesPageModel(
       {this.userId,
       final List<Message?> messages = const [],
-      this.lastMessageCreatedAt})
-      : _messages = messages;
+      this.lastMessageCreatedAt,
+      this.modalMessage,
+      final List<String> dismissedMessageIds = const []})
+      : _messages = messages,
+        _dismissedMessageIds = dismissedMessageIds;
 
   @override
   final String? userId;
@@ -139,10 +168,21 @@ class _$_MessagesPageModel implements _MessagesPageModel {
 
   @override
   final Timestamp? lastMessageCreatedAt;
+  @override
+  final Message? modalMessage;
+  final List<String> _dismissedMessageIds;
+  @override
+  @JsonKey()
+  List<String> get dismissedMessageIds {
+    if (_dismissedMessageIds is EqualUnmodifiableListView)
+      return _dismissedMessageIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_dismissedMessageIds);
+  }
 
   @override
   String toString() {
-    return 'MessagesPageModel(userId: $userId, messages: $messages, lastMessageCreatedAt: $lastMessageCreatedAt)';
+    return 'MessagesPageModel(userId: $userId, messages: $messages, lastMessageCreatedAt: $lastMessageCreatedAt, modalMessage: $modalMessage, dismissedMessageIds: $dismissedMessageIds)';
   }
 
   @override
@@ -153,12 +193,21 @@ class _$_MessagesPageModel implements _MessagesPageModel {
             (identical(other.userId, userId) || other.userId == userId) &&
             const DeepCollectionEquality().equals(other._messages, _messages) &&
             (identical(other.lastMessageCreatedAt, lastMessageCreatedAt) ||
-                other.lastMessageCreatedAt == lastMessageCreatedAt));
+                other.lastMessageCreatedAt == lastMessageCreatedAt) &&
+            (identical(other.modalMessage, modalMessage) ||
+                other.modalMessage == modalMessage) &&
+            const DeepCollectionEquality()
+                .equals(other._dismissedMessageIds, _dismissedMessageIds));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userId,
-      const DeepCollectionEquality().hash(_messages), lastMessageCreatedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      userId,
+      const DeepCollectionEquality().hash(_messages),
+      lastMessageCreatedAt,
+      modalMessage,
+      const DeepCollectionEquality().hash(_dismissedMessageIds));
 
   @JsonKey(ignore: true)
   @override
@@ -172,7 +221,9 @@ abstract class _MessagesPageModel implements MessagesPageModel {
   const factory _MessagesPageModel(
       {final String? userId,
       final List<Message?> messages,
-      final Timestamp? lastMessageCreatedAt}) = _$_MessagesPageModel;
+      final Timestamp? lastMessageCreatedAt,
+      final Message? modalMessage,
+      final List<String> dismissedMessageIds}) = _$_MessagesPageModel;
 
   @override
   String? get userId;
@@ -180,6 +231,10 @@ abstract class _MessagesPageModel implements MessagesPageModel {
   List<Message?> get messages;
   @override
   Timestamp? get lastMessageCreatedAt;
+  @override
+  Message? get modalMessage;
+  @override
+  List<String> get dismissedMessageIds;
   @override
   @JsonKey(ignore: true)
   _$$_MessagesPageModelCopyWith<_$_MessagesPageModel> get copyWith =>
