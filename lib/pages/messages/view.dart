@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-// import 'package:sora/pages/card_messages/view.dart';
 import 'package:sora/pages/messages/view_model.dart';
 
 class MessagesPage extends HookConsumerWidget {
-  const MessagesPage({Key? key}) : super(key: key);
+  const MessagesPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -44,12 +43,12 @@ class MessagesPage extends HookConsumerWidget {
       );
     }
 
-    return Scaffold(//全体
-      appBar: AppBar(//header
+    return Scaffold(
+      appBar: AppBar(
         title: Row(
           children: [
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {}, // TODO: Implement Slack processing
               style: ButtonStyle(
                 padding: MaterialStateProperty.all<EdgeInsets>(
                   const EdgeInsets.symmetric(horizontal: 24),
@@ -59,7 +58,7 @@ class MessagesPage extends HookConsumerWidget {
             ),
             const SizedBox(width: 10),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {}, // TODO: Implement Slack processing
               style: ButtonStyle(
                 padding: MaterialStateProperty.all<EdgeInsets>(
                   const EdgeInsets.symmetric(horizontal: 24),
@@ -69,7 +68,7 @@ class MessagesPage extends HookConsumerWidget {
             ),
             const SizedBox(width: 10),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {}, // TODO: Implement LINE processing
               style: ButtonStyle(
                 padding: MaterialStateProperty.all<EdgeInsets>(
                   const EdgeInsets.symmetric(horizontal: 24),
@@ -80,7 +79,7 @@ class MessagesPage extends HookConsumerWidget {
           ],
         ),
       ),
-      body: ListView.builder(//中身
+      body: ListView.builder(
         itemCount: messages.length,
         itemBuilder: (context, index) {
           final message = messages[index];
@@ -90,14 +89,11 @@ class MessagesPage extends HookConsumerWidget {
 
           final iconUrl = message.senderIconUrl;
 
-          return Slidable(//スライド部分
+          return Slidable(
             key: ValueKey(index),
             startActionPane: ActionPane(
               extentRatio: 0.2,
               motion: const ScrollMotion(),
-              dismissible: DismissiblePane(onDismissed: () {
-                // Handle dismiss action here
-              }),
               children: [
                 SlidableAction(
                   onPressed: (context) async {},
@@ -121,7 +117,7 @@ class MessagesPage extends HookConsumerWidget {
                 ),
               ],
             ),
-            child: ListTile(//中身
+            child: ListTile(
               leading: iconUrl != null
                   ? ClipRRect(//アイコン
                       borderRadius: BorderRadius.circular(12),

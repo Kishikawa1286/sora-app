@@ -17,12 +17,10 @@ Future<void> main() async {
         options: DefaultFirebaseOptions.currentPlatform,
       );
 
-      // Fixing the orientation of the screen
       await SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp],
       );
       if (Platform.isAndroid) {
-        // Hiding the status bar
         await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
       }
 
@@ -32,7 +30,11 @@ Future<void> main() async {
             title: 'mathlingo',
             onGenerateRoute: generateRoute,
             initialRoute: 'home',
-            theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme,fontFamily: 'Noto_Sans_JP'),
+            theme: ThemeData(
+              useMaterial3: true,
+              colorScheme: lightColorScheme,
+              fontFamily: 'Noto_Sans_JP',
+            ),
             darkTheme:
                 ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
           ),
