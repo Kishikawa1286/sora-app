@@ -8,17 +8,6 @@ import 'package:sora/utils/format/string_operations.dart';
 class CardMessagesPage extends HookConsumerWidget {
   const CardMessagesPage({super.key});
 
-  bool _onSwipe(
-    int previousIndex,
-    int? currentIndex,
-    CardSwiperDirection direction,
-  ) {
-    debugPrint(
-      'The card $previousIndex was swiped to the ${direction.name}. Now the card $currentIndex is on top',
-    );
-    return true;
-  }
-
   Color _calculateBackgroundColor(double offset) {
     const maxOffset = 350.0; // この値は調整可能です
     final normalizedOffset = (offset / maxOffset).clamp(-1.0, 1.0);
@@ -91,7 +80,7 @@ class CardMessagesPage extends HookConsumerWidget {
                 cardsCount: messages.length,
                 numberOfCardsDisplayed:
                     messages.length <= 3 ? messages.length : 3,
-                onSwipe: _onSwipe,
+                onSwipe: viewModel.onSwipe,
                 cardBuilder:
                     (context, index, percentThresholdX, percentThresholdY) {
                   final message = messages[index];
