@@ -171,22 +171,45 @@ class MessagesPage extends HookConsumerWidget {
     );
   }
 
-  Future<void> _showMyModalBottomSheetGood(BuildContext context,{required Message message,}) async {
-    await showModalBottomSheet(
-      context: context,
-      builder: (context) => Container(
+  Future<void> _showMyModalBottomSheetGood(BuildContext context, {required Message message,}) async {
+  await showModalBottomSheet(
+    context: context,
+    builder: (context) => Container(
         height: 506,
         width: 370,
         color: Colors.white,
         child: Center(
-          child: Text(message.negativeReply),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(message.negativeReply),
+              const SizedBox(height: 20), // これにより、テキストとボタンの間にスペースができます
+              Row(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      // ボタンの処理をここに書く
+                      Navigator.pop(context); // 例えば、シートを閉じる
+                    },
+                    child: const Text('キャンセル'),
+                  ),
+                  ElevatedButton(
+                    onPressed: reply,
+                    child: const Text('決定'),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
-    );
-  }
+  );
+}
 
   void _onSlidableActionTriggered(BuildContext context, String actionType) {
     print('Action $actionType was triggered.');
     // ここで実行したい処理を追加してください。
   }
+
+  void reply() {}
 }
