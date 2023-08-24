@@ -100,6 +100,7 @@ class CardMessagesPage extends HookConsumerWidget {
     final scaffoldBackgroundColor =
         _calculateBackgroundColor(model.swipeOffset);
     print('test: ${model.swipeOffset}');
+    final double circleRadius = 200.0;
 
     if (messages.isEmpty) {
       return Scaffold(
@@ -119,88 +120,106 @@ class CardMessagesPage extends HookConsumerWidget {
         onPointerUp: (_) {
           viewModel.resetSwipeOffset();
         },
-        child: Padding(
-          padding: const EdgeInsets.only(top: 32),
-          child: CardSwiper(
-            allowedSwipeDirection:
-                AllowedSwipeDirection.only(right: true, left: true),
-            cardsCount: messages.length,
-            numberOfCardsDisplayed: messages.length <= 3 ? messages.length : 3,
-            onSwipe: _onSwipe,
-            cardBuilder:
-                (context, index, percentThresholdX, percentThresholdY) {
-              final message = messages[index];
-              if (message == null) {
-                return const SizedBox.shrink();
-              }
-              final iconUrl = message.senderIconUrl;
-              return Card(
-                color: Theme.of(context).colorScheme.primaryContainer,
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    bottom: 16,
-                    top: 16,
-                    left: 8,
-                    right: 8,
-                  ),
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.8,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 8,
-                          ),
-                          child: Text(
-                            message.summary,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        ListTile(
-                          leading: iconUrl != null
-                              ? ClipRRect(
-                                  borderRadius: BorderRadius.circular(8),
-                                  child: Image.network(
-                                    iconUrl,
-                                    width: 40,
-                                    height: 40,
-                                  ),
-                                )
-                              : null,
-                          title: Text(message.senderName),
-                          subtitle: Text(
-                            formatWithWeekday(message.createdAt.toDate()),
-                          ),
-                        ),
-                        Expanded(
-                          child: SingleChildScrollView(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 16,
-                                  ),
-                                  child: Text(
-                                    removeMention(message.message),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+        child: Stack(
+          children: [
+            // 半円を配置
+            Positioned(
+              top: (MediaQuery.of(context).size.height / 2) - circleRadius,
+              right: -circleRadius,
+              child: Container(
+                width: circleRadius * 2,
+                height: circleRadius * 2,
+                decoration: BoxDecoration(
+                  color: Colors.grey, // この色は変更可能です
+                  borderRadius: BorderRadius.circular(circleRadius),
                 ),
-              );
-            },
-          ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 32),
+              child: CardSwiper(
+                allowedSwipeDirection:
+                    AllowedSwipeDirection.only(right: true, left: true),
+                cardsCount: messages.length,
+                numberOfCardsDisplayed:
+                    messages.length <= 3 ? messages.length : 3,
+                onSwipe: _onSwipe,
+                cardBuilder:
+                    (context, index, percentThresholdX, percentThresholdY) {
+                  final message = messages[index];
+                  if (message == null) {
+                    return const SizedBox.shrink();
+                  }
+                  final iconUrl = message.senderIconUrl;
+                  return Card(
+                    color: Theme.of(context).colorScheme.primaryContainer,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        bottom: 16,
+                        top: 16,
+                        left: 8,
+                        right: 8,
+                      ),
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.8,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 8,
+                              ),
+                              child: Text(
+                                message.summary,
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            ListTile(
+                              leading: iconUrl != null
+                                  ? ClipRRect(
+                                      borderRadius: BorderRadius.circular(8),
+                                      child: Image.network(
+                                        iconUrl,
+                                        width: 40,
+                                        height: 40,
+                                      ),
+                                    )
+                                  : null,
+                              title: Text(message.senderName),
+                              subtitle: Text(
+                                formatWithWeekday(message.createdAt.toDate()),
+                              ),
+                            ),
+                            Expanded(
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 16,
+                                      ),
+                                      child: Text(
+                                        removeMention(message.message),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
