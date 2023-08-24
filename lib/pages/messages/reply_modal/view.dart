@@ -6,6 +6,8 @@ Future<void> showReplyModal(
   BuildContext context, {
   required String messageId,
   required String text,
+  void Function()? onCanceled,
+  void Function()? onReplied,
 }) =>
     showModalBottomSheet(
       context: context,
@@ -14,12 +16,18 @@ Future<void> showReplyModal(
           replyModalMessageIdProvider.overrideWithValue(messageId),
           replyModalTextProvider.overrideWithValue(text),
         ],
-        child: const ReplyModalContent(),
+        child: ReplyModalContent(
+          onCanceled: onCanceled,
+          onReplied: onReplied,
+        ),
       ),
     );
 
 class ReplyModalContent extends HookConsumerWidget {
-  const ReplyModalContent({super.key});
+  const ReplyModalContent({this.onCanceled, this.onReplied, super.key});
+
+  final void Function()? onCanceled;
+  final void Function()? onReplied;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -39,11 +47,15 @@ class ReplyModalContent extends HookConsumerWidget {
             Row(
               children: [
                 ElevatedButton(
-                  onPressed: Navigator.of(context).pop,
+                  onPressed: () {
+                    onCanceled?.call();
+                    Navigator.of(context).pop();
+                  },
                   child: const Text('キャンセル'),
                 ),
                 ElevatedButton(
                   onPressed: () async {
+                    onReplied?.call();
                     await viewModel.reply();
                   },
                   child: const Text('決定'),

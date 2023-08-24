@@ -11,6 +11,7 @@ class MessagesPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final viewModel = ref.watch(messagesPageViewModelProvider.notifier);
     final model = ref.watch(messagesPageViewModelProvider);
     final messages = model.messages;
 
@@ -67,6 +68,9 @@ class MessagesPage extends HookConsumerWidget {
           if (message == null) {
             return const SizedBox.shrink();
           }
+          if (model.dismissedMessageIds.contains(message.id)) {
+            return const SizedBox.shrink();
+          }
           final iconUrl = message.senderIconUrl;
           return InkWell(
             child: Slidable(
@@ -76,19 +80,18 @@ class MessagesPage extends HookConsumerWidget {
                 motion: const DrawerMotion(),
                 dismissible: DismissiblePane(
                   onDismissed: () async {
+                    viewModel.dissmissMessage(index);
                     await showReplyModal(
                       context,
                       messageId: message.id,
                       text: message.negativeReply,
+                      onCanceled: () => viewModel.undissmissMessage(index),
                     );
                   },
                 ),
                 children: [
                   SlidableAction(
-                    onPressed: (context) async {
-                      // TODO: Handle SlidableAction onPressed
-                      // such as _onSlidableActionTriggered(context, 'bad');
-                    },
+                    onPressed: (context) {},
                     backgroundColor: const Color.fromARGB(255, 0, 149, 255),
                     foregroundColor: Colors.white,
                     icon: Icons.thumb_down,
@@ -101,19 +104,18 @@ class MessagesPage extends HookConsumerWidget {
                 motion: const ScrollMotion(),
                 dismissible: DismissiblePane(
                   onDismissed: () async {
+                    viewModel.dissmissMessage(index);
                     await showReplyModal(
                       context,
                       messageId: message.id,
                       text: message.positiveReply,
+                      onCanceled: () => viewModel.undissmissMessage(index),
                     );
                   },
                 ),
                 children: [
                   SlidableAction(
-                    onPressed: (context) async {
-                      // TODO: Handle SlidableAction onPressed
-                      // such as _onSlidableActionTriggered(context, 'good');
-                    },
+                    onPressed: (context) {},
                     backgroundColor: const Color.fromARGB(255, 255, 115, 0),
                     foregroundColor: Colors.white,
                     icon: Icons.thumb_up,

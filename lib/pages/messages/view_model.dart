@@ -21,8 +21,9 @@ class MessagesPageViewModel extends StateNotifier<MessagesPageModel> {
       if (userId == null) {
         return;
       }
-      _messagesSubscription =
-          _messageRepository.fetchMessages(userId).listen((slackUsers) {
+      _messagesSubscription = _messageRepository
+          .fetchMessagesWithoutReply(userId)
+          .listen((slackUsers) {
         state = state.copyWith(messages: slackUsers);
       });
     });
@@ -33,6 +34,36 @@ class MessagesPageViewModel extends StateNotifier<MessagesPageModel> {
   late final StreamSubscription<String?> _userIdStateSubscription;
   late final StreamSubscription<List<Message?>> _messagesSubscription;
 
+  // Called in onDissmissed of DissmissablePane
+  void dissmissMessage(int index) {
+    final message = state.messages[index];
+    if (message == null) {
+      return;
+    }
+    final dismissedMessageIds = state.dismissedMessageIds;
+    if (dismissedMessageIds.contains(message.id)) {
+      return;
+    }
+    state = state.copyWith(
+      dismissedMessageIds: [...dismissedMessageIds, message.id],
+    );
+  }
+
+  void undissmissMessage(int index) {
+    final message = state.messages[index];
+    if (message == null) {
+      return;
+    }
+    final dismissedMessageIds = state.dismissedMessageIds;
+    if (!dismissedMessageIds.contains(message.id)) {
+      return;
+    }
+    state = state.copyWith(
+      dismissedMessageIds:
+          dismissedMessageIds.where((id) => id != message.id).toList(),
+    );
+  }
+
   void fetchMoreMessages() {
     final userId = state.userId;
     final lastMessageCreatedAt = state.lastMessageCreatedAt;
@@ -40,7 +71,7 @@ class MessagesPageViewModel extends StateNotifier<MessagesPageModel> {
       return;
     }
     _messagesSubscription = _messageRepository
-        .fetchMessages(userId, startAfter: lastMessageCreatedAt)
+        .fetchMessagesWithoutReply(userId, startAfter: lastMessageCreatedAt)
         .listen((newMessages) {
       if (newMessages.isNotEmpty) {
         state = state.copyWith(
