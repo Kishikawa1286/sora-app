@@ -15,32 +15,35 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$MessagesPageModel {
+mixin _$CardMessagesPageModel {
   String? get userId => throw _privateConstructorUsedError;
   List<Message?> get messages => throw _privateConstructorUsedError;
   Timestamp? get lastMessageCreatedAt => throw _privateConstructorUsedError;
+  double get swipeOffset => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MessagesPageModelCopyWith<MessagesPageModel> get copyWith =>
+  $CardMessagesPageModelCopyWith<CardMessagesPageModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MessagesPageModelCopyWith<$Res> {
-  factory $MessagesPageModelCopyWith(
-          MessagesPageModel value, $Res Function(MessagesPageModel) then) =
-      _$MessagesPageModelCopyWithImpl<$Res, MessagesPageModel>;
+abstract class $CardMessagesPageModelCopyWith<$Res> {
+  factory $CardMessagesPageModelCopyWith(CardMessagesPageModel value,
+          $Res Function(CardMessagesPageModel) then) =
+      _$CardMessagesPageModelCopyWithImpl<$Res, CardMessagesPageModel>;
   @useResult
   $Res call(
       {String? userId,
       List<Message?> messages,
-      Timestamp? lastMessageCreatedAt});
+      Timestamp? lastMessageCreatedAt,
+      double swipeOffset});
 }
 
 /// @nodoc
-class _$MessagesPageModelCopyWithImpl<$Res, $Val extends MessagesPageModel>
-    implements $MessagesPageModelCopyWith<$Res> {
-  _$MessagesPageModelCopyWithImpl(this._value, this._then);
+class _$CardMessagesPageModelCopyWithImpl<$Res,
+        $Val extends CardMessagesPageModel>
+    implements $CardMessagesPageModelCopyWith<$Res> {
+  _$CardMessagesPageModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -53,6 +56,7 @@ class _$MessagesPageModelCopyWithImpl<$Res, $Val extends MessagesPageModel>
     Object? userId = freezed,
     Object? messages = null,
     Object? lastMessageCreatedAt = freezed,
+    Object? swipeOffset = null,
   }) {
     return _then(_value.copyWith(
       userId: freezed == userId
@@ -67,30 +71,35 @@ class _$MessagesPageModelCopyWithImpl<$Res, $Val extends MessagesPageModel>
           ? _value.lastMessageCreatedAt
           : lastMessageCreatedAt // ignore: cast_nullable_to_non_nullable
               as Timestamp?,
+      swipeOffset: null == swipeOffset
+          ? _value.swipeOffset
+          : swipeOffset // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_MessagesPageModelCopyWith<$Res>
-    implements $MessagesPageModelCopyWith<$Res> {
-  factory _$$_MessagesPageModelCopyWith(_$_MessagesPageModel value,
-          $Res Function(_$_MessagesPageModel) then) =
-      __$$_MessagesPageModelCopyWithImpl<$Res>;
+abstract class _$$_CardMessagesPageModelCopyWith<$Res>
+    implements $CardMessagesPageModelCopyWith<$Res> {
+  factory _$$_CardMessagesPageModelCopyWith(_$_CardMessagesPageModel value,
+          $Res Function(_$_CardMessagesPageModel) then) =
+      __$$_CardMessagesPageModelCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String? userId,
       List<Message?> messages,
-      Timestamp? lastMessageCreatedAt});
+      Timestamp? lastMessageCreatedAt,
+      double swipeOffset});
 }
 
 /// @nodoc
-class __$$_MessagesPageModelCopyWithImpl<$Res>
-    extends _$MessagesPageModelCopyWithImpl<$Res, _$_MessagesPageModel>
-    implements _$$_MessagesPageModelCopyWith<$Res> {
-  __$$_MessagesPageModelCopyWithImpl(
-      _$_MessagesPageModel _value, $Res Function(_$_MessagesPageModel) _then)
+class __$$_CardMessagesPageModelCopyWithImpl<$Res>
+    extends _$CardMessagesPageModelCopyWithImpl<$Res, _$_CardMessagesPageModel>
+    implements _$$_CardMessagesPageModelCopyWith<$Res> {
+  __$$_CardMessagesPageModelCopyWithImpl(_$_CardMessagesPageModel _value,
+      $Res Function(_$_CardMessagesPageModel) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,8 +108,9 @@ class __$$_MessagesPageModelCopyWithImpl<$Res>
     Object? userId = freezed,
     Object? messages = null,
     Object? lastMessageCreatedAt = freezed,
+    Object? swipeOffset = null,
   }) {
-    return _then(_$_MessagesPageModel(
+    return _then(_$_CardMessagesPageModel(
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -113,17 +123,22 @@ class __$$_MessagesPageModelCopyWithImpl<$Res>
           ? _value.lastMessageCreatedAt
           : lastMessageCreatedAt // ignore: cast_nullable_to_non_nullable
               as Timestamp?,
+      swipeOffset: null == swipeOffset
+          ? _value.swipeOffset
+          : swipeOffset // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_MessagesPageModel implements _MessagesPageModel {
-  const _$_MessagesPageModel(
+class _$_CardMessagesPageModel implements _CardMessagesPageModel {
+  const _$_CardMessagesPageModel(
       {this.userId,
       final List<Message?> messages = const [],
-      this.lastMessageCreatedAt})
+      this.lastMessageCreatedAt,
+      this.swipeOffset = 0.0})
       : _messages = messages;
 
   @override
@@ -139,40 +154,50 @@ class _$_MessagesPageModel implements _MessagesPageModel {
 
   @override
   final Timestamp? lastMessageCreatedAt;
+  @override
+  @JsonKey()
+  final double swipeOffset;
 
   @override
   String toString() {
-    return 'MessagesPageModel(userId: $userId, messages: $messages, lastMessageCreatedAt: $lastMessageCreatedAt)';
+    return 'CardMessagesPageModel(userId: $userId, messages: $messages, lastMessageCreatedAt: $lastMessageCreatedAt, swipeOffset: $swipeOffset)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MessagesPageModel &&
+            other is _$_CardMessagesPageModel &&
             (identical(other.userId, userId) || other.userId == userId) &&
             const DeepCollectionEquality().equals(other._messages, _messages) &&
             (identical(other.lastMessageCreatedAt, lastMessageCreatedAt) ||
-                other.lastMessageCreatedAt == lastMessageCreatedAt));
+                other.lastMessageCreatedAt == lastMessageCreatedAt) &&
+            (identical(other.swipeOffset, swipeOffset) ||
+                other.swipeOffset == swipeOffset));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userId,
-      const DeepCollectionEquality().hash(_messages), lastMessageCreatedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      userId,
+      const DeepCollectionEquality().hash(_messages),
+      lastMessageCreatedAt,
+      swipeOffset);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MessagesPageModelCopyWith<_$_MessagesPageModel> get copyWith =>
-      __$$_MessagesPageModelCopyWithImpl<_$_MessagesPageModel>(
+  _$$_CardMessagesPageModelCopyWith<_$_CardMessagesPageModel> get copyWith =>
+      __$$_CardMessagesPageModelCopyWithImpl<_$_CardMessagesPageModel>(
           this, _$identity);
 }
 
-abstract class _MessagesPageModel implements MessagesPageModel {
-  const factory _MessagesPageModel(
+abstract class _CardMessagesPageModel implements CardMessagesPageModel {
+  const factory _CardMessagesPageModel(
       {final String? userId,
       final List<Message?> messages,
-      final Timestamp? lastMessageCreatedAt}) = _$_MessagesPageModel;
+      final Timestamp? lastMessageCreatedAt,
+      final double swipeOffset}) = _$_CardMessagesPageModel;
 
   @override
   String? get userId;
@@ -181,7 +206,9 @@ abstract class _MessagesPageModel implements MessagesPageModel {
   @override
   Timestamp? get lastMessageCreatedAt;
   @override
+  double get swipeOffset;
+  @override
   @JsonKey(ignore: true)
-  _$$_MessagesPageModelCopyWith<_$_MessagesPageModel> get copyWith =>
+  _$$_CardMessagesPageModelCopyWith<_$_CardMessagesPageModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

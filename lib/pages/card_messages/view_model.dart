@@ -1,24 +1,21 @@
 import 'dart:async';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sora/pages/messages/model.dart';
+import 'package:sora/pages/card_messages/model.dart';
 import 'package:sora/repositories/auth_repository/auth_repository.dart';
 import 'package:sora/repositories/entities/users_collection.dart';
 import 'package:sora/repositories/message_repository.dart';
 
 final CardMessagesPageViewModelProvider = StateNotifierProvider.autoDispose<
-    CardMessagesPageViewModel, MessagesPageModel>(
+    CardMessagesPageViewModel, CardMessagesPageModel>(
   CardMessagesPageViewModel.new,
 );
 
-final autoReplyProvider = StateProvider.autoDispose<bool>((ref) => false);
-final autoReplyMessageProvider = StateProvider.autoDispose<String>((ref) => '');
-
-class CardMessagesPageViewModel extends StateNotifier<MessagesPageModel> {
+class CardMessagesPageViewModel extends StateNotifier<CardMessagesPageModel> {
   CardMessagesPageViewModel(Ref ref)
       : _authRepository = ref.read(authRepositoryProvider),
         _messageRepository = ref.read(messageRepositoryProvider),
-        super(const MessagesPageModel()) {
+        super(const CardMessagesPageModel()) {
     _userIdStateSubscription = _authRepository.userId.listen((userId) {
       state = state.copyWith(userId: userId);
       if (userId == null) {
@@ -52,6 +49,10 @@ class CardMessagesPageViewModel extends StateNotifier<MessagesPageModel> {
         );
       }
     });
+  }
+
+  void updateSwipeOffset(double swipeOffset) {
+    state = state.copyWith(swipeOffset: swipeOffset);
   }
 
   @override
