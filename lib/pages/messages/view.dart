@@ -11,35 +11,26 @@ class MessagesPage extends HookConsumerWidget {
     final model = ref.watch(messagesPageViewModelProvider);
     final messages = model.messages;
 
-  String formatWithWeekday(DateTime date) {
-    final now = DateTime.now();
-    final weekdays = ['月', '火', '水', '木', '金', '土', '日'];
-    final weekday = weekdays[
-        date.weekday - 1]; // DateTimeのweekdayは1から7の値を返すため、-1して配列のインデックスとして使用
+    String formatWithWeekday(DateTime date) {
+      final now = DateTime.now();
+      final weekdays = ['月', '火', '水', '木', '金', '土', '日'];
+      final weekday = weekdays[date.weekday - 1];
+      final ampm = date.hour < 12 ? '午前' : '午後';
+      final adjustedHour = date.hour <= 12 ? date.hour : date.hour - 12;
 
-    // 午前 or 午後の判断
-    final ampm = date.hour < 12 ? '午前' : '午後';
-
-    // 午前・午後表示のための時間調整（13時以降は1から数える）
-    final adjustedHour = date.hour <= 12 ? date.hour : date.hour - 12;
-
-    // 今日の日付と指定された日付が同じであるかどうかを確認
-    if (date.year == now.year &&
-        date.month == now.month &&
-        date.day == now.day) {
-      return '$ampm $adjustedHour:${date.minute.toString().padLeft(2, '0')}';
-    } else {
-      return '${date.month}/${date.day}($weekday)';
-  }
-}
-
+      if (date.year == now.year && date.month == now.month && date.day == now.day) {
+        return '$ampm $adjustedHour:${date.minute.toString().padLeft(2, '0')}';
+      } else {
+        return '${date.month}/${date.day}($weekday)';
+      }
+    }
 
     if (messages.isEmpty) {
       return Scaffold(
         appBar: AppBar(
           title: const Text('メッセージ'),
         ),
-        body: const Center(child: Text('メッセージがありません')), // メッセージがない場合の表示
+        body: const Center(child: Text('メッセージがありません')),
       );
     }
 
@@ -48,7 +39,7 @@ class MessagesPage extends HookConsumerWidget {
         title: Row(
           children: [
             ElevatedButton(
-              onPressed: () {}, // TODO: Implement Slack processing
+              onPressed: () {},
               style: ButtonStyle(
                 padding: MaterialStateProperty.all<EdgeInsets>(
                   const EdgeInsets.symmetric(horizontal: 24),
@@ -58,7 +49,7 @@ class MessagesPage extends HookConsumerWidget {
             ),
             const SizedBox(width: 10),
             ElevatedButton(
-              onPressed: () {}, // TODO: Implement Slack processing
+              onPressed: () {},
               style: ButtonStyle(
                 padding: MaterialStateProperty.all<EdgeInsets>(
                   const EdgeInsets.symmetric(horizontal: 24),
@@ -68,7 +59,7 @@ class MessagesPage extends HookConsumerWidget {
             ),
             const SizedBox(width: 10),
             ElevatedButton(
-              onPressed: () {}, // TODO: Implement LINE processing
+              onPressed: () {},
               style: ButtonStyle(
                 padding: MaterialStateProperty.all<EdgeInsets>(
                   const EdgeInsets.symmetric(horizontal: 24),
@@ -89,57 +80,107 @@ class MessagesPage extends HookConsumerWidget {
 
           final iconUrl = message.senderIconUrl;
 
-          return Slidable(
-            key: ValueKey(index),
-            startActionPane: ActionPane(
-              extentRatio: 0.2,
-              motion: const ScrollMotion(),
-              children: [
-                SlidableAction(
-                  onPressed: (context) async {},
-                  backgroundColor: const Color.fromARGB(255, 0, 149, 255),
-                  foregroundColor: Colors.white,
-                  icon: Icons.thumb_down,
-                  label: 'bad',
-                ),
-              ],
-            ),
-            endActionPane: ActionPane(
-              extentRatio: 0.2,
-              motion: const ScrollMotion(),
-              children: [
-                SlidableAction(
-                  onPressed: (context) {},
-                  backgroundColor: const Color.fromARGB(255, 255, 115, 0),
-                  foregroundColor: Colors.white,
-                  icon: Icons.thumb_up,
-                  label: 'good',
-                ),
-              ],
-            ),
-            child: ListTile(
-              leading: iconUrl != null
-                  ? ClipRRect(//アイコン
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.network(
-                        iconUrl,
-                        width: 56,
-                        height: 56,
-                      ),
-                    )
-                  : null,
-              title: Row(
+          return InkWell(
+            onTap: () => (),
+            child: Slidable(
+              key: ValueKey(index),
+              startActionPane: ActionPane(
+                extentRatio: 0.2,
+                motion: const DrawerMotion(),
+                dismissible: DismissiblePane(onDismissed: () {
+                  _showMyModalBottomSheetBad(context);
+                },),
                 children: [
-                  Text(message.senderName,style: const TextStyle(fontSize: 16)),
-                  const Expanded(child: SizedBox()),
-                  Text(formatWithWeekday(message.createdAt.toDate()),style: const TextStyle(fontSize: 12)),
+                  SlidableAction(
+                    onPressed: (context) async {
+                      _onSlidableActionTriggered(context, 'bad');
+                    },
+                    backgroundColor: const Color.fromARGB(255, 0, 149, 255),
+                    foregroundColor: Colors.white,
+                    icon: Icons.thumb_down,
+                    label: 'bad',
+                  ),
                 ],
               ),
-              subtitle: Text(message.summary,style: const TextStyle(fontSize: 16)),
+              endActionPane: ActionPane(
+                extentRatio: 0.2,
+                motion: const ScrollMotion(),
+                dismissible: DismissiblePane(onDismissed: () {
+                  _showMyModalBottomSheetGood(context);
+                },),
+                children: [
+                  SlidableAction(
+                    onPressed: (context) async{
+                      _onSlidableActionTriggered(context, 'good');
+                    },
+                    backgroundColor: const Color.fromARGB(255, 255, 115, 0),
+                    foregroundColor: Colors.white,
+                    icon: Icons.thumb_up,
+                    label: 'good',
+                  ),
+                ],
+              ),
+              child: ListTile(
+                leading: iconUrl != null
+                    ? ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.network(
+                          iconUrl,
+                          width: 56,
+                          height: 56,
+                        ),
+                      )
+                    : null,
+                title: Row(
+                  children: [
+                    Text(message.senderName, style: const TextStyle(fontSize: 16)),
+                    const Expanded(child: SizedBox()),
+                    Text(formatWithWeekday(message.createdAt.toDate()), style: const TextStyle(fontSize: 12)),
+                  ],
+                ),
+                subtitle: Text(message.summary, style: const TextStyle(fontSize: 16)),
+              ),
             ),
           );
         },
       ),
     );
+  }
+
+  void _showMyModalBottomSheetBad(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          height: 506,
+          width: 370,
+          color: Colors.white,
+          child: Center(
+            child: Text('これはモーダルの内容です！'),
+          ),
+        );
+      },
+    );
+  }
+
+  void _showMyModalBottomSheetGood(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          height: 506,
+          width: 370,
+          color: Colors.white,
+          child: Center(
+            child: Text('これはモーダルの内容です！'),
+          ),
+        );
+      },
+    );
+  }
+
+  void _onSlidableActionTriggered(BuildContext context, String actionType) {
+    print('Action $actionType was triggered.');
+    // ここで実行したい処理を追加してください。
   }
 }
