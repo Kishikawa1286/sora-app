@@ -116,7 +116,8 @@ class CardMessagesPage extends HookConsumerWidget {
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 16),
+                                      horizontal: 16,
+                                    ),
                                     child: Text(message.summary),
                                   ),
                                   Padding(

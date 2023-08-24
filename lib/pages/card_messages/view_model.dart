@@ -54,23 +54,6 @@ class CardMessagesPageViewModel extends StateNotifier<MessagesPageModel> {
     });
   }
 
-  // 自動返信の状態
-  bool _isAutoReplyEnabled = false;
-  String _autoReplyMessage = '';
-
-  bool get isAutoReplyEnabled => _isAutoReplyEnabled;
-  String get autoReplyMessage => _autoReplyMessage;
-
-  void setAutoReplyEnabled(bool value) {
-    _isAutoReplyEnabled = value;
-    state = state.copyWith(); // Stateの更新を通知
-  }
-
-  void setAutoReplyMessage(String message) {
-    _autoReplyMessage = message;
-    state = state.copyWith(); // Stateの更新を通知sa
-  }
-
   @override
   Future<void> dispose() async {
     await _userIdStateSubscription.cancel();
