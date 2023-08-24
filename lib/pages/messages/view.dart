@@ -86,7 +86,8 @@ class MessagesPage extends HookConsumerWidget {
                 children: [
                   SlidableAction(
                     onPressed: (context) async {
-                      _onSlidableActionTriggered(context, 'bad');
+                      // TODO: Handle SlidableAction onPressed
+                      // such as _onSlidableActionTriggered(context, 'bad');
                     },
                     backgroundColor: const Color.fromARGB(255, 0, 149, 255),
                     foregroundColor: Colors.white,
@@ -110,7 +111,8 @@ class MessagesPage extends HookConsumerWidget {
                 children: [
                   SlidableAction(
                     onPressed: (context) async {
-                      _onSlidableActionTriggered(context, 'good');
+                      // TODO: Handle SlidableAction onPressed
+                      // such as _onSlidableActionTriggered(context, 'good');
                     },
                     backgroundColor: const Color.fromARGB(255, 255, 115, 0),
                     foregroundColor: Colors.white,
@@ -151,10 +153,5 @@ class MessagesPage extends HookConsumerWidget {
         },
       ),
     );
-  }
-
-  void _onSlidableActionTriggered(BuildContext context, String actionType) {
-    print('Action $actionType was triggered.');
-    // ここで実行したい処理を追加してください。
   }
 }
