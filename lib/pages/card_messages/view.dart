@@ -21,6 +21,26 @@ class CardMessagesPage extends HookConsumerWidget {
     return true;
   }
 
+  Color _calculateBackgroundColor(double offset) {
+    const maxOffset = 350.0; // この値は調整可能です
+    final normalizedOffset = (offset / maxOffset).clamp(-1.0, 1.0);
+
+    int lerpValue(int start, int end, double fraction) =>
+        (start + (end - start) * fraction).toInt();
+
+    if (normalizedOffset > 0) {
+      // 右へのスワイプの場合、白から青への補間
+      final blueIntensity = lerpValue(255, 0, normalizedOffset);
+      return Color.fromRGBO(blueIntensity, blueIntensity, 255, 1);
+    } else if (normalizedOffset < 0) {
+      // 左へのスワイプの場合、白から赤への補間
+      final redIntensity = lerpValue(255, 0, -normalizedOffset);
+      return Color.fromRGBO(255, redIntensity, redIntensity, 1);
+    } else {
+      return Colors.white;
+    }
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.watch(CardMessagesPageViewModelProvider.notifier);
@@ -77,15 +97,8 @@ class CardMessagesPage extends HookConsumerWidget {
       // 以下、必要な分だけメッセージを追加してください
     ];
 
-    // Determine the background color based on percentThresholdX
-    Color scaffoldBackgroundColor;
-    if (model.swipeOffset > 80) {
-      scaffoldBackgroundColor = Colors.blue; // 右にスワイプしたときの色
-    } else if (model.swipeOffset < -80) {
-      scaffoldBackgroundColor = Colors.red; // 左にスワイプしたときの色
-    } else {
-      scaffoldBackgroundColor = Colors.white; // スワイプしていないときのデフォルトの色
-    }
+    final scaffoldBackgroundColor =
+        _calculateBackgroundColor(model.swipeOffset);
     print('test: ${model.swipeOffset}');
 
     if (messages.isEmpty) {
