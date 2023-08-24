@@ -17,8 +17,12 @@ dependencies:
   firebase_core: 2.15.1
   flutter:
     sdk: flutter
+  flutter_card_swiper: ^6.0.0
   flutter_hooks: 0.20.0
+  flutter_slidable: ^3.0.0
+  flutter_svg: 2.0.7
   freezed_annotation: 2.4.1
+  google_fonts: ^5.1.0
   hooks_riverpod: 2.3.8
   json_annotation: 4.8.1
   markdown: 7.1.1
@@ -35,6 +39,16 @@ dev_dependencies:
   json_serializable: ^6.7.0
 
 flutter:
+  fonts:
+  - family: Noto_Sans_JP
+    fonts:
+      - asset: assets/fonts/Noto_Sans_JP/static/NotoSansJP-Regular.ttf
+  - family: DelaGothicOne
+    fonts:
+      - asset: assets/fonts/Dela_Gothic_One/DelaGothicOne-Regular.ttf
+  - family: roboto
+    fonts:
+      - asset: assets/fonts/Roboto_Slab/static/RobotoSlab-Regular.ttf
   uses-material-design: true
   assets:
     - assets/images/
