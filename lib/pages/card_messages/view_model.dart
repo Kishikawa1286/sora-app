@@ -51,8 +51,13 @@ class CardMessagesPageViewModel extends StateNotifier<CardMessagesPageModel> {
     });
   }
 
-  void updateSwipeOffset(double swipeOffset) {
-    state = state.copyWith(swipeOffset: swipeOffset);
+  void updateSwipeOffset(double delta) {
+    final newOffset = state.swipeOffset + delta;
+    state = state.copyWith(swipeOffset: newOffset);
+  }
+
+  void resetSwipeOffset() {
+    state = state.copyWith(swipeOffset: 0);
   }
 
   @override

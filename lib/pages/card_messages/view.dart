@@ -79,9 +79,9 @@ class CardMessagesPage extends HookConsumerWidget {
 
     // Determine the background color based on percentThresholdX
     Color scaffoldBackgroundColor;
-    if (model.swipeOffset > 0) {
+    if (model.swipeOffset > 80) {
       scaffoldBackgroundColor = Colors.blue; // 右にスワイプしたときの色
-    } else if (model.swipeOffset < 0) {
+    } else if (model.swipeOffset < -80) {
       scaffoldBackgroundColor = Colors.red; // 左にスワイプしたときの色
     } else {
       scaffoldBackgroundColor = Colors.white; // スワイプしていないときのデフォルトの色
@@ -99,15 +99,12 @@ class CardMessagesPage extends HookConsumerWidget {
 
     return Scaffold(
       backgroundColor: scaffoldBackgroundColor,
-      body: GestureDetector(
-        behavior: HitTestBehavior.translucent,
-        onHorizontalDragUpdate: (details) {
-          // スワイプのオフセットを更新
+      body: Listener(
+        onPointerMove: (details) {
           viewModel.updateSwipeOffset(details.delta.dx);
         },
-        onHorizontalDragEnd: (details) {
-          // スワイプが終了したらオフセットをリセット
-          viewModel.updateSwipeOffset(0);
+        onPointerUp: (_) {
+          viewModel.resetSwipeOffset();
         },
         child: Padding(
           padding: const EdgeInsets.only(top: 32),
