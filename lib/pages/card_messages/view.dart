@@ -11,6 +11,10 @@ class CardMessagesPage extends HookConsumerWidget {
     final model = ref.watch(CardMessagesPageViewModelProvider);
     final messages = model.messages;
 
+    // 正規表現を使って<@{文字列}>の形式を置き換える関数
+    String removeMention(String text) =>
+        text.replaceAll(RegExp(r'<@[^>]+>\n?'), '');
+
     String formatWithWeekday(DateTime date) {
       final now = DateTime.now();
       final weekdays = ['月', '火', '水', '木', '金', '土', '日'];
@@ -54,7 +58,6 @@ class CardMessagesPage extends HookConsumerWidget {
           cardsCount: messages.length,
           numberOfCardsDisplayed: 3,
           cardBuilder: (context, index, percentThresholdX, percentThresholdY) {
-            print(percentThresholdX);
             final opacityValue =
                 (percentThresholdX.abs() / 100).clamp(0.0, 1.0);
             final message = messages[index];
@@ -94,7 +97,12 @@ class CardMessagesPage extends HookConsumerWidget {
                 Card(
                   color: Theme.of(context).colorScheme.primaryContainer,
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 16, top: 16),
+                    padding: const EdgeInsets.only(
+                      bottom: 16,
+                      top: 16,
+                      left: 8,
+                      right: 8,
+                    ),
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * 0.8,
                       child: Column(
@@ -137,9 +145,8 @@ class CardMessagesPage extends HookConsumerWidget {
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 16,
-                                      vertical: 8,
                                     ),
-                                    child: Text(message.message),
+                                    child: Text(removeMention(message.message)),
                                   ),
                                 ],
                               ),
