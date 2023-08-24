@@ -11,9 +11,6 @@ final messagesPageViewModelProvider =
   MessagesPageViewModel.new,
 );
 
-final autoReplyProvider = StateProvider.autoDispose<bool>((ref) => false);
-final autoReplyMessageProvider = StateProvider.autoDispose<String>((ref) => '');
-
 class MessagesPageViewModel extends StateNotifier<MessagesPageModel> {
   MessagesPageViewModel(Ref ref)
       : _authRepository = ref.read(authRepositoryProvider),
