@@ -3,6 +3,8 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/pages/messages/view_model.dart';
 import 'package:sora/repositories/entities/users_collection.dart';
+import 'package:sora/repositories/slack_repository.dart';
+
 
 class MessagesPage extends HookConsumerWidget {
   const MessagesPage({super.key});
@@ -91,7 +93,7 @@ class MessagesPage extends HookConsumerWidget {
                 motion: const DrawerMotion(),
                 dismissible: DismissiblePane(
                   onDismissed: () async {
-                    await _showMyModalBottomSheetBad(context, message: message);
+                    await _showMyModalBottomSheetBad(context, message: message,ref: ref);
                   },
                 ),
                 children: [
@@ -111,7 +113,7 @@ class MessagesPage extends HookConsumerWidget {
                 motion: const ScrollMotion(),
                 dismissible: DismissiblePane(
                   onDismissed: () async {
-                    await _showMyModalBottomSheetGood(context, message: message);
+                    await _showMyModalBottomSheetGood(context, message: message, ref: ref);
                   },
                 ),
                 children: [
@@ -156,22 +158,49 @@ class MessagesPage extends HookConsumerWidget {
     );
   }
 
-  Future<void> _showMyModalBottomSheetBad(BuildContext context,{required Message message,})
+  Future<void> _showMyModalBottomSheetBad(BuildContext context,{required Message message,required WidgetRef ref})
     async {
-      await showModalBottomSheet(
+      final slackRepo = ref.read(slackRepositoryProvider);
+    await showModalBottomSheet(
       context: context,
       builder: (context) => Container(
         height: 506,
         width: 370,
         color: Colors.white,
         child: Center(
-          child: Text(message.positiveReply),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(message.positiveReply),
+              const SizedBox(height: 20), // これにより、テキストとボタンの間にスペースができます
+              Row(
+                children: [
+                  ElevatedButton(
+                    onPressed: () async{
+                      await slackRepo.reply(
+                          text: message.positiveReply,
+                          messageId: '',
+                        );
+                      },
+                    child: const Text('キャンセル'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                    },
+                    child: const Text('決定'),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Future<void> _showMyModalBottomSheetGood(BuildContext context, {required Message message,}) async {
+  Future<void> _showMyModalBottomSheetGood(BuildContext context, {required Message message,required WidgetRef ref})
+  async {
+    final slackRepo = ref.read(slackRepositoryProvider);
   await showModalBottomSheet(
     context: context,
     builder: (context) => Container(
@@ -187,14 +216,17 @@ class MessagesPage extends HookConsumerWidget {
               Row(
                 children: [
                   ElevatedButton(
-                    onPressed: () {
-                      // ボタンの処理をここに書く
-                      Navigator.pop(context); // 例えば、シートを閉じる
-                    },
+                    onPressed: () async{
+                      await slackRepo.reply(
+                          text: message.negativeReply,
+                          messageId: '',
+                        );
+                      },
                     child: const Text('キャンセル'),
                   ),
                   ElevatedButton(
-                    onPressed: reply,
+                    onPressed: () {
+                    },
                     child: const Text('決定'),
                   ),
                 ],
@@ -210,6 +242,4 @@ class MessagesPage extends HookConsumerWidget {
     print('Action $actionType was triggered.');
     // ここで実行したい処理を追加してください。
   }
-
-  void reply() {}
 }
