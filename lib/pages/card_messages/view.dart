@@ -23,9 +23,6 @@ class CardMessagesPage extends HookConsumerWidget {
     }
 
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('メッセージ'),
-      // ),
       body: Padding(
         padding: const EdgeInsets.only(top: 32),
         child: CardSwiper(
