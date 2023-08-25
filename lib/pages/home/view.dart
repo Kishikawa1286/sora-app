@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/pages/card_messages/view.dart';
 import 'package:sora/pages/channel_manage/view.dart';
@@ -20,24 +21,48 @@ class Home extends HookConsumerWidget {
     final currentTab = model.currentTab;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: _getBody(currentTab),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentTab,
-        onTap: viewModel.updateCurrentTab,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.message),
-            label: 'メッセージ',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.view_carousel),
-            label: 'カードメッセージ',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.manage_accounts),
-            label: 'チャンネル管理',
-          ),
-        ],
+      bottomNavigationBar: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+        child: BottomNavigationBar(
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          currentIndex: currentTab,
+          onTap: viewModel.updateCurrentTab,
+          items: [
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                'assets/images/slider-icon/Sora-icon-mono.svg',
+              ),
+              activeIcon: SvgPicture.asset(
+                'assets/images/slider-icon/Sora-icon-color.svg',
+              ),
+              label: 'message',
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                'assets/images/slider-icon/slider-icon-mono.svg',
+              ),
+              activeIcon: SvgPicture.asset(
+                'assets/images/slider-icon/slider-icon-color.svg',
+              ),
+              label: 'カードメッセージ',
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                'assets/images/slider-icon/setting-icon-mono.svg',
+              ),
+              activeIcon: SvgPicture.asset(
+                'assets/images/slider-icon/setting-icon-color.svg',
+              ),
+              label: 'チャンネル管理',
+            ),
+          ],
+        ),
       ),
     );
   }

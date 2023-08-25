@@ -5,10 +5,11 @@ import 'package:sora/repositories/entities/users_collection.dart';
 part 'model.freezed.dart';
 
 @freezed
-abstract class MessagesPageModel with _$MessagesPageModel {
-  const factory MessagesPageModel({
+abstract class CardMessagesPageModel with _$CardMessagesPageModel {
+  const factory CardMessagesPageModel({
     String? userId,
     @Default([]) List<Message?> messages,
     Timestamp? lastMessageCreatedAt,
-  }) = _MessagesPageModel;
+    @Default(0.0) double swipeOffset,
+  }) = _CardMessagesPageModel;
 }
