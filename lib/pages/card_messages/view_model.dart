@@ -25,8 +25,9 @@ class CardMessagesPageViewModel extends StateNotifier<CardMessagesPageModel> {
       if (userId == null) {
         return;
       }
-      _messagesSubscription =
-          _messageRepository.fetchMessages(userId).listen((slackUsers) {
+      _messagesSubscription = _messageRepository
+          .fetchMessagesWithoutReply(userId)
+          .listen((slackUsers) {
         state = state.copyWith(messages: slackUsers);
       });
     });
@@ -46,7 +47,7 @@ class CardMessagesPageViewModel extends StateNotifier<CardMessagesPageModel> {
       return;
     }
     _messagesSubscription = _messageRepository
-        .fetchMessages(userId, startAfter: lastMessageCreatedAt)
+        .fetchMessagesWithoutReply(userId, startAfter: lastMessageCreatedAt)
         .listen((newMessages) {
       if (newMessages.isNotEmpty) {
         state = state.copyWith(
