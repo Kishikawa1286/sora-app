@@ -22,13 +22,21 @@ class CardMessagesPage extends HookConsumerWidget {
     } else if (normalizedOffset < 0) {
       // 左へのスワイプの場合、白からオレンジへの補間
       const red = 255; // Red remains constant for orange
-      final green = lerpValue(255, 115, -normalizedOffset); // Interpolate between 255 and 115 for green
-      final blue = lerpValue(255, 0, -normalizedOffset); // Interpolate between 255 and 0 for blue
+      final green = lerpValue(
+        255,
+        115,
+        -normalizedOffset,
+      ); // Interpolate between 255 and 115 for green
+      final blue = lerpValue(
+        255,
+        0,
+        -normalizedOffset,
+      ); // Interpolate between 255 and 0 for blue
       return Color.fromRGBO(red, green, blue, 1);
     } else {
       return Colors.white;
     }
-    }
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
