@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,6 +23,13 @@ Future<void> main() async {
       );
       if (Platform.isAndroid) {
         await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+      }
+
+      // ユーザーがログインしている場合、ログアウトします。
+      // TODO: デバッグ用なので本番では削除する
+      final auth = FirebaseAuth.instance;
+      if (auth.currentUser != null) {
+        await auth.signOut();
       }
 
       runApp(

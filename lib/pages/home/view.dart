@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/pages/card_messages/view.dart';
+import 'package:sora/pages/card_messages/view_model.dart';
 import 'package:sora/pages/channel_manage/view.dart';
 import 'package:sora/pages/home/view_model.dart';
 import 'package:sora/pages/messages/view.dart';
@@ -14,14 +15,57 @@ class Home extends HookConsumerWidget {
 
   final int tab;
 
+  Color _calculateBackgroundColor(BuildContext context, double offset) {
+    const maxOffset = 350.0;
+    final normalizedOffset = (offset / maxOffset).clamp(-1.0, 1.0);
+
+    int lerpValue(int start, int end, double fraction) =>
+        (start + (end - start) * fraction).toInt();
+
+    final defaultColor = Theme.of(context).colorScheme.background;
+
+    const targetColorRight = Colors.orange; // Target color for right swipe
+    const targetColorLeft = Colors.blue; // Target color for left swipe
+
+    if (normalizedOffset > 0) {
+      final red =
+          lerpValue(defaultColor.red, targetColorRight.red, normalizedOffset);
+      final green = lerpValue(
+        defaultColor.green,
+        targetColorRight.green,
+        normalizedOffset,
+      );
+      final blue =
+          lerpValue(defaultColor.blue, targetColorRight.blue, normalizedOffset);
+      return Color.fromRGBO(red, green, blue, 1);
+    } else if (normalizedOffset < 0) {
+      final red =
+          lerpValue(defaultColor.red, targetColorLeft.red, -normalizedOffset);
+      final green = lerpValue(
+        defaultColor.green,
+        targetColorLeft.green,
+        -normalizedOffset,
+      );
+      final blue =
+          lerpValue(defaultColor.blue, targetColorLeft.blue, -normalizedOffset);
+      return Color.fromRGBO(red, green, blue, 1);
+    } else {
+      return defaultColor;
+    }
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.watch(homeViewModelProvider(tab).notifier);
     final model = ref.watch(homeViewModelProvider(tab));
     final currentTab = model.currentTab;
 
+    final cardModel = ref.watch(CardMessagesPageViewModelProvider);
+    final scaffoldBackgroundColor =
+        _calculateBackgroundColor(context, cardModel.swipeOffset);
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: scaffoldBackgroundColor,
       body: _getBody(currentTab),
       bottomNavigationBar: ClipRRect(
         borderRadius: const BorderRadius.only(
