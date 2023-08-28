@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/pages/channel_manage/view_model.dart';
 import 'package:sora/repositories/entities/users_collection.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ChannelManagePage extends HookConsumerWidget {
   const ChannelManagePage({super.key});
@@ -96,6 +97,21 @@ class ChannelManagePage extends HookConsumerWidget {
                     ),
                   ],
                 ),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  final url = Uri.parse('https://forms.gle/65SnZ7bRrBUisdNTA');
+                  if (await canLaunchUrl(url)) {
+                    await launchUrl(url);
+                  } else {
+                    throw Exception('Could not launch $url');
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.red, // ボタンのテキスト色
+                ),
+                child: const Text('アカウント削除'),
               ),
             ],
           ),
