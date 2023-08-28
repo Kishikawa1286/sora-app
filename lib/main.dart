@@ -33,7 +33,7 @@ Future<void> main() async {
             theme: ThemeData(
               useMaterial3: true,
               colorScheme: lightColorScheme,
-              fontFamily: 'Noto_Sans_JP',
+              fontFamily: 'NotoSansJP',
             ),
             darkTheme:
                 ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
