@@ -30,7 +30,6 @@ class ChannelManagePage extends HookConsumerWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 20,
-                        fontFamily: 'NotoSansJP',
                       ),
                     ),
                   ],
@@ -49,7 +48,6 @@ class ChannelManagePage extends HookConsumerWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 20,
-                        fontFamily: 'NotoSansJP',
                       ),
                     ),
                   ],
@@ -66,7 +64,6 @@ class ChannelManagePage extends HookConsumerWidget {
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 20,
-                              fontFamily: 'NotoSansJP',
                             ),
                           ),
                         ),
@@ -95,7 +92,6 @@ class ChannelManagePage extends HookConsumerWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 20,
-                        fontFamily: 'NotoSansJP',
                       ),
                     ),
                   ],
@@ -133,7 +129,6 @@ class SlackUserTile extends StatelessWidget {
         title: Text(
           slackUser.slackTeamName,
           style: const TextStyle(
-            fontFamily: 'NotoSansJP',
             fontWeight: FontWeight.w500,
             fontSize: 16,
           ),
@@ -141,7 +136,6 @@ class SlackUserTile extends StatelessWidget {
         subtitle: Text(
           'ワークスペースID: ${slackUser.slackTeamId}',
           style: const TextStyle(
-            fontFamily: 'NotoSansJP',
             fontWeight: FontWeight.w400,
             fontSize: 12,
           ),
