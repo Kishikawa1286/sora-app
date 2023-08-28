@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sora/pages/channel_manage/slack_verification_modal/view.dart';
 import 'package:sora/pages/channel_manage/view_model.dart';
+import 'package:sora/repositories/entities/users_collection.dart';
 
 class ChannelManagePage extends HookConsumerWidget {
-  const ChannelManagePage({Key? key}) : super(key: key);
+  const ChannelManagePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -21,7 +21,7 @@ class ChannelManagePage extends HookConsumerWidget {
                 title: Row(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 8, bottom: 0),
+                      padding: EdgeInsets.only(left: 8),
                       child: Icon(Icons.account_circle, size: 36),
                     ),
                     SizedBox(width: 16),
@@ -35,32 +35,12 @@ class ChannelManagePage extends HookConsumerWidget {
                     ),
                   ],
                 ),
-                // children: [
-                //   ListTile(
-                //       title: Column(
-                //     children: [
-                //       Container(
-                //         child: const Text('test'),
-                //       ),
-                //       // TextButton(
-                //       //   onPressed: () {},
-                //       //   style: ElevatedButton.styleFrom(
-                //       //     primary: const Color(0x22005D),
-                //       //     elevation: 16,
-                //       //   ),
-                //       //   child: Text('enabled'),
-                //       // ),
-                //       Container(child: const Text("新しいアカウントを作成")),
-                //     ],
-                //   ))
-                // ],
               ),
               ExpansionTile(
                 title: const Row(
                   children: [
                     Padding(
-                      padding:
-                          EdgeInsets.only(top: 0.0, left: 8.0, bottom: 0.0),
+                      padding: EdgeInsets.only(left: 8),
                       child: Icon(Icons.question_answer, size: 36),
                     ),
                     SizedBox(width: 16),
@@ -78,8 +58,7 @@ class ChannelManagePage extends HookConsumerWidget {
                   const Row(
                     children: [
                       Padding(
-                        padding:
-                            EdgeInsets.only(top: 0.0, left: 24.0, bottom: 0.0),
+                        padding: EdgeInsets.only(left: 24),
                         child: Opacity(
                           opacity: 0.3,
                           child: Text(
@@ -99,15 +78,15 @@ class ChannelManagePage extends HookConsumerWidget {
                       title: Text('登録されているユーザー情報はありません。'),
                     ),
                   ...slackUsers
-                      .map((slackUser) => SlackUserTile(slackUser: slackUser))
-                      .toList(),
+                      .where((slackUser) => slackUser != null)
+                      .map((slackUser) => SlackUserTile(slackUser: slackUser!)),
                 ],
               ),
               const ExpansionTile(
                 title: Row(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: 0.0, left: 8.0),
+                      padding: EdgeInsets.only(left: 8),
                       child: Icon(Icons.pending, size: 36),
                     ),
                     SizedBox(width: 16),
@@ -126,29 +105,20 @@ class ChannelManagePage extends HookConsumerWidget {
           ),
         ),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () async {
-      //     await showSlackVerificationModal(context);
-      //   },
-      //   tooltip: 'アカウントを追加',
-      //   child: const Icon(Icons.add),
-      // ),
     );
   }
 }
 
 class SlackUserTile extends StatelessWidget {
-  final slackUser;
-
-  SlackUserTile({required this.slackUser});
+  const SlackUserTile({required this.slackUser, super.key});
+  final SlackUser slackUser;
 
   @override
   Widget build(BuildContext context) {
-    final slackTeamIconUrl = slackUser?.slackTeamIconUrl;
+    final slackTeamIconUrl = slackUser.slackTeamIconUrl;
 
     return Padding(
-      padding:
-          const EdgeInsets.only(top: 6.0, left: 32.0, right: 8.0, bottom: 6.0),
+      padding: const EdgeInsets.only(top: 6, left: 32, right: 8, bottom: 6),
       child: ListTile(
         leading: slackTeamIconUrl != null
             ? ClipRRect(
