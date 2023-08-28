@@ -10,6 +10,7 @@ class ChannelManagePage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final model = ref.watch(channelManagePageViewModelProvider);
+    final viewModel = ref.watch(channelManagePageViewModelProvider.notifier);
     final slackUsers = model.slackUsers;
 
     return Scaffold(
@@ -112,6 +113,16 @@ class ChannelManagePage extends HookConsumerWidget {
                   backgroundColor: Colors.red, // ボタンのテキスト色
                 ),
                 child: const Text('アカウント削除'),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  await viewModel.signOut();
+                },
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.red,
+                  backgroundColor: Colors.white, // ボタンのテキスト色
+                ),
+                child: const Text('ログアウト'),
               ),
             ],
           ),
