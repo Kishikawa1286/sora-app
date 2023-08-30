@@ -31,6 +31,10 @@ class ChannelManagePageViewModel extends StateNotifier<ChannelManagePageModel> {
   late final StreamSubscription<String?> _userIdStateSubscription;
   late final StreamSubscription<List<SlackUser?>> _slackUsersSubscription;
 
+  Future<void> signOut() async {
+    await _authRepository.signOut();
+  }
+
   @override
   Future<void> dispose() async {
     await _userIdStateSubscription.cancel();
