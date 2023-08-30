@@ -7280,8 +7280,12 @@ abstract class SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue slackChannelIdFieldValue,
     String slackChannelName,
     FieldValue slackChannelNameFieldValue,
-    String slackThreadTs,
+    String slackTs,
+    FieldValue slackTsFieldValue,
+    String? slackThreadTs,
     FieldValue slackThreadTsFieldValue,
+    String event,
+    FieldValue eventFieldValue,
     Timestamp createdAt,
     FieldValue createdAtFieldValue,
     Timestamp lastUpdatedAt,
@@ -7331,8 +7335,12 @@ abstract class SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue slackChannelIdFieldValue,
     String slackChannelName,
     FieldValue slackChannelNameFieldValue,
-    String slackThreadTs,
+    String slackTs,
+    FieldValue slackTsFieldValue,
+    String? slackThreadTs,
     FieldValue slackThreadTsFieldValue,
+    String event,
+    FieldValue eventFieldValue,
     Timestamp createdAt,
     FieldValue createdAtFieldValue,
     Timestamp lastUpdatedAt,
@@ -7412,8 +7420,12 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue? slackChannelIdFieldValue,
     Object? slackChannelName = _sentinel,
     FieldValue? slackChannelNameFieldValue,
+    Object? slackTs = _sentinel,
+    FieldValue? slackTsFieldValue,
     Object? slackThreadTs = _sentinel,
     FieldValue? slackThreadTsFieldValue,
+    Object? event = _sentinel,
+    FieldValue? eventFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
     Object? lastUpdatedAt = _sentinel,
@@ -7496,8 +7508,16 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both slackChannelName and slackChannelNameFieldValue",
     );
     assert(
+      slackTs == _sentinel || slackTsFieldValue == null,
+      "Cannot specify both slackTs and slackTsFieldValue",
+    );
+    assert(
       slackThreadTs == _sentinel || slackThreadTsFieldValue == null,
       "Cannot specify both slackThreadTs and slackThreadTsFieldValue",
+    );
+    assert(
+      event == _sentinel || eventFieldValue == null,
+      "Cannot specify both event and eventFieldValue",
     );
     assert(
       createdAt == _sentinel || createdAtFieldValue == null,
@@ -7585,10 +7605,17 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
         _$SlackMessageFieldMap['slackChannelName']!: slackChannelName as String,
       if (slackChannelNameFieldValue != null)
         _$SlackMessageFieldMap['slackChannelName']!: slackChannelNameFieldValue,
+      if (slackTs != _sentinel)
+        _$SlackMessageFieldMap['slackTs']!: slackTs as String,
+      if (slackTsFieldValue != null)
+        _$SlackMessageFieldMap['slackTs']!: slackTsFieldValue,
       if (slackThreadTs != _sentinel)
-        _$SlackMessageFieldMap['slackThreadTs']!: slackThreadTs as String,
+        _$SlackMessageFieldMap['slackThreadTs']!: slackThreadTs as String?,
       if (slackThreadTsFieldValue != null)
         _$SlackMessageFieldMap['slackThreadTs']!: slackThreadTsFieldValue,
+      if (event != _sentinel) _$SlackMessageFieldMap['event']!: event as String,
+      if (eventFieldValue != null)
+        _$SlackMessageFieldMap['event']!: eventFieldValue,
       if (createdAt != _sentinel)
         _$SlackMessageFieldMap['createdAt']!: createdAt as Timestamp,
       if (createdAtFieldValue != null)
@@ -7642,8 +7669,12 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue? slackChannelIdFieldValue,
     Object? slackChannelName = _sentinel,
     FieldValue? slackChannelNameFieldValue,
+    Object? slackTs = _sentinel,
+    FieldValue? slackTsFieldValue,
     Object? slackThreadTs = _sentinel,
     FieldValue? slackThreadTsFieldValue,
+    Object? event = _sentinel,
+    FieldValue? eventFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
     Object? lastUpdatedAt = _sentinel,
@@ -7726,8 +7757,16 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both slackChannelName and slackChannelNameFieldValue",
     );
     assert(
+      slackTs == _sentinel || slackTsFieldValue == null,
+      "Cannot specify both slackTs and slackTsFieldValue",
+    );
+    assert(
       slackThreadTs == _sentinel || slackThreadTsFieldValue == null,
       "Cannot specify both slackThreadTs and slackThreadTsFieldValue",
+    );
+    assert(
+      event == _sentinel || eventFieldValue == null,
+      "Cannot specify both event and eventFieldValue",
     );
     assert(
       createdAt == _sentinel || createdAtFieldValue == null,
@@ -7815,10 +7854,17 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
         _$SlackMessageFieldMap['slackChannelName']!: slackChannelName as String,
       if (slackChannelNameFieldValue != null)
         _$SlackMessageFieldMap['slackChannelName']!: slackChannelNameFieldValue,
+      if (slackTs != _sentinel)
+        _$SlackMessageFieldMap['slackTs']!: slackTs as String,
+      if (slackTsFieldValue != null)
+        _$SlackMessageFieldMap['slackTs']!: slackTsFieldValue,
       if (slackThreadTs != _sentinel)
-        _$SlackMessageFieldMap['slackThreadTs']!: slackThreadTs as String,
+        _$SlackMessageFieldMap['slackThreadTs']!: slackThreadTs as String?,
       if (slackThreadTsFieldValue != null)
         _$SlackMessageFieldMap['slackThreadTs']!: slackThreadTsFieldValue,
+      if (event != _sentinel) _$SlackMessageFieldMap['event']!: event as String,
+      if (eventFieldValue != null)
+        _$SlackMessageFieldMap['event']!: eventFieldValue,
       if (createdAt != _sentinel)
         _$SlackMessageFieldMap['createdAt']!: createdAt as Timestamp,
       if (createdAtFieldValue != null)
@@ -8137,7 +8183,29 @@ abstract class SlackMessageQuery
     List<String>? whereIn,
     List<String>? whereNotIn,
   });
+  SlackMessageQuery whereSlackTs({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  });
   SlackMessageQuery whereSlackThreadTs({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  });
+  SlackMessageQuery whereEvent({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -8411,7 +8479,31 @@ abstract class SlackMessageQuery
     SlackMessageDocumentSnapshot? startAfterDocument,
   });
 
+  SlackMessageQuery orderBySlackTs({
+    bool descending = false,
+    String startAt,
+    String startAfter,
+    String endAt,
+    String endBefore,
+    SlackMessageDocumentSnapshot? startAtDocument,
+    SlackMessageDocumentSnapshot? endAtDocument,
+    SlackMessageDocumentSnapshot? endBeforeDocument,
+    SlackMessageDocumentSnapshot? startAfterDocument,
+  });
+
   SlackMessageQuery orderBySlackThreadTs({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    SlackMessageDocumentSnapshot? startAtDocument,
+    SlackMessageDocumentSnapshot? endAtDocument,
+    SlackMessageDocumentSnapshot? endBeforeDocument,
+    SlackMessageDocumentSnapshot? startAfterDocument,
+  });
+
+  SlackMessageQuery orderByEvent({
     bool descending = false,
     String startAt,
     String startAfter,
@@ -9180,7 +9272,7 @@ class _$SlackMessageQuery
     );
   }
 
-  SlackMessageQuery whereSlackThreadTs({
+  SlackMessageQuery whereSlackTs({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -9194,7 +9286,65 @@ class _$SlackMessageQuery
     return _$SlackMessageQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SlackMessageFieldMap['slackTs']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  SlackMessageQuery whereSlackThreadTs({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  }) {
+    return _$SlackMessageQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$SlackMessageFieldMap['slackThreadTs']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  SlackMessageQuery whereEvent({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+  }) {
+    return _$SlackMessageQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SlackMessageFieldMap['event']!,
         isEqualTo: isEqualTo,
         isNotEqualTo: isNotEqualTo,
         isLessThan: isLessThan,
@@ -10717,6 +10867,78 @@ class _$SlackMessageQuery
     );
   }
 
+  SlackMessageQuery orderBySlackTs({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SlackMessageDocumentSnapshot? startAtDocument,
+    SlackMessageDocumentSnapshot? endAtDocument,
+    SlackMessageDocumentSnapshot? endBeforeDocument,
+    SlackMessageDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$SlackMessageFieldMap['slackTs']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SlackMessageQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
   SlackMessageQuery orderBySlackThreadTs({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -10731,6 +10953,78 @@ class _$SlackMessageQuery
     final query = $referenceWithoutCursor.orderBy(
         _$SlackMessageFieldMap['slackThreadTs']!,
         descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SlackMessageQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  SlackMessageQuery orderByEvent({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SlackMessageDocumentSnapshot? startAtDocument,
+    SlackMessageDocumentSnapshot? endAtDocument,
+    SlackMessageDocumentSnapshot? endBeforeDocument,
+    SlackMessageDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$SlackMessageFieldMap['event']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -15299,7 +15593,9 @@ SlackMessage _$SlackMessageFromJson(Map<String, dynamic> json) => SlackMessage(
       slackSenderUserId: json['slack_sender_user_id'] as String,
       slackChannelId: json['slack_channel_id'] as String,
       slackChannelName: json['slack_channel_name'] as String,
-      slackThreadTs: json['slack_thread_ts'] as String,
+      slackTs: json['slack_ts'] as String,
+      slackThreadTs: json['slack_thread_ts'] as String?,
+      event: json['event'] as String,
       createdAt: const FirestoreTimestampConverter()
           .fromJson(json['created_at'] as Timestamp),
       lastUpdatedAt: const FirestoreTimestampConverter()
@@ -15326,7 +15622,9 @@ const _$SlackMessageFieldMap = <String, String>{
   'slackSenderUserId': 'slack_sender_user_id',
   'slackChannelId': 'slack_channel_id',
   'slackChannelName': 'slack_channel_name',
+  'slackTs': 'slack_ts',
   'slackThreadTs': 'slack_thread_ts',
+  'event': 'event',
   'createdAt': 'created_at',
   'lastUpdatedAt': 'last_updated_at',
 };
@@ -15352,7 +15650,9 @@ Map<String, dynamic> _$SlackMessageToJson(SlackMessage instance) =>
       'slack_sender_user_id': instance.slackSenderUserId,
       'slack_channel_id': instance.slackChannelId,
       'slack_channel_name': instance.slackChannelName,
+      'slack_ts': instance.slackTs,
       'slack_thread_ts': instance.slackThreadTs,
+      'event': instance.event,
       'created_at':
           const FirestoreTimestampConverter().toJson(instance.createdAt),
       'last_updated_at':

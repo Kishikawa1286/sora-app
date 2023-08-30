@@ -149,7 +149,9 @@ class SlackMessage {
     required this.slackSenderUserId,
     required this.slackChannelId,
     required this.slackChannelName,
+    required this.slackTs,
     required this.slackThreadTs,
+    required this.event,
     required this.createdAt,
     required this.lastUpdatedAt,
   });
@@ -189,8 +191,12 @@ class SlackMessage {
   final String slackChannelId;
   @JsonKey(name: 'slack_channel_name')
   final String slackChannelName;
+  @JsonKey(name: 'slack_ts')
+  final String slackTs;
   @JsonKey(name: 'slack_thread_ts')
-  final String slackThreadTs;
+  final String? slackThreadTs;
+  @JsonKey(name: 'event')
+  final String event;
   @JsonKey(name: 'created_at')
   final Timestamp createdAt;
   @JsonKey(name: 'last_updated_at')
