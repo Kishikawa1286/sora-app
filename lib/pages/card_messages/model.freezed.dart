@@ -19,7 +19,7 @@ mixin _$CardMessagesPageModel {
   String? get userId => throw _privateConstructorUsedError;
   List<Message?> get messages => throw _privateConstructorUsedError;
   Timestamp? get lastMessageCreatedAt => throw _privateConstructorUsedError;
-  double get swipeOffset => throw _privateConstructorUsedError;
+  List<String> get dismissedMessageIds => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CardMessagesPageModelCopyWith<CardMessagesPageModel> get copyWith =>
@@ -36,7 +36,7 @@ abstract class $CardMessagesPageModelCopyWith<$Res> {
       {String? userId,
       List<Message?> messages,
       Timestamp? lastMessageCreatedAt,
-      double swipeOffset});
+      List<String> dismissedMessageIds});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$CardMessagesPageModelCopyWithImpl<$Res,
     Object? userId = freezed,
     Object? messages = null,
     Object? lastMessageCreatedAt = freezed,
-    Object? swipeOffset = null,
+    Object? dismissedMessageIds = null,
   }) {
     return _then(_value.copyWith(
       userId: freezed == userId
@@ -71,10 +71,10 @@ class _$CardMessagesPageModelCopyWithImpl<$Res,
           ? _value.lastMessageCreatedAt
           : lastMessageCreatedAt // ignore: cast_nullable_to_non_nullable
               as Timestamp?,
-      swipeOffset: null == swipeOffset
-          ? _value.swipeOffset
-          : swipeOffset // ignore: cast_nullable_to_non_nullable
-              as double,
+      dismissedMessageIds: null == dismissedMessageIds
+          ? _value.dismissedMessageIds
+          : dismissedMessageIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -91,7 +91,7 @@ abstract class _$$_CardMessagesPageModelCopyWith<$Res>
       {String? userId,
       List<Message?> messages,
       Timestamp? lastMessageCreatedAt,
-      double swipeOffset});
+      List<String> dismissedMessageIds});
 }
 
 /// @nodoc
@@ -108,7 +108,7 @@ class __$$_CardMessagesPageModelCopyWithImpl<$Res>
     Object? userId = freezed,
     Object? messages = null,
     Object? lastMessageCreatedAt = freezed,
-    Object? swipeOffset = null,
+    Object? dismissedMessageIds = null,
   }) {
     return _then(_$_CardMessagesPageModel(
       userId: freezed == userId
@@ -123,10 +123,10 @@ class __$$_CardMessagesPageModelCopyWithImpl<$Res>
           ? _value.lastMessageCreatedAt
           : lastMessageCreatedAt // ignore: cast_nullable_to_non_nullable
               as Timestamp?,
-      swipeOffset: null == swipeOffset
-          ? _value.swipeOffset
-          : swipeOffset // ignore: cast_nullable_to_non_nullable
-              as double,
+      dismissedMessageIds: null == dismissedMessageIds
+          ? _value._dismissedMessageIds
+          : dismissedMessageIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -138,8 +138,9 @@ class _$_CardMessagesPageModel implements _CardMessagesPageModel {
       {this.userId,
       final List<Message?> messages = const [],
       this.lastMessageCreatedAt,
-      this.swipeOffset = 0.0})
-      : _messages = messages;
+      final List<String> dismissedMessageIds = const []})
+      : _messages = messages,
+        _dismissedMessageIds = dismissedMessageIds;
 
   @override
   final String? userId;
@@ -154,13 +155,19 @@ class _$_CardMessagesPageModel implements _CardMessagesPageModel {
 
   @override
   final Timestamp? lastMessageCreatedAt;
+  final List<String> _dismissedMessageIds;
   @override
   @JsonKey()
-  final double swipeOffset;
+  List<String> get dismissedMessageIds {
+    if (_dismissedMessageIds is EqualUnmodifiableListView)
+      return _dismissedMessageIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_dismissedMessageIds);
+  }
 
   @override
   String toString() {
-    return 'CardMessagesPageModel(userId: $userId, messages: $messages, lastMessageCreatedAt: $lastMessageCreatedAt, swipeOffset: $swipeOffset)';
+    return 'CardMessagesPageModel(userId: $userId, messages: $messages, lastMessageCreatedAt: $lastMessageCreatedAt, dismissedMessageIds: $dismissedMessageIds)';
   }
 
   @override
@@ -172,8 +179,8 @@ class _$_CardMessagesPageModel implements _CardMessagesPageModel {
             const DeepCollectionEquality().equals(other._messages, _messages) &&
             (identical(other.lastMessageCreatedAt, lastMessageCreatedAt) ||
                 other.lastMessageCreatedAt == lastMessageCreatedAt) &&
-            (identical(other.swipeOffset, swipeOffset) ||
-                other.swipeOffset == swipeOffset));
+            const DeepCollectionEquality()
+                .equals(other._dismissedMessageIds, _dismissedMessageIds));
   }
 
   @override
@@ -182,7 +189,7 @@ class _$_CardMessagesPageModel implements _CardMessagesPageModel {
       userId,
       const DeepCollectionEquality().hash(_messages),
       lastMessageCreatedAt,
-      swipeOffset);
+      const DeepCollectionEquality().hash(_dismissedMessageIds));
 
   @JsonKey(ignore: true)
   @override
@@ -197,7 +204,7 @@ abstract class _CardMessagesPageModel implements CardMessagesPageModel {
       {final String? userId,
       final List<Message?> messages,
       final Timestamp? lastMessageCreatedAt,
-      final double swipeOffset}) = _$_CardMessagesPageModel;
+      final List<String> dismissedMessageIds}) = _$_CardMessagesPageModel;
 
   @override
   String? get userId;
@@ -206,7 +213,7 @@ abstract class _CardMessagesPageModel implements CardMessagesPageModel {
   @override
   Timestamp? get lastMessageCreatedAt;
   @override
-  double get swipeOffset;
+  List<String> get dismissedMessageIds;
   @override
   @JsonKey(ignore: true)
   _$$_CardMessagesPageModelCopyWith<_$_CardMessagesPageModel> get copyWith =>

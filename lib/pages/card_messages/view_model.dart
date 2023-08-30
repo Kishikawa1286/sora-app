@@ -27,8 +27,8 @@ class CardMessagesPageViewModel extends StateNotifier<CardMessagesPageModel> {
       }
       _messagesSubscription = _messageRepository
           .fetchMessagesWithoutReply(userId)
-          .listen((slackUsers) {
-        state = state.copyWith(messages: slackUsers);
+          .listen((messages) {
+        state = state.copyWith(messages: messages);
       });
     });
   }
@@ -58,52 +58,59 @@ class CardMessagesPageViewModel extends StateNotifier<CardMessagesPageModel> {
     });
   }
 
-  void updateSwipeOffset(double delta) {
-    final newOffset = state.swipeOffset + delta;
-    state = state.copyWith(swipeOffset: newOffset);
+  void _dissmissMessage(String messageId) {
+    final dismissedMessageIds = state.dismissedMessageIds;
+    if (dismissedMessageIds.contains(messageId)) {
+      return;
+    }
+    state = state.copyWith(
+      dismissedMessageIds: [...dismissedMessageIds, messageId],
+    );
   }
 
-  void resetSwipeOffset() {
-    state = state.copyWith(swipeOffset: 0);
-  }
-
-  Future<bool> onSwipe(
+  bool onSwipe(
     int previousIndex,
     int? currentIndex,
     CardSwiperDirection direction,
-  ) async {
+  ) {
     debugPrint(
       'The card $previousIndex was swiped to the ${direction.name}. Now the card $currentIndex is on top',
     );
-    if (direction.name == 'right' &&
-        currentIndex != null &&
-        currentIndex >= 0 &&
-        currentIndex < state.messages.length) {
-      final replayMessage = state.messages[currentIndex]?.negativeReply;
-      final messageId = state.messages[currentIndex]?.id;
-      if (replayMessage == null || messageId == null) {
-        return false;
-      }
+
+    if (state.messages.isEmpty) {
+      return false;
+    }
+
+    if (previousIndex < 0 || previousIndex >= state.messages.length) {
+      return false;
+    }
+
+    final previousMessage = state.messages[previousIndex];
+    if (previousMessage == null) {
+      return false;
+    }
+
+    _dissmissMessage(previousMessage.id);
+
+    if (direction.name == 'right') {
+      final replayMessage = previousMessage.negativeReply;
+      final messageId = previousMessage.id;
       debugPrint('Replay message: $replayMessage to $messageId');
-      await _slackRepository.reply(text: replayMessage, messageId: messageId);
+      unawaited(
+        _slackRepository.reply(text: replayMessage, messageId: messageId),
+      );
     }
-    if (direction.name == 'left' &&
-        currentIndex != null &&
-        currentIndex >= 0 &&
-        currentIndex < state.messages.length) {
-      final replayMessage = state.messages[currentIndex]?.positiveReply;
-      final messageId = state.messages[currentIndex]?.id;
-      if (replayMessage == null || messageId == null) {
-        return false;
-      }
+
+    if (direction.name == 'left') {
+      final replayMessage = previousMessage.positiveReply;
+      final messageId = previousMessage.id;
       debugPrint('Replay message: $replayMessage to $messageId');
-      await _slackRepository.reply(text: replayMessage, messageId: messageId);
+      unawaited(
+        _slackRepository.reply(text: replayMessage, messageId: messageId),
+      );
     }
-    if (currentIndex != null &&
-        currentIndex >= 0 &&
-        currentIndex < state.messages.length) {
-      debugPrint('Current message: ${state.messages[currentIndex]?.summary}');
-    }
+
+    debugPrint('Current message: ${previousMessage.summary}');
     return true;
   }
 
