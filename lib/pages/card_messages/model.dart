@@ -10,6 +10,5 @@ abstract class CardMessagesPageModel with _$CardMessagesPageModel {
     String? userId,
     @Default([]) List<Message?> messages,
     Timestamp? lastMessageCreatedAt,
-    @Default([]) List<String> dismissedMessageIds,
   }) = _CardMessagesPageModel;
 }

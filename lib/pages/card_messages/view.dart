@@ -33,7 +33,6 @@ class CardMessagesPage extends HookConsumerWidget {
         child: Padding(
           padding: const EdgeInsets.only(top: 32),
           child: CardSwiper(
-            duration: Duration.zero,
             isLoop: false,
             allowedSwipeDirection:
                 AllowedSwipeDirection.only(right: true, left: true),
@@ -52,9 +51,6 @@ class CardMessagesPage extends HookConsumerWidget {
               }
               final message = messages[index];
               if (message == null) {
-                return const SizedBox.shrink();
-              }
-              if (model.dismissedMessageIds.contains(message.id)) {
                 return const SizedBox.shrink();
               }
               final iconUrl = message.senderIconUrl;

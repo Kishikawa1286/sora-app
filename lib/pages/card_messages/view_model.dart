@@ -58,16 +58,6 @@ class CardMessagesPageViewModel extends StateNotifier<CardMessagesPageModel> {
     });
   }
 
-  void _dissmissMessage(String messageId) {
-    final dismissedMessageIds = state.dismissedMessageIds;
-    if (dismissedMessageIds.contains(messageId)) {
-      return;
-    }
-    state = state.copyWith(
-      dismissedMessageIds: [...dismissedMessageIds, messageId],
-    );
-  }
-
   bool onSwipe(
     int previousIndex,
     int? currentIndex,
@@ -89,8 +79,6 @@ class CardMessagesPageViewModel extends StateNotifier<CardMessagesPageModel> {
     if (previousMessage == null) {
       return false;
     }
-
-    _dissmissMessage(previousMessage.id);
 
     if (direction.name == 'right') {
       final replayMessage = previousMessage.negativeReply;
