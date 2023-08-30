@@ -5,7 +5,7 @@ import 'package:sora/repositories/auth_repository/auth_repository.dart';
 import 'package:sora/repositories/entities/auth_result.dart';
 
 final signInPageViewModelProvider =
-    StateNotifierProvider<SignInPageViewModel, SignInPageModel>(
+    StateNotifierProvider.autoDispose<SignInPageViewModel, SignInPageModel>(
   SignInPageViewModel.new,
 );
 
