@@ -3,6 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/pages/messages/reply_modal/view.dart';
 import 'package:sora/pages/messages/view_model.dart';
+import 'package:sora/services/home_tab/service.dart';
 
 import 'package:sora/utils/format/date_formatting.dart';
 
@@ -14,6 +15,8 @@ class MessagesPage extends HookConsumerWidget {
     final viewModel = ref.watch(messagesPageViewModelProvider.notifier);
     final model = ref.watch(messagesPageViewModelProvider);
     final messages = model.messages;
+
+    final homeTabService = ref.watch(homeTabServiceProvider.notifier);
 
     if (messages.isEmpty) {
       return Scaffold(
@@ -81,11 +84,14 @@ class MessagesPage extends HookConsumerWidget {
                 dismissible: DismissiblePane(
                   onDismissed: () async {
                     viewModel.dissmissMessage(index);
-                    await showReplyModal(
-                      context,
-                      messageId: message.id,
-                      text: message.negativeReply,
-                      onCanceled: () => viewModel.undissmissMessage(index),
+                    await homeTabService.runWithLoading(
+                      () async => showReplyModal(
+                        context,
+                        messageId: message.id,
+                        text: message.negativeReply,
+                        onCanceled: () => viewModel.undissmissMessage(index),
+                      ),
+                      onLoading: () => {},
                     );
                   },
                 ),
@@ -105,11 +111,14 @@ class MessagesPage extends HookConsumerWidget {
                 dismissible: DismissiblePane(
                   onDismissed: () async {
                     viewModel.dissmissMessage(index);
-                    await showReplyModal(
-                      context,
-                      messageId: message.id,
-                      text: message.positiveReply,
-                      onCanceled: () => viewModel.undissmissMessage(index),
+                    await homeTabService.runWithLoading(
+                      () async => showReplyModal(
+                        context,
+                        messageId: message.id,
+                        text: message.positiveReply,
+                        onCanceled: () => viewModel.undissmissMessage(index),
+                      ),
+                      onLoading: () => {},
                     );
                   },
                 ),

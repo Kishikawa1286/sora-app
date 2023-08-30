@@ -35,7 +35,7 @@ class CardMessagesPageViewModel extends StateNotifier<CardMessagesPageModel> {
 
   final AuthRepositoryBase _authRepository;
   final MessageRepositoryBase _messageRepository;
-  final SlackRepository _slackRepository;
+  final SlackRepositoryBase _slackRepository;
 
   late final StreamSubscription<String?> _userIdStateSubscription;
   late final StreamSubscription<List<Message?>> _messagesSubscription;
