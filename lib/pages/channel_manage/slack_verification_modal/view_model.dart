@@ -1,6 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/pages/channel_manage/slack_verification_modal/model.dart';
-import 'package:sora/repositories/slack_repository.dart';
+import 'package:sora/repositories/slack_repository/slack_repository.dart';
 
 final slackVerificationModalViewModelProvider =
     StateNotifierProvider.autoDispose<SlackVerificationModalViewModel,

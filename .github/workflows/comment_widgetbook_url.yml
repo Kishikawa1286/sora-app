@@ -1,0 +1,29 @@
+name: Comment on PR with Widgetbook URL
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Comment PR with URL
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GH_PAT }}
+          script: |
+            const PR_ID = context.payload.pull_request.number;
+            const REPO_NAME = context.repo.repo;
+            const USERNAME = context.repo.owner;
+            const BASE_URL = `https://${USERNAME}.github.io/${REPO_NAME}/${PR_ID}/`;
+            github.rest.issues.createComment({
+              issue_number: PR_ID,
+              owner: context.repo.owner,
+              repo: REPO_NAME,
+              body: `<h2><a href="https://Kishikawa1286.github.io/sora-app/47/"><img src="https://raw.githubusercontent.com/widgetbook/widgetbook/main/docs/assets/logos/logo-light.png" height="28">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>Open in Widgetbook</sup></a></h2>`
+            });

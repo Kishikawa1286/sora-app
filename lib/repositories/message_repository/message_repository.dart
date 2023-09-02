@@ -21,7 +21,7 @@ abstract class MessageRepositoryBase {
   Stream<SlackSender?> fetchSlackSender(String userId, String senderId);
 }
 
-final messageRepositoryProvider = Provider<MessageRepository>(
+final messageRepositoryProvider = Provider<MessageRepositoryBase>(
   (ref) => MessageRepository(
     ref.read(firestoreHelperProvider),
   ),

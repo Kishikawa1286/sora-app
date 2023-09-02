@@ -35,8 +35,11 @@ Future<void> main() async {
               colorScheme: lightColorScheme,
               fontFamily: 'NotoSansJP',
             ),
-            darkTheme:
-                ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
+            darkTheme: ThemeData(
+              useMaterial3: true,
+              colorScheme: darkColorScheme,
+              fontFamily: 'NotoSansJP',
+            ),
           ),
         ),
       );

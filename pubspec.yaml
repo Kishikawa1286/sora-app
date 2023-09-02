@@ -28,9 +28,11 @@ dependencies:
   markdown: 7.1.1
   markdown_widget: 2.2.0
   url_launcher: 6.1.12
+  widgetbook: ^3.2.0
+  widgetbook_annotation: ^3.0.0
 
 dev_dependencies:
-  build_runner: ^2.4.5
+  build_runner: ^2.4.6
   cloud_firestore_odm_generator: ^1.0.0-dev.65
   flutter_launcher_icons: ^0.13.1
   flutter_native_splash: ^2.3.1
@@ -38,6 +40,7 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.4.1
   json_serializable: ^6.7.0
+  widgetbook_generator: ^3.1.0
 
 flutter:
   fonts:

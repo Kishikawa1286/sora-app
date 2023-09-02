@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/components/auth_builder/view_model.dart';
+import 'package:sora/widgetbook.dart';
 
 class AuthBuilder extends HookConsumerWidget {
   const AuthBuilder({
@@ -16,8 +17,13 @@ class AuthBuilder extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isInWidgetbook = ref.watch(isInWidgetbookProvider);
     final model = ref.watch(authBuilderViewModelProvider);
     final authenticated = model.authenticated;
+
+    if (isInWidgetbook) {
+      return Builder(builder: builder);
+    }
 
     if (authenticated == null) {
       WidgetsBinding.instance.addPostFrameCallback((duration) async {

@@ -6,7 +6,7 @@ abstract class ChatGPTRepositoryBase {
   Future<String?> generateReply(String text);
 }
 
-final chatGPTRepositoryProvider = Provider<ChatGPTRepository>(
+final chatGPTRepositoryProvider = Provider<ChatGPTRepositoryBase>(
   (ref) => ChatGPTRepository(
     ref.read(cloudFunctionsHelperProvider),
     ref.watch(loadingStateProvider('chatgpt_repository').notifier),

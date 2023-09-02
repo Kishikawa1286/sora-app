@@ -1,6 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/pages/messages/reply_modal/model.dart';
-import 'package:sora/repositories/slack_repository.dart';
+import 'package:sora/repositories/slack_repository/slack_repository.dart';
 import 'package:sora/utils/view_model_state_notifier.dart';
 
 final replyModalViewModelArgsProvider =

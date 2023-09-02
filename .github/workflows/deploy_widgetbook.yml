@@ -1,0 +1,45 @@
+name: Deploy Widgetbook to GitHub Pages
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup FVM Config
+        uses: kuhnroyal/flutter-fvm-config-action@v1
+        id: fvm-config-action
+
+      - name: Setup Flutter with FVM
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build and Deploy Widgetbook
+        run: |
+          PR_ID=${{ github.event.pull_request.number }}
+          BASE_URL="/sora-app/${PR_ID}/"
+          flutter build web -t lib/widgetbook.dart --web-renderer html --base-href $BASE_URL --output=build/web/$PR_ID
+          
+      - name: Create .nojekyll file
+        run: |
+          PR_ID=${{ github.event.pull_request.number }}
+          touch build/web/$PR_ID/.nojekyll
+  
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          publish_dir: ./build/web
+          publish_branch: gh-pages
+          keep_files: true

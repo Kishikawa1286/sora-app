@@ -12,7 +12,7 @@ abstract class SlackRepositoryBase {
   Future<void> reply({required String text, required String messageId});
 }
 
-final slackRepositoryProvider = Provider<SlackRepository>(
+final slackRepositoryProvider = Provider<SlackRepositoryBase>(
   (ref) => SlackRepository(
     ref.read(cloudFunctionsHelperProvider),
     ref.read(firestoreHelperProvider),
