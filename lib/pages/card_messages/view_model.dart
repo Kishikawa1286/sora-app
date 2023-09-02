@@ -8,18 +8,19 @@ import 'package:sora/repositories/auth_repository/auth_repository.dart';
 import 'package:sora/repositories/entities/users_collection.dart';
 import 'package:sora/repositories/message_repository.dart';
 import 'package:sora/repositories/slack_repository.dart';
+import 'package:sora/utils/view_model_state_notifier.dart';
 
 final CardMessagesPageViewModelProvider = StateNotifierProvider.autoDispose<
     CardMessagesPageViewModel, CardMessagesPageModel>(
-  CardMessagesPageViewModel.new,
+  (ref) => CardMessagesPageViewModel(ref, const CardMessagesPageModel()),
 );
 
-class CardMessagesPageViewModel extends StateNotifier<CardMessagesPageModel> {
-  CardMessagesPageViewModel(Ref ref)
+class CardMessagesPageViewModel
+    extends ViewModelStateNotifier<CardMessagesPageModel> {
+  CardMessagesPageViewModel(Ref ref, super.model)
       : _authRepository = ref.read(authRepositoryProvider),
         _messageRepository = ref.read(messageRepositoryProvider),
-        _slackRepository = ref.read(slackRepositoryProvider),
-        super(const CardMessagesPageModel()) {
+        _slackRepository = ref.read(slackRepositoryProvider) {
     _userIdStateSubscription = _authRepository.userId.listen((userId) {
       state = state.copyWith(userId: userId);
       if (userId == null) {

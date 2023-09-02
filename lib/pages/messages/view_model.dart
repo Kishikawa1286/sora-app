@@ -5,17 +5,17 @@ import 'package:sora/pages/messages/model.dart';
 import 'package:sora/repositories/auth_repository/auth_repository.dart';
 import 'package:sora/repositories/entities/users_collection.dart';
 import 'package:sora/repositories/message_repository.dart';
+import 'package:sora/utils/view_model_state_notifier.dart';
 
 final messagesPageViewModelProvider =
     StateNotifierProvider.autoDispose<MessagesPageViewModel, MessagesPageModel>(
-  MessagesPageViewModel.new,
+  (ref) => MessagesPageViewModel(ref, const MessagesPageModel()),
 );
 
-class MessagesPageViewModel extends StateNotifier<MessagesPageModel> {
-  MessagesPageViewModel(Ref ref)
+class MessagesPageViewModel extends ViewModelStateNotifier<MessagesPageModel> {
+  MessagesPageViewModel(Ref ref, super.model)
       : _authRepository = ref.read(authRepositoryProvider),
-        _messageRepository = ref.read(messageRepositoryProvider),
-        super(const MessagesPageModel()) {
+        _messageRepository = ref.read(messageRepositoryProvider) {
     _userIdStateSubscription = _authRepository.userId.listen((userId) {
       state = state.copyWith(userId: userId);
       if (userId == null) {

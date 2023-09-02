@@ -2,17 +2,18 @@ import 'dart:async';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/services/home_tab/model.dart';
+import 'package:sora/utils/view_model_state_notifier.dart';
 
 final initialHomeTabProvider = Provider<int>((ref) => 0);
 
 final homeTabServiceProvider =
     StateNotifierProvider<HomeTabService, HomeTabModel>(
-  (ref) => HomeTabService(ref.watch(initialHomeTabProvider)),
+  (ref) => HomeTabService(HomeTabModel(tab: ref.watch(initialHomeTabProvider))),
   dependencies: [initialHomeTabProvider],
 );
 
-class HomeTabService extends StateNotifier<HomeTabModel> {
-  HomeTabService(int initialTab) : super(HomeTabModel(tab: initialTab));
+class HomeTabService extends ViewModelStateNotifier<HomeTabModel> {
+  HomeTabService(super.model);
 
   void _startLoading() {
     state = state.copyWith(isLoading: true);
