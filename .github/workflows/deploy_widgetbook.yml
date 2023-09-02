@@ -30,27 +30,11 @@ jobs:
           PR_ID=${{ github.event.pull_request.number }}
           REPO_NAME=${{ github.repository }}
           BASE_URL="/${REPO_NAME}/${PR_ID}/"
-          flutter build web -t lib/widgetbook.dart --web-renderer html --base-href $BASE_URL --output=build/web
+          flutter build web -t lib/widgetbook.dart --web-renderer html --base-href $BASE_URL --output=build/web/$PR_ID
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GH_PAT }}
-          publish_dir: ./build/web
+          publish_dir: ./build/web/$PR_ID
           publish_branch: gh-pages
-
-      - name: Comment PR with URL
-        uses: actions/github-script@v5
-        with:
-          github-token: ${{ secrets.GH_PAT }}
-          script: |
-            const PR_ID = context.payload.pull_request.number;
-            const REPO_NAME = context.repo.repo;
-            const USERNAME = context.repo.owner;
-            const BASE_URL = `https://${USERNAME}.github.io/${REPO_NAME}/${PR_ID}/`;
-            github.rest.issues.createComment({
-              issue_number: PR_ID,
-              owner: context.repo.owner,
-              repo: REPO_NAME,
-              body: `You can view the Widgetbook for this PR [here](${BASE_URL})`
-            });
