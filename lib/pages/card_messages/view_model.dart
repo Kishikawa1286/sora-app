@@ -6,8 +6,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/pages/card_messages/model.dart';
 import 'package:sora/repositories/auth_repository/auth_repository.dart';
 import 'package:sora/repositories/entities/users_collection.dart';
-import 'package:sora/repositories/message_repository.dart';
-import 'package:sora/repositories/slack_repository.dart';
+import 'package:sora/repositories/message_repository/message_repository.dart';
+import 'package:sora/repositories/slack_repository/slack_repository.dart';
 import 'package:sora/utils/view_model_state_notifier.dart';
 
 final CardMessagesPageViewModelProvider = StateNotifierProvider.autoDispose<
