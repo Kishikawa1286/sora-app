@@ -1,0 +1,50 @@
+name: Deploy Widgetbook to GitHub Pages
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup FVM
+        uses: leoafarias/fvm-action@v2
+        with:
+          flutter_version: "stable"
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Widgetbook
+        run: |
+          PR_ID=${{ github.event.pull_request.number }}
+          fvm flutter build web -t lib/widgetbook.dart --output=build/web/$PR_ID
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
+          publish_branch: gh-pages
+
+      - name: Comment PR with URL
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const PR_ID = context.payload.pull_request.number;
+            const repository = context.repo.repo;
+            const owner = context.repo.owner;
+            const username = context.repo.owner;  // Get the username from the context
+            const commentBody = `You can view the Widgetbook for this PR [here](https://${username}.github.io/${repository}/${PR_ID}/)`;
+            github.rest.issues.createComment({
+              issue_number: PR_ID,
+              owner: owner,
+              repo: repository,
+              body: commentBody
+            });
