@@ -3,34 +3,19 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/services/home_background_color/model.dart';
 import 'package:sora/utils/view_model_state_notifier.dart';
 
-final targetColorRightProvider = Provider((_) => Colors.orange);
-final targetColorLeftProvider = Provider((_) => Colors.blue);
-
 final homeBackgroundColorServiceProvider =
     StateNotifierProvider<HomeBackgroundColorService, HomeBackgroundColorModel>(
-  (ref) => HomeBackgroundColorService(
-    ref.watch(targetColorRightProvider),
-    ref.watch(targetColorLeftProvider),
-    const HomeBackgroundColorModel(),
-  ),
-  dependencies: [
-    targetColorRightProvider,
-    targetColorLeftProvider,
-  ],
+  (ref) => HomeBackgroundColorService(const HomeBackgroundColorModel()),
 );
 
 class HomeBackgroundColorService
     extends ViewModelStateNotifier<HomeBackgroundColorModel> {
-  HomeBackgroundColorService(
-    this._targetColorRight,
-    this._targetColorLeft,
-    super.model,
-  );
+  HomeBackgroundColorService(super.model);
 
   static const _maxOffset = 200;
   static const _defaultColor = Colors.white;
-  final Color _targetColorRight;
-  final Color _targetColorLeft;
+  static const _targetColorRight = Colors.orange;
+  static const _targetColorLeft = Colors.blue;
 
   void update(double delta) {
     final newOffset = state.offset + delta;
