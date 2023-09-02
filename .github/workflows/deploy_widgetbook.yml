@@ -41,5 +41,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GH_PAT }}
-          publish_dir: ./build/web/${{ github.event.pull_request.number }}
+          publish_dir: ./build/web
           publish_branch: gh-pages
