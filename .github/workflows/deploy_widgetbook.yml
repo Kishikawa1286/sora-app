@@ -25,11 +25,12 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Build and  Widgetbook
+      - name: Build and Deploy Widgetbook
         run: |
           PR_ID=${{ github.event.pull_request.number }}
-          BASE_URL="https://${{ github.actor }}.github.io/${{ github.repository }}/PR_ID/"
+          BASE_URL="/${{ github.repository }}/PR_ID/"
           flutter build web -t lib/widgetbook.dart --base-href $BASE_URL --output=build/web/$PR_ID
+
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
