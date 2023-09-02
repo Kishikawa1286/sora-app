@@ -13,8 +13,9 @@ Future<void> showReplyModal(
       context: context,
       builder: (context) => ProviderScope(
         overrides: [
-          replyModalMessageIdProvider.overrideWithValue(messageId),
-          replyModalTextProvider.overrideWithValue(text),
+          replyModalViewModelArgsProvider.overrideWithValue(
+            ReplyModalViewModelArgs(messageId: messageId, text: text),
+          ),
         ],
         child: ReplyModalContent(
           onCanceled: onCanceled,
@@ -31,8 +32,8 @@ class ReplyModalContent extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final viewModel = ref.watch(replyModalViewModelProvider);
-    final text = viewModel.text;
+    final viewModel = ref.watch(replyModalViewModelProvider.notifier);
+    final model = ref.watch(replyModalViewModelProvider);
 
     return Padding(
       padding: const EdgeInsets.only(left: 30, right: 30),
@@ -65,7 +66,10 @@ class ReplyModalContent extends HookConsumerWidget {
                     color: Colors.white,
                     child: Padding(
                       padding: const EdgeInsets.all(8),
-                      child: Text(text, style: const TextStyle(fontSize: 16)),
+                      child: Text(
+                        model.text,
+                        style: const TextStyle(fontSize: 16),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
