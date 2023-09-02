@@ -21,7 +21,7 @@ abstract class AuthRepositoryBase {
   Future<void> signOut();
 }
 
-final authRepositoryProvider = Provider<AuthRepository>(
+final authRepositoryProvider = Provider<AuthRepositoryBase>(
   (ref) => AuthRepository(
     ref.read(firebaseAuthHelperProvider),
     ref.watch(loadingStateProvider('auth_repository').notifier),
