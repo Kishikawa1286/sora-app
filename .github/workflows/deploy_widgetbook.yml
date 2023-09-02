@@ -12,10 +12,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Setup FVM
-        uses: leoafarias/fvm-action@v2
+      - name: Setup FVM Config
+        uses: kuhnroyal/flutter-fvm-config-action@v1
+        id: fvm-config-action
+
+      - name: Setup Flutter with FVM
+        uses: subosito/flutter-action@v2
         with:
-          flutter_version: "stable"
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
 
       - name: Install dependencies
         run: flutter pub get
@@ -23,7 +28,7 @@ jobs:
       - name: Build Widgetbook
         run: |
           PR_ID=${{ github.event.pull_request.number }}
-          fvm flutter build web -t lib/widgetbook.dart --output=build/web/$PR_ID
+          flutter build web -t lib/widgetbook.dart --output=build/web/$PR_ID
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -40,7 +45,7 @@ jobs:
             const PR_ID = context.payload.pull_request.number;
             const repository = context.repo.repo;
             const owner = context.repo.owner;
-            const username = context.repo.owner;  // Get the username from the context
+            const username = "Kishikawa1286";
             const commentBody = `You can view the Widgetbook for this PR [here](https://${username}.github.io/${repository}/${PR_ID}/)`;
             github.rest.issues.createComment({
               issue_number: PR_ID,
