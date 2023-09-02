@@ -33,14 +33,14 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GH_PAGES_TOKEN }}
+          github_token: ${{ secrets.GH_PAT }}
           publish_dir: ./build/web
           publish_branch: gh-pages
 
       - name: Comment PR with URL
         uses: actions/github-script@v5
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
+          github-token: ${{ secrets.GH_PAT }}
           script: |
             const PR_ID = context.payload.pull_request.number;
             const repository = context.repo.repo;
