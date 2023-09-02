@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/pages/messages/reply_modal/view_model.dart';
+import 'package:sora/widgetbook.dart';
 
 Future<void> showReplyModal(
   BuildContext context, {
@@ -32,6 +33,7 @@ class ReplyModalContent extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isInWidgetbook = ref.watch(isInWidgetbookProvider);
     final viewModel = ref.watch(replyModalViewModelProvider.notifier);
     final model = ref.watch(replyModalViewModelProvider);
 
@@ -90,7 +92,9 @@ class ReplyModalContent extends HookConsumerWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       onCanceled?.call();
-                      Navigator.of(context).pop();
+                      if (!isInWidgetbook) {
+                        Navigator.of(context).pop();
+                      }
                     },
                     child: const Text('キャンセル'),
                   ),

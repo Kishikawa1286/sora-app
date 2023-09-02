@@ -3,6 +3,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/color_schemes.g.dart';
 import 'package:sora/repositories/auth_repository/auth_repository.dart';
 import 'package:sora/repositories/auth_repository/auth_repository_mock.dart';
+import 'package:sora/repositories/chatgpt_repository/chatgpt_repository.dart';
+import 'package:sora/repositories/chatgpt_repository/chatgpt_repository_mock.dart';
+import 'package:sora/repositories/message_repository/message_repository.dart';
+import 'package:sora/repositories/message_repository/message_repository_mock.dart';
+import 'package:sora/repositories/slack_repository/slack_repository.dart';
+import 'package:sora/repositories/slack_repository/slack_repository_mock.dart';
 import 'package:sora/widgetbook.directories.g.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
@@ -25,6 +31,12 @@ class WidgetbookApp extends StatelessWidget {
           overrides: [
             isInWidgetbookProvider.overrideWithValue(true),
             authRepositoryProvider.overrideWith((ref) => AuthRepositoryMock()),
+            chatGPTRepositoryProvider
+                .overrideWith((ref) => ChatGPTRepositoryMock()),
+            messageRepositoryProvider
+                .overrideWith((ref) => MessageRepositoryMock()),
+            slackRepositoryProvider
+                .overrideWith((ref) => SlackRepositoryMock()),
           ],
           child: child,
         ),
