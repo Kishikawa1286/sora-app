@@ -7,24 +7,8 @@ import 'package:sora/pages/messages/view.dart';
 import 'package:sora/services/home_background_color/service.dart';
 import 'package:sora/services/home_tab/service.dart';
 
-class Home extends StatelessWidget {
-  const Home({required this.tab, super.key});
-
-  final int tab;
-
-  @override
-  Widget build(BuildContext context) => ProviderScope(
-        overrides: [
-          initialHomeTabProvider.overrideWithValue(tab),
-          targetColorRightProvider.overrideWithValue(Colors.orange),
-          targetColorLeftProvider.overrideWithValue(Colors.blue),
-        ],
-        child: const _Home(),
-      );
-}
-
-class _Home extends HookConsumerWidget {
-  const _Home();
+class Home extends HookConsumerWidget {
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

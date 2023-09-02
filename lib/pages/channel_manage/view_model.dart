@@ -5,16 +5,18 @@ import 'package:sora/pages/channel_manage/model.dart';
 import 'package:sora/repositories/auth_repository/auth_repository.dart';
 import 'package:sora/repositories/entities/users_collection.dart';
 import 'package:sora/repositories/slack_repository.dart';
+import 'package:sora/utils/view_model_state_notifier.dart';
 
 final channelManagePageViewModelProvider = StateNotifierProvider.autoDispose<
-    ChannelManagePageViewModel,
-    ChannelManagePageModel>(ChannelManagePageViewModel.new);
+    ChannelManagePageViewModel, ChannelManagePageModel>(
+  (ref) => ChannelManagePageViewModel(ref, const ChannelManagePageModel()),
+);
 
-class ChannelManagePageViewModel extends StateNotifier<ChannelManagePageModel> {
-  ChannelManagePageViewModel(Ref ref)
+class ChannelManagePageViewModel
+    extends ViewModelStateNotifier<ChannelManagePageModel> {
+  ChannelManagePageViewModel(Ref ref, super.model)
       : _authRepository = ref.read(authRepositoryProvider),
-        _slackRepository = ref.read(slackRepositoryProvider),
-        super(const ChannelManagePageModel()) {
+        _slackRepository = ref.read(slackRepositoryProvider) {
     _userIdStateSubscription = _authRepository.userId.listen((userId) {
       if (userId == null) {
         return;

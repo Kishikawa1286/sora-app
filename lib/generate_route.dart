@@ -16,17 +16,17 @@ Route<dynamic> generateRoute(RouteSettings settings) =>
         return AuthBuilder(
           builder: (context) {
             if (name == null) {
-              return const Home(tab: 0);
+              return const Home();
             }
             switch (name) {
               case 'home/messages':
-                return const Home(tab: 0);
+                return const Home();
               case 'home/manage_channels':
-                return const Home(tab: 1);
+                return const Home();
               case 'home/options':
-                return const Home(tab: 2);
+                return const Home();
               default:
-                return const Home(tab: 0);
+                return const Home();
             }
           },
         );
