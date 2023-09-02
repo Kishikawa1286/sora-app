@@ -4,12 +4,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/services/home_tab/model.dart';
 import 'package:sora/utils/view_model_state_notifier.dart';
 
-final initialHomeTabProvider = Provider<int>((ref) => 0);
-
 final homeTabServiceProvider =
     StateNotifierProvider<HomeTabService, HomeTabModel>(
-  (ref) => HomeTabService(HomeTabModel(tab: ref.watch(initialHomeTabProvider))),
-  dependencies: [initialHomeTabProvider],
+  (ref) => HomeTabService(const HomeTabModel()),
 );
 
 class HomeTabService extends ViewModelStateNotifier<HomeTabModel> {
