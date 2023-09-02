@@ -30,7 +30,7 @@ jobs:
           PR_ID=${{ github.event.pull_request.number }}
           REPO_NAME=${{ github.repository }}
           BASE_URL="/${REPO_NAME}/${PR_ID}/"
-          flutter build web -t lib/widgetbook.dart --web-renderer html --base-href $BASE_URL --output=build/web/$PR_ID
+          flutter build web -t lib/widgetbook.dart --web-renderer html --base-href $BASE_URL --output=build/web
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
