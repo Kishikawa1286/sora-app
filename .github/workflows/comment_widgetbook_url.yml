@@ -25,5 +25,5 @@ jobs:
               issue_number: PR_ID,
               owner: context.repo.owner,
               repo: REPO_NAME,
-              body: `<h2><a href="https://Kishikawa1286.github.io/sora-app/47/"><img src="https://raw.githubusercontent.com/widgetbook/widgetbook/main/docs/assets/logos/logo-light.png" height="28">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>Open in Widgetbook</sup></a></h2>`
+              body: `<h2><a href="${BASE_URL}"><img src="https://raw.githubusercontent.com/widgetbook/widgetbook/main/docs/assets/logos/logo-light.png" height="28">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>Open in Widgetbook</sup></a></h2>`
             });
