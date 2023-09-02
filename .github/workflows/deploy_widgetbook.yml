@@ -42,3 +42,4 @@ jobs:
           github_token: ${{ secrets.GH_PAT }}
           publish_dir: ./build/web
           publish_branch: gh-pages
+          keep_files: true
