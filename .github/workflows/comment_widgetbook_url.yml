@@ -25,5 +25,5 @@ jobs:
               issue_number: PR_ID,
               owner: context.repo.owner,
               repo: REPO_NAME,
-              body: `You can view the Widgetbook for this PR\n\n${BASE_URL}`
+              body: `<a href="${BASE_URL}"><img src="https://uploads-ssl.webflow.com/6138dd0f55521485782d7fca/6152cf43362df0a3b90b276d_Widgetbook%20Logo.svg" alt="Widgetbook" width="200"></a>`
             });
