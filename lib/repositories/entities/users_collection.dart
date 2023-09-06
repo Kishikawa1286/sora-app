@@ -87,6 +87,7 @@ class Message {
     required this.positiveReply,
     required this.negativeReply,
     required this.isScheduleAdjustment,
+    required this.redirectUrl,
     required this.createdAt,
     required this.lastUpdatedAt,
   });
@@ -119,6 +120,8 @@ class Message {
   final String negativeReply;
   @JsonKey(name: 'is_schedule_adjustment')
   final bool isScheduleAdjustment;
+  @JsonKey(name: 'redirect_url')
+  final String? redirectUrl;
   @JsonKey(name: 'created_at')
   final Timestamp createdAt;
   @JsonKey(name: 'last_updated_at')
@@ -152,6 +155,7 @@ class SlackMessage {
     required this.slackTs,
     required this.slackThreadTs,
     required this.event,
+    required this.redirectUrl,
     required this.createdAt,
     required this.lastUpdatedAt,
   });
@@ -197,6 +201,8 @@ class SlackMessage {
   final String? slackThreadTs;
   @JsonKey(name: 'event')
   final String event;
+  @JsonKey(name: 'redirect_url')
+  final String? redirectUrl;
   @JsonKey(name: 'created_at')
   final Timestamp createdAt;
   @JsonKey(name: 'last_updated_at')
