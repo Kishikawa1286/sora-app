@@ -3686,6 +3686,8 @@ abstract class MessageDocumentReference
     FieldValue negativeReplyFieldValue,
     bool isScheduleAdjustment,
     FieldValue isScheduleAdjustmentFieldValue,
+    String? redirectUrl,
+    FieldValue redirectUrlFieldValue,
     Timestamp createdAt,
     FieldValue createdAtFieldValue,
     Timestamp lastUpdatedAt,
@@ -3733,6 +3735,8 @@ abstract class MessageDocumentReference
     FieldValue negativeReplyFieldValue,
     bool isScheduleAdjustment,
     FieldValue isScheduleAdjustmentFieldValue,
+    String? redirectUrl,
+    FieldValue redirectUrlFieldValue,
     Timestamp createdAt,
     FieldValue createdAtFieldValue,
     Timestamp lastUpdatedAt,
@@ -3815,6 +3819,8 @@ class _$MessageDocumentReference
     FieldValue? negativeReplyFieldValue,
     Object? isScheduleAdjustment = _sentinel,
     FieldValue? isScheduleAdjustmentFieldValue,
+    Object? redirectUrl = _sentinel,
+    FieldValue? redirectUrlFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
     Object? lastUpdatedAt = _sentinel,
@@ -3894,6 +3900,10 @@ class _$MessageDocumentReference
       "Cannot specify both isScheduleAdjustment and isScheduleAdjustmentFieldValue",
     );
     assert(
+      redirectUrl == _sentinel || redirectUrlFieldValue == null,
+      "Cannot specify both redirectUrl and redirectUrlFieldValue",
+    );
+    assert(
       createdAt == _sentinel || createdAtFieldValue == null,
       "Cannot specify both createdAt and createdAtFieldValue",
     );
@@ -3966,6 +3976,10 @@ class _$MessageDocumentReference
       if (isScheduleAdjustmentFieldValue != null)
         _$MessageFieldMap['isScheduleAdjustment']!:
             isScheduleAdjustmentFieldValue,
+      if (redirectUrl != _sentinel)
+        _$MessageFieldMap['redirectUrl']!: redirectUrl as String?,
+      if (redirectUrlFieldValue != null)
+        _$MessageFieldMap['redirectUrl']!: redirectUrlFieldValue,
       if (createdAt != _sentinel)
         _$MessageFieldMap['createdAt']!: createdAt as Timestamp,
       if (createdAtFieldValue != null)
@@ -4017,6 +4031,8 @@ class _$MessageDocumentReference
     FieldValue? negativeReplyFieldValue,
     Object? isScheduleAdjustment = _sentinel,
     FieldValue? isScheduleAdjustmentFieldValue,
+    Object? redirectUrl = _sentinel,
+    FieldValue? redirectUrlFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
     Object? lastUpdatedAt = _sentinel,
@@ -4096,6 +4112,10 @@ class _$MessageDocumentReference
       "Cannot specify both isScheduleAdjustment and isScheduleAdjustmentFieldValue",
     );
     assert(
+      redirectUrl == _sentinel || redirectUrlFieldValue == null,
+      "Cannot specify both redirectUrl and redirectUrlFieldValue",
+    );
+    assert(
       createdAt == _sentinel || createdAtFieldValue == null,
       "Cannot specify both createdAt and createdAtFieldValue",
     );
@@ -4168,6 +4188,10 @@ class _$MessageDocumentReference
       if (isScheduleAdjustmentFieldValue != null)
         _$MessageFieldMap['isScheduleAdjustment']!:
             isScheduleAdjustmentFieldValue,
+      if (redirectUrl != _sentinel)
+        _$MessageFieldMap['redirectUrl']!: redirectUrl as String?,
+      if (redirectUrlFieldValue != null)
+        _$MessageFieldMap['redirectUrl']!: redirectUrlFieldValue,
       if (createdAt != _sentinel)
         _$MessageFieldMap['createdAt']!: createdAt as Timestamp,
       if (createdAtFieldValue != null)
@@ -4475,6 +4499,17 @@ abstract class MessageQuery
     List<bool>? whereIn,
     List<bool>? whereNotIn,
   });
+  MessageQuery whereRedirectUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  });
   MessageQuery whereCreatedAt({
     Timestamp? isEqualTo,
     Timestamp? isNotEqualTo,
@@ -4720,6 +4755,18 @@ abstract class MessageQuery
     bool startAfter,
     bool endAt,
     bool endBefore,
+    MessageDocumentSnapshot? startAtDocument,
+    MessageDocumentSnapshot? endAtDocument,
+    MessageDocumentSnapshot? endBeforeDocument,
+    MessageDocumentSnapshot? startAfterDocument,
+  });
+
+  MessageQuery orderByRedirectUrl({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
     MessageDocumentSnapshot? startAtDocument,
     MessageDocumentSnapshot? endAtDocument,
     MessageDocumentSnapshot? endBeforeDocument,
@@ -5435,6 +5482,35 @@ class _$MessageQuery extends QueryReference<Message, MessageQuerySnapshot>
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$MessageFieldMap['isScheduleAdjustment']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  MessageQuery whereRedirectUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  }) {
+    return _$MessageQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$MessageFieldMap['redirectUrl']!,
         isEqualTo: isEqualTo,
         isNotEqualTo: isNotEqualTo,
         isLessThan: isLessThan,
@@ -6876,6 +6952,78 @@ class _$MessageQuery extends QueryReference<Message, MessageQuerySnapshot>
     );
   }
 
+  MessageQuery orderByRedirectUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    MessageDocumentSnapshot? startAtDocument,
+    MessageDocumentSnapshot? endAtDocument,
+    MessageDocumentSnapshot? endBeforeDocument,
+    MessageDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$MessageFieldMap['redirectUrl']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$MessageQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
   MessageQuery orderByCreatedAt({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -7286,6 +7434,8 @@ abstract class SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue slackThreadTsFieldValue,
     String event,
     FieldValue eventFieldValue,
+    String? redirectUrl,
+    FieldValue redirectUrlFieldValue,
     Timestamp createdAt,
     FieldValue createdAtFieldValue,
     Timestamp lastUpdatedAt,
@@ -7341,6 +7491,8 @@ abstract class SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue slackThreadTsFieldValue,
     String event,
     FieldValue eventFieldValue,
+    String? redirectUrl,
+    FieldValue redirectUrlFieldValue,
     Timestamp createdAt,
     FieldValue createdAtFieldValue,
     Timestamp lastUpdatedAt,
@@ -7426,6 +7578,8 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue? slackThreadTsFieldValue,
     Object? event = _sentinel,
     FieldValue? eventFieldValue,
+    Object? redirectUrl = _sentinel,
+    FieldValue? redirectUrlFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
     Object? lastUpdatedAt = _sentinel,
@@ -7520,6 +7674,10 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both event and eventFieldValue",
     );
     assert(
+      redirectUrl == _sentinel || redirectUrlFieldValue == null,
+      "Cannot specify both redirectUrl and redirectUrlFieldValue",
+    );
+    assert(
       createdAt == _sentinel || createdAtFieldValue == null,
       "Cannot specify both createdAt and createdAtFieldValue",
     );
@@ -7616,6 +7774,10 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
       if (event != _sentinel) _$SlackMessageFieldMap['event']!: event as String,
       if (eventFieldValue != null)
         _$SlackMessageFieldMap['event']!: eventFieldValue,
+      if (redirectUrl != _sentinel)
+        _$SlackMessageFieldMap['redirectUrl']!: redirectUrl as String?,
+      if (redirectUrlFieldValue != null)
+        _$SlackMessageFieldMap['redirectUrl']!: redirectUrlFieldValue,
       if (createdAt != _sentinel)
         _$SlackMessageFieldMap['createdAt']!: createdAt as Timestamp,
       if (createdAtFieldValue != null)
@@ -7675,6 +7837,8 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue? slackThreadTsFieldValue,
     Object? event = _sentinel,
     FieldValue? eventFieldValue,
+    Object? redirectUrl = _sentinel,
+    FieldValue? redirectUrlFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
     Object? lastUpdatedAt = _sentinel,
@@ -7769,6 +7933,10 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both event and eventFieldValue",
     );
     assert(
+      redirectUrl == _sentinel || redirectUrlFieldValue == null,
+      "Cannot specify both redirectUrl and redirectUrlFieldValue",
+    );
+    assert(
       createdAt == _sentinel || createdAtFieldValue == null,
       "Cannot specify both createdAt and createdAtFieldValue",
     );
@@ -7865,6 +8033,10 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
       if (event != _sentinel) _$SlackMessageFieldMap['event']!: event as String,
       if (eventFieldValue != null)
         _$SlackMessageFieldMap['event']!: eventFieldValue,
+      if (redirectUrl != _sentinel)
+        _$SlackMessageFieldMap['redirectUrl']!: redirectUrl as String?,
+      if (redirectUrlFieldValue != null)
+        _$SlackMessageFieldMap['redirectUrl']!: redirectUrlFieldValue,
       if (createdAt != _sentinel)
         _$SlackMessageFieldMap['createdAt']!: createdAt as Timestamp,
       if (createdAtFieldValue != null)
@@ -8216,6 +8388,17 @@ abstract class SlackMessageQuery
     List<String>? whereIn,
     List<String>? whereNotIn,
   });
+  SlackMessageQuery whereRedirectUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  });
   SlackMessageQuery whereCreatedAt({
     Timestamp? isEqualTo,
     Timestamp? isNotEqualTo,
@@ -8509,6 +8692,18 @@ abstract class SlackMessageQuery
     String startAfter,
     String endAt,
     String endBefore,
+    SlackMessageDocumentSnapshot? startAtDocument,
+    SlackMessageDocumentSnapshot? endAtDocument,
+    SlackMessageDocumentSnapshot? endBeforeDocument,
+    SlackMessageDocumentSnapshot? startAfterDocument,
+  });
+
+  SlackMessageQuery orderByRedirectUrl({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
     SlackMessageDocumentSnapshot? startAtDocument,
     SlackMessageDocumentSnapshot? endAtDocument,
     SlackMessageDocumentSnapshot? endBeforeDocument,
@@ -9345,6 +9540,35 @@ class _$SlackMessageQuery
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$SlackMessageFieldMap['event']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  SlackMessageQuery whereRedirectUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  }) {
+    return _$SlackMessageQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SlackMessageFieldMap['redirectUrl']!,
         isEqualTo: isEqualTo,
         isNotEqualTo: isNotEqualTo,
         isLessThan: isLessThan,
@@ -11025,6 +11249,79 @@ class _$SlackMessageQuery
   }) {
     final query = $referenceWithoutCursor
         .orderBy(_$SlackMessageFieldMap['event']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SlackMessageQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  SlackMessageQuery orderByRedirectUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SlackMessageDocumentSnapshot? startAtDocument,
+    SlackMessageDocumentSnapshot? endAtDocument,
+    SlackMessageDocumentSnapshot? endBeforeDocument,
+    SlackMessageDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$SlackMessageFieldMap['redirectUrl']!,
+        descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -15517,6 +15814,7 @@ Message _$MessageFromJson(Map<String, dynamic> json) => Message(
       positiveReply: json['positive_reply'] as String,
       negativeReply: json['negative_reply'] as String,
       isScheduleAdjustment: json['is_schedule_adjustment'] as bool,
+      redirectUrl: json['redirect_url'] as String?,
       createdAt: const FirestoreTimestampConverter()
           .fromJson(json['created_at'] as Timestamp),
       lastUpdatedAt: const FirestoreTimestampConverter()
@@ -15542,6 +15840,7 @@ const _$MessageFieldMap = <String, String>{
   'positiveReply': 'positive_reply',
   'negativeReply': 'negative_reply',
   'isScheduleAdjustment': 'is_schedule_adjustment',
+  'redirectUrl': 'redirect_url',
   'createdAt': 'created_at',
   'lastUpdatedAt': 'last_updated_at',
 };
@@ -15565,6 +15864,7 @@ Map<String, dynamic> _$MessageToJson(Message instance) => <String, dynamic>{
       'positive_reply': instance.positiveReply,
       'negative_reply': instance.negativeReply,
       'is_schedule_adjustment': instance.isScheduleAdjustment,
+      'redirect_url': instance.redirectUrl,
       'created_at':
           const FirestoreTimestampConverter().toJson(instance.createdAt),
       'last_updated_at':
@@ -15596,6 +15896,7 @@ SlackMessage _$SlackMessageFromJson(Map<String, dynamic> json) => SlackMessage(
       slackTs: json['slack_ts'] as String,
       slackThreadTs: json['slack_thread_ts'] as String?,
       event: json['event'] as String,
+      redirectUrl: json['redirect_url'] as String?,
       createdAt: const FirestoreTimestampConverter()
           .fromJson(json['created_at'] as Timestamp),
       lastUpdatedAt: const FirestoreTimestampConverter()
@@ -15625,6 +15926,7 @@ const _$SlackMessageFieldMap = <String, String>{
   'slackTs': 'slack_ts',
   'slackThreadTs': 'slack_thread_ts',
   'event': 'event',
+  'redirectUrl': 'redirect_url',
   'createdAt': 'created_at',
   'lastUpdatedAt': 'last_updated_at',
 };
@@ -15653,6 +15955,7 @@ Map<String, dynamic> _$SlackMessageToJson(SlackMessage instance) =>
       'slack_ts': instance.slackTs,
       'slack_thread_ts': instance.slackThreadTs,
       'event': instance.event,
+      'redirect_url': instance.redirectUrl,
       'created_at':
           const FirestoreTimestampConverter().toJson(instance.createdAt),
       'last_updated_at':
