@@ -15,6 +15,7 @@ dependencies:
   cloud_functions: 4.4.0
   firebase_auth: 4.7.3
   firebase_core: 2.15.1
+  firebase_dynamic_links: 5.3.5
   flutter:
     sdk: flutter
   flutter_card_swiper: 6.0.0
