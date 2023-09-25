@@ -1,3 +1,8 @@
+# Configuration to switch environments
+# See: https://zenn.dev/altiveinc/articles/separating-environments-in-flutter
+**/android/app/google-services.json
+**/ios/GoogleService-Info.plist
+
 .fvm/flutter_sdk
 
 # Miscellaneous
