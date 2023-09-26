@@ -2,10 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>com.apple.developer.applesignin</key>
+	<array>
+		<string>Default</string>
+	</array>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>applinks:kamachokkai.page.link</string>
 		<string>https://kamachokkai.page.link</string>
+		<string>applinks:sorakamachokkai.page.link</string>
+		<string>https://sorakamachokkai.page.link/sora-app</string>
 	</array>
 </dict>
 </plist>

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sora/pages/sign_in/components/sign_in_form.dart';
-import 'package:sora/pages/sign_in/components/sign_up_form.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:sora/pages/sign_in/view_model.dart';
 import 'package:sora/widgetbook.dart';
 
@@ -10,6 +9,7 @@ class SignInPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final viewModel = ref.watch(signInPageViewModelProvider.notifier);
     final isInWidgetbook = ref.watch(isInWidgetbookProvider);
     final model = ref.watch(signInPageViewModelProvider);
     final authenticated = model.authenticated;
@@ -26,12 +26,17 @@ class SignInPage extends HookConsumerWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Sora', style: TextStyle(fontSize: 24)),
-          bottom: const TabBar(
-            tabs: [Tab(text: 'ログイン'), Tab(text: '新規登録')],
-          ),
         ),
-        body: const TabBarView(
-          children: [SignInForm(), SignUpForm()],
+        body: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              SignInWithAppleButton(
+                onPressed: viewModel.signInWithApple,
+                text: 'Appleでサインイン',
+              )
+            ],
+          ),
         ),
       ),
     );

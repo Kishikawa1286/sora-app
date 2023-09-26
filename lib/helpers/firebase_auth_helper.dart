@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+
+import 'package:sora/utils/crypto/crypto.dart' as crypto;
 
 final firebaseAuthHelperProvider = Provider<FirebaseAuthHelper>(
   (ref) => const FirebaseAuthHelper(),
@@ -10,25 +13,25 @@ class FirebaseAuthHelper {
 
   FirebaseAuth get _auth => FirebaseAuth.instance;
 
-  Future<User?> signUpWithEmail({
-    required String email,
-    required String password,
-  }) async {
-    final userCredential = await _auth.createUserWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
-    return userCredential.user;
-  }
+  // See: https://firebase.flutter.dev/docs/auth/social#apple
+  Future<User?> signInWithApple() async {
+    final rawNonce = crypto.generateNonce();
+    final nonce = crypto.sha256ofString(rawNonce);
 
-  Future<User?> signInWithEmail({
-    required String email,
-    required String password,
-  }) async {
-    final userCredential = await _auth.signInWithEmailAndPassword(
-      email: email,
-      password: password,
+    final appleCredential = await SignInWithApple.getAppleIDCredential(
+      scopes: [
+        AppleIDAuthorizationScopes.email,
+        AppleIDAuthorizationScopes.fullName,
+      ],
+      nonce: nonce,
     );
+
+    final oauthCredential = OAuthProvider('apple.com').credential(
+      idToken: appleCredential.identityToken,
+      rawNonce: rawNonce,
+    );
+
+    final userCredential = await _auth.signInWithCredential(oauthCredential);
     return userCredential.user;
   }
 
