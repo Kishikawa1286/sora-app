@@ -68,6 +68,8 @@ flutter {
 
 dependencies {}
 
+apply plugin: 'com.google.gms.google-services'
+
 // See: https://zenn.dev/altiveinc/articles/separating-environments-in-flutter
 task selectGoogleServicesJson(type: Copy) {
     from "src/$flavor/google-services.json"

@@ -399,11 +399,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(SRCROOT)/GoogleService-Info.plist",
+				"${SRCROOT}/Runner/GoogleService-Info.plist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\\cp -f ${SRCROOT}/${flavor}/GoogleService-Info.plist ${SRCROOT}/GoogleService-Info.plist\n";
+			shellScript = "\\cp -f ${SRCROOT}/${flavor}/GoogleService-Info.plist ${SRCROOT}/Runner/GoogleService-Info.plist\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

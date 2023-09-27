@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:sora/env.dart';
 
 import 'package:sora/utils/crypto/crypto.dart' as crypto;
 
@@ -24,6 +25,14 @@ class FirebaseAuthHelper {
         AppleIDAuthorizationScopes.fullName,
       ],
       nonce: nonce,
+      webAuthenticationOptions: WebAuthenticationOptions(
+        clientId: flavor == 'prod'
+            ? 'com.kamachokkai.sora.login'
+            : 'com.kamachokkai.sora-dev',
+        redirectUri: flavor == 'prod'
+            ? Uri.parse('https://sorakamachokkai.page.link/sora-app')
+            : Uri.parse('https://kamachokkai.page.link/sora-dev'),
+      ),
     );
 
     final oauthCredential = OAuthProvider('apple.com').credential(
