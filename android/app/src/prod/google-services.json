@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "834392061325",
+    "project_id": "sora-prod-kam",
+    "storage_bucket": "sora-prod-kam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834392061325:android:5df659c06360f84cd6b9c4",
+        "android_client_info": {
+          "package_name": "com.kamachokkai.sora"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834392061325-lmvr9as2vtu8mbj570kc7vpv8u112kqd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIHolBWCTIU6ztMZK_dPCbcaT9-zFtGNQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834392061325-lmvr9as2vtu8mbj570kc7vpv8u112kqd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

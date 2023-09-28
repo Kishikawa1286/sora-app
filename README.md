@@ -54,3 +54,17 @@ fvm flutter doctor --android-licenses
 ```
 
 あとは[この手順](https://zenn.dev/imasaka0909/articles/00ebfaf74f9cea)に従ってください.
+
+## デプロイ
+
+### iOS
+
+```
+fvm flutter build ios --release --dart-define-from-file=dart_defines/prod.json
+```
+
+### Android
+
+```
+fvm flutter build appbundle --release --dart-define-from-file=dart_defines/prod.json
+```

@@ -1,21 +1,29 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/color_schemes.g.dart';
-import 'package:sora/firebase_options.dart';
 import 'package:sora/generate_route.dart';
 
 Future<void> main() async {
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
-      await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform,
-      );
+
+      try {
+        await Firebase.initializeApp();
+      } on FirebaseAuthException catch (e) {
+        // Sign out if user is disabled or not found
+        // Such case happens when user is disabled/deleted from Firebase console
+        // We can mainly see this case when we use development environment
+        if (e.code == 'user-disabled' || e.code == 'user-not-found') {
+          await FirebaseAuth.instance.signOut();
+        }
+      }
 
       await SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp],

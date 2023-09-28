@@ -6,19 +6,7 @@ class AuthRepositoryMock extends AuthRepositoryBase {
   Stream<String?> get userId => Stream.value('mock_user_id');
 
   @override
-  Future<AuthResult> signInWithEmail({
-    required String email,
-    required String password,
-  }) async {
-    await Future.delayed(const Duration(seconds: 1));
-    return const AuthResult(success: true);
-  }
-
-  @override
-  Future<AuthResult> signUpWithEmail({
-    required String email,
-    required String password,
-  }) async {
+  Future<AuthResult> signInWithApple() async {
     await Future.delayed(const Duration(seconds: 1));
     return const AuthResult(success: true);
   }

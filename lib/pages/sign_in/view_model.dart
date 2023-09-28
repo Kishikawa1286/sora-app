@@ -36,25 +36,9 @@ class SignInPageViewModel extends ViewModelStateNotifier<SignInPageModel> {
     }
   }
 
-  Future<void> signInWithEmail() async {
+  Future<void> signInWithApple() async {
     try {
-      final result = await _authRepository.signInWithEmail(
-        email: state.email,
-        password: state.password,
-      );
-      _handleAuthResult(result);
-    } on Exception catch (e) {
-      print(e);
-      state = state.copyWith(errorMessage: '未知のエラーが発生しました');
-    }
-  }
-
-  Future<void> signUpWithEmail() async {
-    try {
-      final result = await _authRepository.signUpWithEmail(
-        email: state.email,
-        password: state.password,
-      );
+      final result = await _authRepository.signInWithApple();
       _handleAuthResult(result);
     } on Exception catch (e) {
       print(e);

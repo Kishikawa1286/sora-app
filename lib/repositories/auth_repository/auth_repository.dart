@@ -8,15 +8,7 @@ import 'package:sora/utils/loading_state/loading_state_handler.dart';
 abstract class AuthRepositoryBase {
   Stream<String?> get userId;
 
-  Future<AuthResult> signUpWithEmail({
-    required String email,
-    required String password,
-  });
-
-  Future<AuthResult> signInWithEmail({
-    required String email,
-    required String password,
-  });
+  Future<AuthResult> signInWithApple();
 
   Future<void> signOut();
 }
@@ -38,17 +30,11 @@ class AuthRepository implements AuthRepositoryBase {
   Stream<String?> get userId => _firebaseAuthHelper.user.map((u) => u?.uid);
 
   @override
-  Future<AuthResult> signUpWithEmail({
-    required String email,
-    required String password,
-  }) async {
+  Future<AuthResult> signInWithApple() async {
     try {
       return _loadingStateHandler.runWithLoading(
         () async {
-          await _firebaseAuthHelper.signUpWithEmail(
-            email: email,
-            password: password,
-          );
+          await _firebaseAuthHelper.signInWithApple();
           return const AuthResult(success: true);
         },
         () =>
@@ -59,32 +45,6 @@ class AuthRepository implements AuthRepositoryBase {
         success: false,
         code: e.code,
         errorMessage: getEmailSignUpErrorMessage(e),
-      );
-    }
-  }
-
-  @override
-  Future<AuthResult> signInWithEmail({
-    required String email,
-    required String password,
-  }) async {
-    try {
-      return _loadingStateHandler.runWithLoading(
-        () async {
-          await _firebaseAuthHelper.signInWithEmail(
-            email: email,
-            password: password,
-          );
-          return const AuthResult(success: true);
-        },
-        () =>
-            const AuthResult(success: false, code: 'loading', errorMessage: ''),
-      );
-    } on FirebaseAuthException catch (e) {
-      return AuthResult(
-        success: false,
-        code: e.code,
-        errorMessage: getEmailSignInErrorMessage(e),
       );
     }
   }
