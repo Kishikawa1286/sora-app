@@ -80,6 +80,7 @@ class Message {
     required this.senderName,
     required this.senderIconUrl,
     required this.imageUrls,
+    required this.nonImageFileNames,
     required this.fileAttached,
     required this.replied,
     required this.archived,
@@ -109,6 +110,8 @@ class Message {
   final String? senderIconUrl;
   @JsonKey(name: 'image_urls')
   final List<String> imageUrls;
+  @JsonKey(name: 'nonimage_file_names')
+  final List<String>? nonImageFileNames;
   @JsonKey(name: 'file_attached')
   final bool fileAttached;
   final bool replied;
@@ -143,6 +146,7 @@ class SlackMessage {
     required this.senderName,
     required this.senderIconUrl,
     required this.imageUrls,
+    required this.nonImageFileNames,
     required this.fileAttached,
     required this.slackTeamId,
     required this.slackTeamDomain,
@@ -177,6 +181,8 @@ class SlackMessage {
   final String? senderIconUrl;
   @JsonKey(name: 'image_urls')
   final List<String> imageUrls;
+  @JsonKey(name: 'nonimage_file_names')
+  final List<String>? nonImageFileNames;
   @JsonKey(name: 'file_attached')
   final bool fileAttached;
   @JsonKey(name: 'slack_team_id')

@@ -3672,6 +3672,8 @@ abstract class MessageDocumentReference
     FieldValue senderIconUrlFieldValue,
     List<String> imageUrls,
     FieldValue imageUrlsFieldValue,
+    List<String>? nonImageFileNames,
+    FieldValue nonImageFileNamesFieldValue,
     bool fileAttached,
     FieldValue fileAttachedFieldValue,
     bool replied,
@@ -3721,6 +3723,8 @@ abstract class MessageDocumentReference
     FieldValue senderIconUrlFieldValue,
     List<String> imageUrls,
     FieldValue imageUrlsFieldValue,
+    List<String>? nonImageFileNames,
+    FieldValue nonImageFileNamesFieldValue,
     bool fileAttached,
     FieldValue fileAttachedFieldValue,
     bool replied,
@@ -3805,6 +3809,8 @@ class _$MessageDocumentReference
     FieldValue? senderIconUrlFieldValue,
     Object? imageUrls = _sentinel,
     FieldValue? imageUrlsFieldValue,
+    Object? nonImageFileNames = _sentinel,
+    FieldValue? nonImageFileNamesFieldValue,
     Object? fileAttached = _sentinel,
     FieldValue? fileAttachedFieldValue,
     Object? replied = _sentinel,
@@ -3869,6 +3875,10 @@ class _$MessageDocumentReference
     assert(
       imageUrls == _sentinel || imageUrlsFieldValue == null,
       "Cannot specify both imageUrls and imageUrlsFieldValue",
+    );
+    assert(
+      nonImageFileNames == _sentinel || nonImageFileNamesFieldValue == null,
+      "Cannot specify both nonImageFileNames and nonImageFileNamesFieldValue",
     );
     assert(
       fileAttached == _sentinel || fileAttachedFieldValue == null,
@@ -3949,6 +3959,11 @@ class _$MessageDocumentReference
         _$MessageFieldMap['imageUrls']!: imageUrls as List<String>,
       if (imageUrlsFieldValue != null)
         _$MessageFieldMap['imageUrls']!: imageUrlsFieldValue,
+      if (nonImageFileNames != _sentinel)
+        _$MessageFieldMap['nonImageFileNames']!:
+            nonImageFileNames as List<String>?,
+      if (nonImageFileNamesFieldValue != null)
+        _$MessageFieldMap['nonImageFileNames']!: nonImageFileNamesFieldValue,
       if (fileAttached != _sentinel)
         _$MessageFieldMap['fileAttached']!: fileAttached as bool,
       if (fileAttachedFieldValue != null)
@@ -4017,6 +4032,8 @@ class _$MessageDocumentReference
     FieldValue? senderIconUrlFieldValue,
     Object? imageUrls = _sentinel,
     FieldValue? imageUrlsFieldValue,
+    Object? nonImageFileNames = _sentinel,
+    FieldValue? nonImageFileNamesFieldValue,
     Object? fileAttached = _sentinel,
     FieldValue? fileAttachedFieldValue,
     Object? replied = _sentinel,
@@ -4081,6 +4098,10 @@ class _$MessageDocumentReference
     assert(
       imageUrls == _sentinel || imageUrlsFieldValue == null,
       "Cannot specify both imageUrls and imageUrlsFieldValue",
+    );
+    assert(
+      nonImageFileNames == _sentinel || nonImageFileNamesFieldValue == null,
+      "Cannot specify both nonImageFileNames and nonImageFileNamesFieldValue",
     );
     assert(
       fileAttached == _sentinel || fileAttachedFieldValue == null,
@@ -4161,6 +4182,11 @@ class _$MessageDocumentReference
         _$MessageFieldMap['imageUrls']!: imageUrls as List<String>,
       if (imageUrlsFieldValue != null)
         _$MessageFieldMap['imageUrls']!: imageUrlsFieldValue,
+      if (nonImageFileNames != _sentinel)
+        _$MessageFieldMap['nonImageFileNames']!:
+            nonImageFileNames as List<String>?,
+      if (nonImageFileNamesFieldValue != null)
+        _$MessageFieldMap['nonImageFileNames']!: nonImageFileNamesFieldValue,
       if (fileAttached != _sentinel)
         _$MessageFieldMap['fileAttached']!: fileAttached as bool,
       if (fileAttachedFieldValue != null)
@@ -4422,6 +4448,17 @@ abstract class MessageQuery
     String? arrayContains,
     List<String>? arrayContainsAny,
   });
+  MessageQuery whereNonImageFileNames({
+    List<String>? isEqualTo,
+    List<String>? isNotEqualTo,
+    List<String>? isLessThan,
+    List<String>? isLessThanOrEqualTo,
+    List<String>? isGreaterThan,
+    List<String>? isGreaterThanOrEqualTo,
+    bool? isNull,
+    String? arrayContains,
+    List<String>? arrayContainsAny,
+  });
   MessageQuery whereFileAttached({
     bool? isEqualTo,
     bool? isNotEqualTo,
@@ -4671,6 +4708,18 @@ abstract class MessageQuery
     List<String> startAfter,
     List<String> endAt,
     List<String> endBefore,
+    MessageDocumentSnapshot? startAtDocument,
+    MessageDocumentSnapshot? endAtDocument,
+    MessageDocumentSnapshot? endBeforeDocument,
+    MessageDocumentSnapshot? startAfterDocument,
+  });
+
+  MessageQuery orderByNonImageFileNames({
+    bool descending = false,
+    List<String>? startAt,
+    List<String>? startAfter,
+    List<String>? endAt,
+    List<String>? endBefore,
     MessageDocumentSnapshot? startAtDocument,
     MessageDocumentSnapshot? endAtDocument,
     MessageDocumentSnapshot? endBeforeDocument,
@@ -5279,6 +5328,35 @@ class _$MessageQuery extends QueryReference<Message, MessageQuerySnapshot>
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$MessageFieldMap['imageUrls']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  MessageQuery whereNonImageFileNames({
+    List<String>? isEqualTo,
+    List<String>? isNotEqualTo,
+    List<String>? isLessThan,
+    List<String>? isLessThanOrEqualTo,
+    List<String>? isGreaterThan,
+    List<String>? isGreaterThanOrEqualTo,
+    bool? isNull,
+    String? arrayContains,
+    List<String>? arrayContainsAny,
+  }) {
+    return _$MessageQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$MessageFieldMap['nonImageFileNames']!,
         isEqualTo: isEqualTo,
         isNotEqualTo: isNotEqualTo,
         isLessThan: isLessThan,
@@ -6447,6 +6525,79 @@ class _$MessageQuery extends QueryReference<Message, MessageQuerySnapshot>
     );
   }
 
+  MessageQuery orderByNonImageFileNames({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    MessageDocumentSnapshot? startAtDocument,
+    MessageDocumentSnapshot? endAtDocument,
+    MessageDocumentSnapshot? endBeforeDocument,
+    MessageDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$MessageFieldMap['nonImageFileNames']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$MessageQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
   MessageQuery orderByFileAttached({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -7410,6 +7561,8 @@ abstract class SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue senderIconUrlFieldValue,
     List<String> imageUrls,
     FieldValue imageUrlsFieldValue,
+    List<String>? nonImageFileNames,
+    FieldValue nonImageFileNamesFieldValue,
     bool fileAttached,
     FieldValue fileAttachedFieldValue,
     String slackTeamId,
@@ -7467,6 +7620,8 @@ abstract class SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue senderIconUrlFieldValue,
     List<String> imageUrls,
     FieldValue imageUrlsFieldValue,
+    List<String>? nonImageFileNames,
+    FieldValue nonImageFileNamesFieldValue,
     bool fileAttached,
     FieldValue fileAttachedFieldValue,
     String slackTeamId,
@@ -7554,6 +7709,8 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue? senderIconUrlFieldValue,
     Object? imageUrls = _sentinel,
     FieldValue? imageUrlsFieldValue,
+    Object? nonImageFileNames = _sentinel,
+    FieldValue? nonImageFileNamesFieldValue,
     Object? fileAttached = _sentinel,
     FieldValue? fileAttachedFieldValue,
     Object? slackTeamId = _sentinel,
@@ -7624,6 +7781,10 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
     assert(
       imageUrls == _sentinel || imageUrlsFieldValue == null,
       "Cannot specify both imageUrls and imageUrlsFieldValue",
+    );
+    assert(
+      nonImageFileNames == _sentinel || nonImageFileNamesFieldValue == null,
+      "Cannot specify both nonImageFileNames and nonImageFileNamesFieldValue",
     );
     assert(
       fileAttached == _sentinel || fileAttachedFieldValue == null,
@@ -7724,6 +7885,12 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
         _$SlackMessageFieldMap['imageUrls']!: imageUrls as List<String>,
       if (imageUrlsFieldValue != null)
         _$SlackMessageFieldMap['imageUrls']!: imageUrlsFieldValue,
+      if (nonImageFileNames != _sentinel)
+        _$SlackMessageFieldMap['nonImageFileNames']!:
+            nonImageFileNames as List<String>?,
+      if (nonImageFileNamesFieldValue != null)
+        _$SlackMessageFieldMap['nonImageFileNames']!:
+            nonImageFileNamesFieldValue,
       if (fileAttached != _sentinel)
         _$SlackMessageFieldMap['fileAttached']!: fileAttached as bool,
       if (fileAttachedFieldValue != null)
@@ -7813,6 +7980,8 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue? senderIconUrlFieldValue,
     Object? imageUrls = _sentinel,
     FieldValue? imageUrlsFieldValue,
+    Object? nonImageFileNames = _sentinel,
+    FieldValue? nonImageFileNamesFieldValue,
     Object? fileAttached = _sentinel,
     FieldValue? fileAttachedFieldValue,
     Object? slackTeamId = _sentinel,
@@ -7883,6 +8052,10 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
     assert(
       imageUrls == _sentinel || imageUrlsFieldValue == null,
       "Cannot specify both imageUrls and imageUrlsFieldValue",
+    );
+    assert(
+      nonImageFileNames == _sentinel || nonImageFileNamesFieldValue == null,
+      "Cannot specify both nonImageFileNames and nonImageFileNamesFieldValue",
     );
     assert(
       fileAttached == _sentinel || fileAttachedFieldValue == null,
@@ -7983,6 +8156,12 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
         _$SlackMessageFieldMap['imageUrls']!: imageUrls as List<String>,
       if (imageUrlsFieldValue != null)
         _$SlackMessageFieldMap['imageUrls']!: imageUrlsFieldValue,
+      if (nonImageFileNames != _sentinel)
+        _$SlackMessageFieldMap['nonImageFileNames']!:
+            nonImageFileNames as List<String>?,
+      if (nonImageFileNamesFieldValue != null)
+        _$SlackMessageFieldMap['nonImageFileNames']!:
+            nonImageFileNamesFieldValue,
       if (fileAttached != _sentinel)
         _$SlackMessageFieldMap['fileAttached']!: fileAttached as bool,
       if (fileAttachedFieldValue != null)
@@ -8246,6 +8425,17 @@ abstract class SlackMessageQuery
     List<String?>? whereNotIn,
   });
   SlackMessageQuery whereImageUrls({
+    List<String>? isEqualTo,
+    List<String>? isNotEqualTo,
+    List<String>? isLessThan,
+    List<String>? isLessThanOrEqualTo,
+    List<String>? isGreaterThan,
+    List<String>? isGreaterThanOrEqualTo,
+    bool? isNull,
+    String? arrayContains,
+    List<String>? arrayContainsAny,
+  });
+  SlackMessageQuery whereNonImageFileNames({
     List<String>? isEqualTo,
     List<String>? isNotEqualTo,
     List<String>? isLessThan,
@@ -8548,6 +8738,18 @@ abstract class SlackMessageQuery
     List<String> startAfter,
     List<String> endAt,
     List<String> endBefore,
+    SlackMessageDocumentSnapshot? startAtDocument,
+    SlackMessageDocumentSnapshot? endAtDocument,
+    SlackMessageDocumentSnapshot? endBeforeDocument,
+    SlackMessageDocumentSnapshot? startAfterDocument,
+  });
+
+  SlackMessageQuery orderByNonImageFileNames({
+    bool descending = false,
+    List<String>? startAt,
+    List<String>? startAfter,
+    List<String>? endAt,
+    List<String>? endBefore,
     SlackMessageDocumentSnapshot? startAtDocument,
     SlackMessageDocumentSnapshot? endAtDocument,
     SlackMessageDocumentSnapshot? endBeforeDocument,
@@ -9192,6 +9394,35 @@ class _$SlackMessageQuery
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$SlackMessageFieldMap['imageUrls']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  SlackMessageQuery whereNonImageFileNames({
+    List<String>? isEqualTo,
+    List<String>? isNotEqualTo,
+    List<String>? isLessThan,
+    List<String>? isLessThanOrEqualTo,
+    List<String>? isGreaterThan,
+    List<String>? isGreaterThanOrEqualTo,
+    bool? isNull,
+    String? arrayContains,
+    List<String>? arrayContainsAny,
+  }) {
+    return _$SlackMessageQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$SlackMessageFieldMap['nonImageFileNames']!,
         isEqualTo: isEqualTo,
         isNotEqualTo: isNotEqualTo,
         isLessThan: isLessThan,
@@ -10375,6 +10606,79 @@ class _$SlackMessageQuery
   }) {
     final query = $referenceWithoutCursor
         .orderBy(_$SlackMessageFieldMap['imageUrls']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$SlackMessageQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  SlackMessageQuery orderByNonImageFileNames({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    SlackMessageDocumentSnapshot? startAtDocument,
+    SlackMessageDocumentSnapshot? endAtDocument,
+    SlackMessageDocumentSnapshot? endBeforeDocument,
+    SlackMessageDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$SlackMessageFieldMap['nonImageFileNames']!,
+        descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -15807,6 +16111,9 @@ Message _$MessageFromJson(Map<String, dynamic> json) => Message(
       imageUrls: (json['image_urls'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
+      nonImageFileNames: (json['nonimage_file_names'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
       fileAttached: json['file_attached'] as bool,
       replied: json['replied'] as bool,
       archived: json['archived'] as bool,
@@ -15833,6 +16140,7 @@ const _$MessageFieldMap = <String, String>{
   'senderName': 'sender_name',
   'senderIconUrl': 'sender_icon_url',
   'imageUrls': 'image_urls',
+  'nonImageFileNames': 'nonimage_file_names',
   'fileAttached': 'file_attached',
   'replied': 'replied',
   'archived': 'archived',
@@ -15857,6 +16165,7 @@ Map<String, dynamic> _$MessageToJson(Message instance) => <String, dynamic>{
       'sender_name': instance.senderName,
       'sender_icon_url': instance.senderIconUrl,
       'image_urls': instance.imageUrls,
+      'nonimage_file_names': instance.nonImageFileNames,
       'file_attached': instance.fileAttached,
       'replied': instance.replied,
       'archived': instance.archived,
@@ -15883,6 +16192,9 @@ SlackMessage _$SlackMessageFromJson(Map<String, dynamic> json) => SlackMessage(
       senderIconUrl: json['sender_icon_url'] as String?,
       imageUrls: (json['image_urls'] as List<dynamic>)
           .map((e) => e as String)
+          .toList(),
+      nonImageFileNames: (json['nonimage_file_names'] as List<dynamic>?)
+          ?.map((e) => e as String)
           .toList(),
       fileAttached: json['file_attached'] as bool,
       slackTeamId: json['slack_team_id'] as String,
@@ -15914,6 +16226,7 @@ const _$SlackMessageFieldMap = <String, String>{
   'senderName': 'sender_name',
   'senderIconUrl': 'sender_icon_url',
   'imageUrls': 'image_urls',
+  'nonImageFileNames': 'nonimage_file_names',
   'fileAttached': 'file_attached',
   'slackTeamId': 'slack_team_id',
   'slackTeamDomain': 'slack_team_domain',
@@ -15943,6 +16256,7 @@ Map<String, dynamic> _$SlackMessageToJson(SlackMessage instance) =>
       'sender_name': instance.senderName,
       'sender_icon_url': instance.senderIconUrl,
       'image_urls': instance.imageUrls,
+      'nonimage_file_names': instance.nonImageFileNames,
       'file_attached': instance.fileAttached,
       'slack_team_id': instance.slackTeamId,
       'slack_team_domain': instance.slackTeamDomain,
