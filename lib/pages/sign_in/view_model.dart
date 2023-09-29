@@ -46,20 +46,6 @@ class SignInPageViewModel extends ViewModelStateNotifier<SignInPageModel> {
     }
   }
 
-  void updateEmail(String? email) {
-    if (email == null) {
-      return;
-    }
-    state = state.copyWith(email: email);
-  }
-
-  void updatePassword(String? password) {
-    if (password == null) {
-      return;
-    }
-    state = state.copyWith(password: password);
-  }
-
   @override
   Future<void> dispose() async {
     await _authStateSubscription.cancel();

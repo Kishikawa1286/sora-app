@@ -16,8 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SignInPageModel {
-  String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
   bool get authenticated => throw _privateConstructorUsedError;
 
@@ -32,8 +30,7 @@ abstract class $SignInPageModelCopyWith<$Res> {
           SignInPageModel value, $Res Function(SignInPageModel) then) =
       _$SignInPageModelCopyWithImpl<$Res, SignInPageModel>;
   @useResult
-  $Res call(
-      {String email, String password, String errorMessage, bool authenticated});
+  $Res call({String errorMessage, bool authenticated});
 }
 
 /// @nodoc
@@ -49,20 +46,10 @@ class _$SignInPageModelCopyWithImpl<$Res, $Val extends SignInPageModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
-    Object? password = null,
     Object? errorMessage = null,
     Object? authenticated = null,
   }) {
     return _then(_value.copyWith(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -83,8 +70,7 @@ abstract class _$$_SignInPageModelCopyWith<$Res>
       __$$_SignInPageModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String email, String password, String errorMessage, bool authenticated});
+  $Res call({String errorMessage, bool authenticated});
 }
 
 /// @nodoc
@@ -98,20 +84,10 @@ class __$$_SignInPageModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
-    Object? password = null,
     Object? errorMessage = null,
     Object? authenticated = null,
   }) {
     return _then(_$_SignInPageModel(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -128,17 +104,8 @@ class __$$_SignInPageModelCopyWithImpl<$Res>
 
 class _$_SignInPageModel implements _SignInPageModel {
   const _$_SignInPageModel(
-      {this.email = '',
-      this.password = '',
-      this.errorMessage = '',
-      this.authenticated = false});
+      {this.errorMessage = '', this.authenticated = false});
 
-  @override
-  @JsonKey()
-  final String email;
-  @override
-  @JsonKey()
-  final String password;
   @override
   @JsonKey()
   final String errorMessage;
@@ -148,7 +115,7 @@ class _$_SignInPageModel implements _SignInPageModel {
 
   @override
   String toString() {
-    return 'SignInPageModel(email: $email, password: $password, errorMessage: $errorMessage, authenticated: $authenticated)';
+    return 'SignInPageModel(errorMessage: $errorMessage, authenticated: $authenticated)';
   }
 
   @override
@@ -156,9 +123,6 @@ class _$_SignInPageModel implements _SignInPageModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SignInPageModel &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.authenticated, authenticated) ||
@@ -166,8 +130,7 @@ class _$_SignInPageModel implements _SignInPageModel {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, email, password, errorMessage, authenticated);
+  int get hashCode => Object.hash(runtimeType, errorMessage, authenticated);
 
   @JsonKey(ignore: true)
   @override
@@ -178,15 +141,9 @@ class _$_SignInPageModel implements _SignInPageModel {
 
 abstract class _SignInPageModel implements SignInPageModel {
   const factory _SignInPageModel(
-      {final String email,
-      final String password,
-      final String errorMessage,
+      {final String errorMessage,
       final bool authenticated}) = _$_SignInPageModel;
 
-  @override
-  String get email;
-  @override
-  String get password;
   @override
   String get errorMessage;
   @override
