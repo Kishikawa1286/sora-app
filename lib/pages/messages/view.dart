@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/pages/messages/reply_modal/view.dart';
 import 'package:sora/pages/messages/view_model.dart';
 import 'package:sora/services/home_tab/service.dart';
+import 'package:sora/utils/custom_icons.dart';
 
 import 'package:sora/utils/format/date_formatting.dart';
 
@@ -21,7 +22,13 @@ class MessagesPage extends HookConsumerWidget {
     if (messages.isEmpty) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('メッセージ'),
+          title: Text(
+            'メッセージ一覧',
+            style: Theme.of(context)
+                .textTheme
+                .titleLarge
+                ?.copyWith(fontWeight: FontWeight.bold),
+          ),
         ),
         body: const Center(child: Text('メッセージがありません')),
       );
@@ -29,45 +36,23 @@ class MessagesPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          // TODO: Add a button to switch between Slack, LINE and so on.
-          children: [
-            ElevatedButton(
-              onPressed: () {},
-              style: ButtonStyle(
-                padding: MaterialStateProperty.all<EdgeInsets>(
-                  const EdgeInsets.symmetric(horizontal: 24),
-                ),
-              ),
-              child: const Text('All', style: TextStyle(fontSize: 16)),
-            ),
-            const SizedBox(width: 10),
-            ElevatedButton(
-              onPressed: () {},
-              style: ButtonStyle(
-                padding: MaterialStateProperty.all<EdgeInsets>(
-                  const EdgeInsets.symmetric(horizontal: 24),
-                ),
-              ),
-              child: const Text('Slack', style: TextStyle(fontSize: 16)),
-            ),
-            const SizedBox(width: 10),
-            ElevatedButton(
-              onPressed: () {},
-              style: ButtonStyle(
-                padding: MaterialStateProperty.all<EdgeInsets>(
-                  const EdgeInsets.symmetric(horizontal: 24),
-                ),
-              ),
-              child: const Text('LINE', style: TextStyle(fontSize: 16)),
-            ),
-          ],
+        title: Text(
+          'メッセージ一覧',
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge
+              ?.copyWith(fontWeight: FontWeight.bold),
         ),
       ),
       body: ListView.builder(
         itemCount: messages.length,
         itemBuilder: (context, index) {
           final message = messages[index];
+
+          if (index == messages.length - 1) {
+            viewModel.fetchMoreMessages();
+          }
+
           if (message == null) {
             return const SizedBox.shrink();
           }
@@ -75,7 +60,11 @@ class MessagesPage extends HookConsumerWidget {
             return const SizedBox.shrink();
           }
           final iconUrl = message.senderIconUrl;
+
           return InkWell(
+            onTap: () async {
+              // TODO: Navigate to the message detail page.
+            },
             child: Slidable(
               key: ValueKey(index),
               startActionPane: ActionPane(
@@ -100,8 +89,7 @@ class MessagesPage extends HookConsumerWidget {
                     onPressed: (context) {},
                     backgroundColor: const Color.fromARGB(255, 0, 149, 255),
                     foregroundColor: Colors.white,
-                    icon: Icons.thumb_down,
-                    label: 'bad',
+                    icon: CustomIcons.emojiNegative,
                   ),
                 ],
               ),
@@ -127,8 +115,7 @@ class MessagesPage extends HookConsumerWidget {
                     onPressed: (context) {},
                     backgroundColor: const Color.fromARGB(255, 255, 115, 0),
                     foregroundColor: Colors.white,
-                    icon: Icons.thumb_up,
-                    label: 'good',
+                    icon: CustomIcons.emojiPositive,
                   ),
                 ],
               ),
@@ -142,7 +129,14 @@ class MessagesPage extends HookConsumerWidget {
                           height: 56,
                         ),
                       )
-                    : null,
+                    : ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Container(
+                          width: 56,
+                          height: 56,
+                          color: Colors.grey,
+                        ),
+                      ),
                 title: Row(
                   children: [
                     Text(
@@ -156,8 +150,11 @@ class MessagesPage extends HookConsumerWidget {
                     ),
                   ],
                 ),
-                subtitle:
-                    Text(message.summary, style: const TextStyle(fontSize: 16)),
+                subtitle: Text(
+                  message.summary,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(fontSize: 12),
+                ),
               ),
             ),
           );
