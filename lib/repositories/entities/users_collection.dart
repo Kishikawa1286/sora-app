@@ -111,7 +111,7 @@ class Message {
   @JsonKey(name: 'image_urls')
   final List<String> imageUrls;
   @JsonKey(name: 'nonimage_file_names')
-  final List<String>? nonImageFileNames;
+  final List<String> nonImageFileNames;
   @JsonKey(name: 'file_attached')
   final bool fileAttached;
   final bool replied;
@@ -182,7 +182,7 @@ class SlackMessage {
   @JsonKey(name: 'image_urls')
   final List<String> imageUrls;
   @JsonKey(name: 'nonimage_file_names')
-  final List<String>? nonImageFileNames;
+  final List<String> nonImageFileNames;
   @JsonKey(name: 'file_attached')
   final bool fileAttached;
   @JsonKey(name: 'slack_team_id')

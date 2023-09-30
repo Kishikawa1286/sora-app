@@ -10,10 +10,12 @@ environment:
 dependencies:
   # If you want to update cloud_firestore, you must reconfigure the precompiled sdk specified in ios/Podfile.
   # See: https://firebase.flutter.dev/docs/firestore/overview/#4-optional-improve-ios--macos-build-times
+  carousel_slider: ^4.2.1
   cloud_firestore: 4.8.5
   cloud_firestore_odm: 1.0.0-dev.65
   cloud_functions: 4.4.0
   crypto: 3.0.3
+  dismissible_page: ^1.0.2
   firebase_auth: 4.7.3
   firebase_core: 2.15.1
   firebase_dynamic_links: 5.3.5

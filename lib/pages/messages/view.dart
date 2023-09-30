@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sora/components/message_list_tile/view.dart';
 import 'package:sora/pages/messages/reply_modal/view.dart';
 import 'package:sora/pages/messages/view_model.dart';
 import 'package:sora/services/home_tab/service.dart';
 import 'package:sora/utils/custom_icons.dart';
-
-import 'package:sora/utils/format/date_formatting.dart';
 
 class MessagesPage extends HookConsumerWidget {
   const MessagesPage({super.key});
@@ -59,11 +58,13 @@ class MessagesPage extends HookConsumerWidget {
           if (model.dismissedMessageIds.contains(message.id)) {
             return const SizedBox.shrink();
           }
-          final iconUrl = message.senderIconUrl;
 
           return InkWell(
             onTap: () async {
-              // TODO: Navigate to the message detail page.
+              await Future.microtask(
+                () => Navigator.of(context)
+                    .pushNamed('message_detail/${message.id}'),
+              );
             },
             child: Slidable(
               key: ValueKey(index),
@@ -119,43 +120,7 @@ class MessagesPage extends HookConsumerWidget {
                   ),
                 ],
               ),
-              child: ListTile(
-                leading: iconUrl != null
-                    ? ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Image.network(
-                          iconUrl,
-                          width: 56,
-                          height: 56,
-                        ),
-                      )
-                    : ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Container(
-                          width: 56,
-                          height: 56,
-                          color: Colors.grey,
-                        ),
-                      ),
-                title: Row(
-                  children: [
-                    Text(
-                      message.senderName,
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                    const Expanded(child: SizedBox()),
-                    Text(
-                      formatWithWeekday(message.createdAt.toDate()),
-                      style: const TextStyle(fontSize: 12),
-                    ),
-                  ],
-                ),
-                subtitle: Text(
-                  message.summary,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(fontSize: 12),
-                ),
-              ),
+              child: MessageListTile(message: message),
             ),
           );
         },
