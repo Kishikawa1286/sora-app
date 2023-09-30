@@ -58,6 +58,10 @@ class MessagesPage extends HookConsumerWidget {
           if (model.dismissedMessageIds.contains(message.id)) {
             return const SizedBox.shrink();
           }
+          if (message.replied) {
+            viewModel.dissmissMessage(index);
+            return const SizedBox.shrink();
+          }
 
           return InkWell(
             onTap: () async {

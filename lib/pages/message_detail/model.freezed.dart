@@ -20,6 +20,10 @@ mixin _$MessageDetailPageModel {
   String? get messageId => throw _privateConstructorUsedError;
   Message? get message => throw _privateConstructorUsedError;
   SlackMessage? get slackMessage => throw _privateConstructorUsedError;
+  String get replyText => throw _privateConstructorUsedError;
+  bool get selectingReplyType => throw _privateConstructorUsedError;
+  bool get editingReplyText => throw _privateConstructorUsedError;
+  bool get soraShown => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MessageDetailPageModelCopyWith<MessageDetailPageModel> get copyWith =>
@@ -36,7 +40,11 @@ abstract class $MessageDetailPageModelCopyWith<$Res> {
       {String? userId,
       String? messageId,
       Message? message,
-      SlackMessage? slackMessage});
+      SlackMessage? slackMessage,
+      String replyText,
+      bool selectingReplyType,
+      bool editingReplyText,
+      bool soraShown});
 }
 
 /// @nodoc
@@ -57,6 +65,10 @@ class _$MessageDetailPageModelCopyWithImpl<$Res,
     Object? messageId = freezed,
     Object? message = freezed,
     Object? slackMessage = freezed,
+    Object? replyText = null,
+    Object? selectingReplyType = null,
+    Object? editingReplyText = null,
+    Object? soraShown = null,
   }) {
     return _then(_value.copyWith(
       userId: freezed == userId
@@ -75,6 +87,22 @@ class _$MessageDetailPageModelCopyWithImpl<$Res,
           ? _value.slackMessage
           : slackMessage // ignore: cast_nullable_to_non_nullable
               as SlackMessage?,
+      replyText: null == replyText
+          ? _value.replyText
+          : replyText // ignore: cast_nullable_to_non_nullable
+              as String,
+      selectingReplyType: null == selectingReplyType
+          ? _value.selectingReplyType
+          : selectingReplyType // ignore: cast_nullable_to_non_nullable
+              as bool,
+      editingReplyText: null == editingReplyText
+          ? _value.editingReplyText
+          : editingReplyText // ignore: cast_nullable_to_non_nullable
+              as bool,
+      soraShown: null == soraShown
+          ? _value.soraShown
+          : soraShown // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -91,7 +119,11 @@ abstract class _$$_MessageDetailPageModelCopyWith<$Res>
       {String? userId,
       String? messageId,
       Message? message,
-      SlackMessage? slackMessage});
+      SlackMessage? slackMessage,
+      String replyText,
+      bool selectingReplyType,
+      bool editingReplyText,
+      bool soraShown});
 }
 
 /// @nodoc
@@ -110,6 +142,10 @@ class __$$_MessageDetailPageModelCopyWithImpl<$Res>
     Object? messageId = freezed,
     Object? message = freezed,
     Object? slackMessage = freezed,
+    Object? replyText = null,
+    Object? selectingReplyType = null,
+    Object? editingReplyText = null,
+    Object? soraShown = null,
   }) {
     return _then(_$_MessageDetailPageModel(
       userId: freezed == userId
@@ -128,6 +164,22 @@ class __$$_MessageDetailPageModelCopyWithImpl<$Res>
           ? _value.slackMessage
           : slackMessage // ignore: cast_nullable_to_non_nullable
               as SlackMessage?,
+      replyText: null == replyText
+          ? _value.replyText
+          : replyText // ignore: cast_nullable_to_non_nullable
+              as String,
+      selectingReplyType: null == selectingReplyType
+          ? _value.selectingReplyType
+          : selectingReplyType // ignore: cast_nullable_to_non_nullable
+              as bool,
+      editingReplyText: null == editingReplyText
+          ? _value.editingReplyText
+          : editingReplyText // ignore: cast_nullable_to_non_nullable
+              as bool,
+      soraShown: null == soraShown
+          ? _value.soraShown
+          : soraShown // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -139,7 +191,11 @@ class _$_MessageDetailPageModel implements _MessageDetailPageModel {
       {this.userId,
       this.messageId,
       this.message = null,
-      this.slackMessage = null});
+      this.slackMessage = null,
+      this.replyText = '',
+      this.selectingReplyType = false,
+      this.editingReplyText = false,
+      this.soraShown = false});
 
   @override
   final String? userId;
@@ -151,10 +207,22 @@ class _$_MessageDetailPageModel implements _MessageDetailPageModel {
   @override
   @JsonKey()
   final SlackMessage? slackMessage;
+  @override
+  @JsonKey()
+  final String replyText;
+  @override
+  @JsonKey()
+  final bool selectingReplyType;
+  @override
+  @JsonKey()
+  final bool editingReplyText;
+  @override
+  @JsonKey()
+  final bool soraShown;
 
   @override
   String toString() {
-    return 'MessageDetailPageModel(userId: $userId, messageId: $messageId, message: $message, slackMessage: $slackMessage)';
+    return 'MessageDetailPageModel(userId: $userId, messageId: $messageId, message: $message, slackMessage: $slackMessage, replyText: $replyText, selectingReplyType: $selectingReplyType, editingReplyText: $editingReplyText, soraShown: $soraShown)';
   }
 
   @override
@@ -167,12 +235,20 @@ class _$_MessageDetailPageModel implements _MessageDetailPageModel {
                 other.messageId == messageId) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.slackMessage, slackMessage) ||
-                other.slackMessage == slackMessage));
+                other.slackMessage == slackMessage) &&
+            (identical(other.replyText, replyText) ||
+                other.replyText == replyText) &&
+            (identical(other.selectingReplyType, selectingReplyType) ||
+                other.selectingReplyType == selectingReplyType) &&
+            (identical(other.editingReplyText, editingReplyText) ||
+                other.editingReplyText == editingReplyText) &&
+            (identical(other.soraShown, soraShown) ||
+                other.soraShown == soraShown));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userId, messageId, message, slackMessage);
+  int get hashCode => Object.hash(runtimeType, userId, messageId, message,
+      slackMessage, replyText, selectingReplyType, editingReplyText, soraShown);
 
   @JsonKey(ignore: true)
   @override
@@ -187,7 +263,11 @@ abstract class _MessageDetailPageModel implements MessageDetailPageModel {
       {final String? userId,
       final String? messageId,
       final Message? message,
-      final SlackMessage? slackMessage}) = _$_MessageDetailPageModel;
+      final SlackMessage? slackMessage,
+      final String replyText,
+      final bool selectingReplyType,
+      final bool editingReplyText,
+      final bool soraShown}) = _$_MessageDetailPageModel;
 
   @override
   String? get userId;
@@ -197,6 +277,14 @@ abstract class _MessageDetailPageModel implements MessageDetailPageModel {
   Message? get message;
   @override
   SlackMessage? get slackMessage;
+  @override
+  String get replyText;
+  @override
+  bool get selectingReplyType;
+  @override
+  bool get editingReplyText;
+  @override
+  bool get soraShown;
   @override
   @JsonKey(ignore: true)
   _$$_MessageDetailPageModelCopyWith<_$_MessageDetailPageModel> get copyWith =>

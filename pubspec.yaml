@@ -65,6 +65,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/slider-icon/
+    - assets/images/sora/
 
 flutter_launcher_icons:
   android: "launcher_icon"
