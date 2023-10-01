@@ -32,6 +32,20 @@ class SettingPage extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.send),
+              title: Text(
+                '返信設定',
+                style: Theme.of(context)
+                    .textTheme
+                    .titleMedium
+                    ?.copyWith(fontWeight: FontWeight.bold),
+              ),
+              trailing: const Icon(Icons.arrow_forward_ios),
+              onTap: () async {
+                await Navigator.of(context).pushNamed('message_settings');
+              },
+            ),
+            ListTile(
               leading: const Icon(Icons.pending_outlined),
               title: Text(
                 'その他',

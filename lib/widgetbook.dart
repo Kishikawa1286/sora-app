@@ -9,6 +9,8 @@ import 'package:sora/repositories/message_repository/message_repository.dart';
 import 'package:sora/repositories/message_repository/message_repository_mock.dart';
 import 'package:sora/repositories/slack_repository/slack_repository.dart';
 import 'package:sora/repositories/slack_repository/slack_repository_mock.dart';
+import 'package:sora/repositories/user_repository/user_repository.dart';
+import 'package:sora/repositories/user_repository/user_repository_mock.dart';
 import 'package:sora/widgetbook.directories.g.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
@@ -37,6 +39,7 @@ class WidgetbookApp extends StatelessWidget {
                 .overrideWith((ref) => MessageRepositoryMock()),
             slackRepositoryProvider
                 .overrideWith((ref) => SlackRepositoryMock()),
+            userRepositoryProvider.overrideWith((ref) => UserRepositoryMock()),
           ],
           child: child,
         ),
