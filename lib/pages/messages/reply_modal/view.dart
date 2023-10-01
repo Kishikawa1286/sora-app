@@ -9,21 +9,23 @@ Future<void> showReplyModal(
   required String text,
   void Function()? onCanceled,
   void Function()? onReplied,
-}) =>
-    showModalBottomSheet(
-      context: context,
-      builder: (context) => ProviderScope(
-        overrides: [
-          replyModalViewModelArgsProvider.overrideWithValue(
-            ReplyModalViewModelArgs(messageId: messageId, text: text),
-          ),
-        ],
-        child: ReplyModalContent(
-          onCanceled: onCanceled,
-          onReplied: onReplied,
+}) async {
+  await showModalBottomSheet(
+    context: context,
+    builder: (context) => ProviderScope(
+      overrides: [
+        replyModalViewModelArgsProvider.overrideWithValue(
+          ReplyModalViewModelArgs(messageId: messageId, text: text),
         ),
+      ],
+      child: ReplyModalContent(
+        onCanceled: onCanceled,
+        onReplied: onReplied,
       ),
-    );
+    ),
+  );
+  onCanceled?.call();
+}
 
 class ReplyModalContent extends HookConsumerWidget {
   const ReplyModalContent({this.onCanceled, this.onReplied, super.key});

@@ -16,6 +16,10 @@ abstract class MessageRepositoryBase {
     int limit = 20,
   });
 
+  Stream<Message?> fetchMessage(String userId, String messageId);
+
+  Stream<SlackMessage?> fetchSlackMessage(String userId, String messageId);
+
   Stream<Sender?> fetchSender(String userId, String senderId);
 
   Stream<SlackSender?> fetchSlackSender(String userId, String senderId);
@@ -46,6 +50,13 @@ class MessageRepository implements MessageRepositoryBase {
       );
 
   @override
+  Stream<SlackMessage?> fetchSlackMessage(String userId, String messageId) =>
+      _firestoreHelper
+          .queryStream(slackMessagesCollectionRef(userId, messageId))
+          // SlackMessage is unique for each Message
+          .map((list) => list.isNotEmpty ? list.first : null);
+
+  @override
   Stream<List<Message?>> fetchMessagesWithoutReply(
     String userId, {
     Timestamp? startAfter,
@@ -60,6 +71,10 @@ class MessageRepository implements MessageRepositoryBase {
               startAfter: startAfter ?? Timestamp.now(),
             ),
       );
+
+  @override
+  Stream<Message?> fetchMessage(String userId, String messageId) =>
+      _firestoreHelper.documentStream(messageDocRef(userId, messageId));
 
   @override
   Stream<Sender?> fetchSender(String userId, String senderId) =>

@@ -10,15 +10,15 @@ class BackNavigationButton extends StatelessWidget {
         onTap: () => Navigator.pop(context),
         child: Row(
           children: [
-            const Icon(
+            Icon(
               Icons.arrow_back_ios,
-              color: Colors.blue,
+              color: Theme.of(context).primaryColor,
               size: 14,
             ),
             Text(
               label,
-              style: const TextStyle(
-                color: Colors.blue,
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
               ),

@@ -20,6 +20,14 @@ class MessageRepositoryMock extends MessageRepositoryBase {
       Stream.value([]);
 
   @override
+  Stream<Message?> fetchMessage(String userId, String messageId) =>
+      Stream.value(null);
+
+  @override
+  Stream<SlackMessage?> fetchSlackMessage(String userId, String messageId) =>
+      Stream.value(null);
+
+  @override
   Stream<Sender?> fetchSender(String userId, String senderId) =>
       Stream.value(null);
 

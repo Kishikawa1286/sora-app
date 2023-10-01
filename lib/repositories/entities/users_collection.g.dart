@@ -3672,7 +3672,7 @@ abstract class MessageDocumentReference
     FieldValue senderIconUrlFieldValue,
     List<String> imageUrls,
     FieldValue imageUrlsFieldValue,
-    List<String>? nonImageFileNames,
+    List<String> nonImageFileNames,
     FieldValue nonImageFileNamesFieldValue,
     bool fileAttached,
     FieldValue fileAttachedFieldValue,
@@ -3723,7 +3723,7 @@ abstract class MessageDocumentReference
     FieldValue senderIconUrlFieldValue,
     List<String> imageUrls,
     FieldValue imageUrlsFieldValue,
-    List<String>? nonImageFileNames,
+    List<String> nonImageFileNames,
     FieldValue nonImageFileNamesFieldValue,
     bool fileAttached,
     FieldValue fileAttachedFieldValue,
@@ -3961,7 +3961,7 @@ class _$MessageDocumentReference
         _$MessageFieldMap['imageUrls']!: imageUrlsFieldValue,
       if (nonImageFileNames != _sentinel)
         _$MessageFieldMap['nonImageFileNames']!:
-            nonImageFileNames as List<String>?,
+            nonImageFileNames as List<String>,
       if (nonImageFileNamesFieldValue != null)
         _$MessageFieldMap['nonImageFileNames']!: nonImageFileNamesFieldValue,
       if (fileAttached != _sentinel)
@@ -4184,7 +4184,7 @@ class _$MessageDocumentReference
         _$MessageFieldMap['imageUrls']!: imageUrlsFieldValue,
       if (nonImageFileNames != _sentinel)
         _$MessageFieldMap['nonImageFileNames']!:
-            nonImageFileNames as List<String>?,
+            nonImageFileNames as List<String>,
       if (nonImageFileNamesFieldValue != null)
         _$MessageFieldMap['nonImageFileNames']!: nonImageFileNamesFieldValue,
       if (fileAttached != _sentinel)
@@ -4716,10 +4716,10 @@ abstract class MessageQuery
 
   MessageQuery orderByNonImageFileNames({
     bool descending = false,
-    List<String>? startAt,
-    List<String>? startAfter,
-    List<String>? endAt,
-    List<String>? endBefore,
+    List<String> startAt,
+    List<String> startAfter,
+    List<String> endAt,
+    List<String> endBefore,
     MessageDocumentSnapshot? startAtDocument,
     MessageDocumentSnapshot? endAtDocument,
     MessageDocumentSnapshot? endBeforeDocument,
@@ -7561,7 +7561,7 @@ abstract class SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue senderIconUrlFieldValue,
     List<String> imageUrls,
     FieldValue imageUrlsFieldValue,
-    List<String>? nonImageFileNames,
+    List<String> nonImageFileNames,
     FieldValue nonImageFileNamesFieldValue,
     bool fileAttached,
     FieldValue fileAttachedFieldValue,
@@ -7620,7 +7620,7 @@ abstract class SlackMessageDocumentReference extends FirestoreDocumentReference<
     FieldValue senderIconUrlFieldValue,
     List<String> imageUrls,
     FieldValue imageUrlsFieldValue,
-    List<String>? nonImageFileNames,
+    List<String> nonImageFileNames,
     FieldValue nonImageFileNamesFieldValue,
     bool fileAttached,
     FieldValue fileAttachedFieldValue,
@@ -7887,7 +7887,7 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
         _$SlackMessageFieldMap['imageUrls']!: imageUrlsFieldValue,
       if (nonImageFileNames != _sentinel)
         _$SlackMessageFieldMap['nonImageFileNames']!:
-            nonImageFileNames as List<String>?,
+            nonImageFileNames as List<String>,
       if (nonImageFileNamesFieldValue != null)
         _$SlackMessageFieldMap['nonImageFileNames']!:
             nonImageFileNamesFieldValue,
@@ -8158,7 +8158,7 @@ class _$SlackMessageDocumentReference extends FirestoreDocumentReference<
         _$SlackMessageFieldMap['imageUrls']!: imageUrlsFieldValue,
       if (nonImageFileNames != _sentinel)
         _$SlackMessageFieldMap['nonImageFileNames']!:
-            nonImageFileNames as List<String>?,
+            nonImageFileNames as List<String>,
       if (nonImageFileNamesFieldValue != null)
         _$SlackMessageFieldMap['nonImageFileNames']!:
             nonImageFileNamesFieldValue,
@@ -8746,10 +8746,10 @@ abstract class SlackMessageQuery
 
   SlackMessageQuery orderByNonImageFileNames({
     bool descending = false,
-    List<String>? startAt,
-    List<String>? startAfter,
-    List<String>? endAt,
-    List<String>? endBefore,
+    List<String> startAt,
+    List<String> startAfter,
+    List<String> endAt,
+    List<String> endBefore,
     SlackMessageDocumentSnapshot? startAtDocument,
     SlackMessageDocumentSnapshot? endAtDocument,
     SlackMessageDocumentSnapshot? endBeforeDocument,
@@ -16111,8 +16111,8 @@ Message _$MessageFromJson(Map<String, dynamic> json) => Message(
       imageUrls: (json['image_urls'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
-      nonImageFileNames: (json['nonimage_file_names'] as List<dynamic>?)
-          ?.map((e) => e as String)
+      nonImageFileNames: (json['nonimage_file_names'] as List<dynamic>)
+          .map((e) => e as String)
           .toList(),
       fileAttached: json['file_attached'] as bool,
       replied: json['replied'] as bool,
@@ -16193,8 +16193,8 @@ SlackMessage _$SlackMessageFromJson(Map<String, dynamic> json) => SlackMessage(
       imageUrls: (json['image_urls'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
-      nonImageFileNames: (json['nonimage_file_names'] as List<dynamic>?)
-          ?.map((e) => e as String)
+      nonImageFileNames: (json['nonimage_file_names'] as List<dynamic>)
+          .map((e) => e as String)
           .toList(),
       fileAttached: json['file_attached'] as bool,
       slackTeamId: json['slack_team_id'] as String,
