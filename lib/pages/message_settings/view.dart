@@ -8,7 +8,6 @@ class MessageSettingsPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final model = ref.watch(messageSettingsPageViewModelProvider);
     final viewModel = ref.watch(messageSettingsPageViewModelProvider.notifier);
 
     return Scaffold(
