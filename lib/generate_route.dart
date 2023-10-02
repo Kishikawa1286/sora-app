@@ -3,6 +3,7 @@ import 'package:sora/components/auth_builder/view.dart';
 import 'package:sora/pages/account_management/view.dart';
 import 'package:sora/pages/home/view.dart';
 import 'package:sora/pages/message_detail/view.dart';
+import 'package:sora/pages/message_settings/view.dart';
 import 'package:sora/pages/other_settings/view.dart';
 import 'package:sora/pages/sign_in/view.dart';
 
@@ -34,6 +35,8 @@ Route<dynamic> generateRoute(RouteSettings settings) =>
                 return const AccountManagementPage();
               case 'other_settings':
                 return const OtherSettingsPage();
+              case 'message_settings':
+                return const MessageSettingsPage();
               default:
                 return const Home();
             }

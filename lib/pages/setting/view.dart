@@ -7,6 +7,7 @@ class SettingPage extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         body: ListView(
           children: [
+            const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.only(left: 16),
               child: Text(
@@ -29,6 +30,20 @@ class SettingPage extends StatelessWidget {
               trailing: const Icon(Icons.arrow_forward_ios),
               onTap: () async {
                 await Navigator.of(context).pushNamed('account_management');
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.send),
+              title: Text(
+                '返信設定',
+                style: Theme.of(context)
+                    .textTheme
+                    .titleMedium
+                    ?.copyWith(fontWeight: FontWeight.bold),
+              ),
+              trailing: const Icon(Icons.arrow_forward_ios),
+              onTap: () async {
+                await Navigator.of(context).pushNamed('message_settings');
               },
             ),
             ListTile(

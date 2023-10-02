@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sora/color_schemes.g.dart';
+import 'package:sora/firebase_options.dart';
 import 'package:sora/generate_route.dart';
 
 Future<void> main() async {
@@ -15,7 +16,9 @@ Future<void> main() async {
       WidgetsFlutterBinding.ensureInitialized();
 
       try {
-        await Firebase.initializeApp();
+        await Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform,
+        );
       } on FirebaseAuthException catch (e) {
         // Sign out if user is disabled or not found
         // Such case happens when user is disabled/deleted from Firebase console

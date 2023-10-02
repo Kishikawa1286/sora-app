@@ -8,57 +8,43 @@
 // AppGenerator
 // **************************************************************************
 
-import 'package:sora/pages/messages/reply_modal/use_cases.dart';
-import 'package:sora/pages/messages/use_cases.dart';
-import 'package:sora/pages/sign_in/use_cases.dart';
-import 'package:widgetbook/widgetbook.dart';
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:sora/pages/messages/use_cases.dart' as _i2;
+import 'package:sora/pages/sign_in/use_cases.dart' as _i3;
+import 'package:widgetbook/widgetbook.dart' as _i1;
 
-final directories = <WidgetbookNode>[
-  WidgetbookFolder(
+final directories = <_i1.WidgetbookNode>[
+  _i1.WidgetbookFolder(
     name: 'pages',
     children: [
-      WidgetbookFolder(
+      _i1.WidgetbookFolder(
         name: 'messages',
         children: [
-          WidgetbookComponent(
+          _i1.WidgetbookComponent(
             name: 'MessagesPage',
             useCases: [
-              WidgetbookUseCase(
+              _i1.WidgetbookUseCase(
                 name: 'empty',
-                builder: (context) => messagesPageEmpty(context),
-              ),
+                builder: _i2.messagesPageEmpty,
+              )
             ],
-          ),
-          WidgetbookFolder(
-            name: 'reply_modal',
-            children: [
-              WidgetbookComponent(
-                name: 'ReplyModalContent',
-                useCases: [
-                  WidgetbookUseCase(
-                    name: 'default',
-                    builder: (context) => replyModalDefault(context),
-                  ),
-                ],
-              ),
-            ],
-          ),
+          )
         ],
       ),
-      WidgetbookFolder(
+      _i1.WidgetbookFolder(
         name: 'sign_in',
         children: [
-          WidgetbookComponent(
+          _i1.WidgetbookComponent(
             name: 'SignInPage',
             useCases: [
-              WidgetbookUseCase(
+              _i1.WidgetbookUseCase(
                 name: 'default',
-                builder: (context) => signInPageDefault(context),
-              ),
+                builder: _i3.signInPageDefault,
+              )
             ],
-          ),
+          )
         ],
       ),
     ],
-  ),
+  )
 ];

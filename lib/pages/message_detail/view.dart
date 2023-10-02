@@ -6,8 +6,36 @@ import 'package:sora/components/back_navigation_button/view.dart';
 import 'package:sora/components/image_preview/view.dart';
 import 'package:sora/components/message_list_tile/view.dart';
 import 'package:sora/components/network_image/view.dart';
+import 'package:sora/pages/message_detail/model.dart';
 import 'package:sora/pages/message_detail/view_model.dart';
 import 'package:url_launcher/link.dart';
+
+Future<void> pushReplyingMessageDetailPage(
+  BuildContext context, {
+  required String messageId,
+  required String replyText,
+}) =>
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => ProviderScope(
+          overrides: [
+            messageDetailPageMessageIdProvider.overrideWithValue(messageId),
+            messageDetailPageViewModelProvider.overrideWith(
+              (ref) => MessageDetailPageViewModel(
+                ref,
+                MessageDetailPageModel(
+                  messageId: messageId,
+                  replyText: replyText,
+                  editingReplyText: true,
+                  soraShown: true,
+                ),
+              ),
+            )
+          ],
+          child: const _MessageDetailPage(),
+        ),
+      ),
+    );
 
 class MessageDetailPage extends StatelessWidget {
   const MessageDetailPage({required this.messageId, super.key});
@@ -51,6 +79,7 @@ class _MessageDetailPage extends HookConsumerWidget {
     }
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leadingWidth: 200,
         leading: const Padding(
@@ -209,9 +238,12 @@ class _MessageDetailPage extends HookConsumerWidget {
                 Align(
                   child: ElevatedButton(
                     onPressed: () {
-                      viewModel
-                        ..showSora()
-                        ..startSelectingReplyType();
+                      viewModel.showSora();
+                      if (model.replyText.isEmpty) {
+                        viewModel.startSelectingReplyType();
+                      } else {
+                        viewModel.startEditingReplyText();
+                      }
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(

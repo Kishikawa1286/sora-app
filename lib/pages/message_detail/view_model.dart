@@ -30,6 +30,8 @@ class MessageDetailPageViewModel
         _messageRepository = ref.read(messageRepositoryProvider),
         _slackRepository = ref.read(slackRepositoryProvider) {
     _userIdStateSubscription = _authRepository.userId.listen((userId) {
+      _replyTextController.text = state.replyText;
+
       final messageId = state.messageId;
       if (userId == null || messageId == null) {
         return;
