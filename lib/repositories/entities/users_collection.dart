@@ -13,11 +13,14 @@ class User {
     required this.id,
     required this.createdAt,
     required this.lastUpdatedAt,
+    required this.scheduleAdjustmentUrl,
     this.email,
   });
 
   final String id;
   final String? email;
+  @JsonKey(name: 'schedule_adjustment_url')
+  final String? scheduleAdjustmentUrl;
   @JsonKey(name: 'created_at')
   final Timestamp createdAt;
   @JsonKey(name: 'last_updated_at')

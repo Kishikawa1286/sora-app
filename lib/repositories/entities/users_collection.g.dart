@@ -145,6 +145,8 @@ abstract class UserDocumentReference
     FieldValue idFieldValue,
     String? email,
     FieldValue emailFieldValue,
+    String? scheduleAdjustmentUrl,
+    FieldValue scheduleAdjustmentUrlFieldValue,
     Timestamp createdAt,
     FieldValue createdAtFieldValue,
     Timestamp lastUpdatedAt,
@@ -160,6 +162,8 @@ abstract class UserDocumentReference
     FieldValue idFieldValue,
     String? email,
     FieldValue emailFieldValue,
+    String? scheduleAdjustmentUrl,
+    FieldValue scheduleAdjustmentUrlFieldValue,
     Timestamp createdAt,
     FieldValue createdAtFieldValue,
     Timestamp lastUpdatedAt,
@@ -214,6 +218,8 @@ class _$UserDocumentReference
     FieldValue? idFieldValue,
     Object? email = _sentinel,
     FieldValue? emailFieldValue,
+    Object? scheduleAdjustmentUrl = _sentinel,
+    FieldValue? scheduleAdjustmentUrlFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
     Object? lastUpdatedAt = _sentinel,
@@ -228,6 +234,11 @@ class _$UserDocumentReference
       "Cannot specify both email and emailFieldValue",
     );
     assert(
+      scheduleAdjustmentUrl == _sentinel ||
+          scheduleAdjustmentUrlFieldValue == null,
+      "Cannot specify both scheduleAdjustmentUrl and scheduleAdjustmentUrlFieldValue",
+    );
+    assert(
       createdAt == _sentinel || createdAtFieldValue == null,
       "Cannot specify both createdAt and createdAtFieldValue",
     );
@@ -240,6 +251,12 @@ class _$UserDocumentReference
       if (idFieldValue != null) _$UserFieldMap['id']!: idFieldValue,
       if (email != _sentinel) _$UserFieldMap['email']!: email as String?,
       if (emailFieldValue != null) _$UserFieldMap['email']!: emailFieldValue,
+      if (scheduleAdjustmentUrl != _sentinel)
+        _$UserFieldMap['scheduleAdjustmentUrl']!:
+            scheduleAdjustmentUrl as String?,
+      if (scheduleAdjustmentUrlFieldValue != null)
+        _$UserFieldMap['scheduleAdjustmentUrl']!:
+            scheduleAdjustmentUrlFieldValue,
       if (createdAt != _sentinel)
         _$UserFieldMap['createdAt']!: createdAt as Timestamp,
       if (createdAtFieldValue != null)
@@ -259,6 +276,8 @@ class _$UserDocumentReference
     FieldValue? idFieldValue,
     Object? email = _sentinel,
     FieldValue? emailFieldValue,
+    Object? scheduleAdjustmentUrl = _sentinel,
+    FieldValue? scheduleAdjustmentUrlFieldValue,
     Object? createdAt = _sentinel,
     FieldValue? createdAtFieldValue,
     Object? lastUpdatedAt = _sentinel,
@@ -273,6 +292,11 @@ class _$UserDocumentReference
       "Cannot specify both email and emailFieldValue",
     );
     assert(
+      scheduleAdjustmentUrl == _sentinel ||
+          scheduleAdjustmentUrlFieldValue == null,
+      "Cannot specify both scheduleAdjustmentUrl and scheduleAdjustmentUrlFieldValue",
+    );
+    assert(
       createdAt == _sentinel || createdAtFieldValue == null,
       "Cannot specify both createdAt and createdAtFieldValue",
     );
@@ -285,6 +309,12 @@ class _$UserDocumentReference
       if (idFieldValue != null) _$UserFieldMap['id']!: idFieldValue,
       if (email != _sentinel) _$UserFieldMap['email']!: email as String?,
       if (emailFieldValue != null) _$UserFieldMap['email']!: emailFieldValue,
+      if (scheduleAdjustmentUrl != _sentinel)
+        _$UserFieldMap['scheduleAdjustmentUrl']!:
+            scheduleAdjustmentUrl as String?,
+      if (scheduleAdjustmentUrlFieldValue != null)
+        _$UserFieldMap['scheduleAdjustmentUrl']!:
+            scheduleAdjustmentUrlFieldValue,
       if (createdAt != _sentinel)
         _$UserFieldMap['createdAt']!: createdAt as Timestamp,
       if (createdAtFieldValue != null)
@@ -415,6 +445,17 @@ abstract class UserQuery implements QueryReference<User, UserQuerySnapshot> {
     List<String?>? whereIn,
     List<String?>? whereNotIn,
   });
+  UserQuery whereScheduleAdjustmentUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  });
   UserQuery whereCreatedAt({
     Timestamp? isEqualTo,
     Timestamp? isNotEqualTo,
@@ -463,6 +504,18 @@ abstract class UserQuery implements QueryReference<User, UserQuerySnapshot> {
   });
 
   UserQuery orderByEmail({
+    bool descending = false,
+    String? startAt,
+    String? startAfter,
+    String? endAt,
+    String? endBefore,
+    UserDocumentSnapshot? startAtDocument,
+    UserDocumentSnapshot? endAtDocument,
+    UserDocumentSnapshot? endBeforeDocument,
+    UserDocumentSnapshot? startAfterDocument,
+  });
+
+  UserQuery orderByScheduleAdjustmentUrl({
     bool descending = false,
     String? startAt,
     String? startAfter,
@@ -733,6 +786,35 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
     );
   }
 
+  UserQuery whereScheduleAdjustmentUrl({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    bool? isNull,
+    List<String?>? whereIn,
+    List<String?>? whereNotIn,
+  }) {
+    return _$UserQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$UserFieldMap['scheduleAdjustmentUrl']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
   UserQuery whereCreatedAt({
     Timestamp? isEqualTo,
     Timestamp? isNotEqualTo,
@@ -947,6 +1029,79 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
     UserDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor.orderBy(_$UserFieldMap['email']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$UserQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  UserQuery orderByScheduleAdjustmentUrl({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    UserDocumentSnapshot? startAtDocument,
+    UserDocumentSnapshot? endAtDocument,
+    UserDocumentSnapshot? endBeforeDocument,
+    UserDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(
+        _$UserFieldMap['scheduleAdjustmentUrl']!,
         descending: descending);
     var queryCursor = $queryCursor;
 
@@ -16032,12 +16187,14 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
           .fromJson(json['created_at'] as Timestamp),
       lastUpdatedAt: const FirestoreTimestampConverter()
           .fromJson(json['last_updated_at'] as Timestamp),
+      scheduleAdjustmentUrl: json['schedule_adjustment_url'] as String?,
       email: json['email'] as String?,
     );
 
 const _$UserFieldMap = <String, String>{
   'id': 'id',
   'email': 'email',
+  'scheduleAdjustmentUrl': 'schedule_adjustment_url',
   'createdAt': 'created_at',
   'lastUpdatedAt': 'last_updated_at',
 };
@@ -16045,6 +16202,7 @@ const _$UserFieldMap = <String, String>{
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'id': instance.id,
       'email': instance.email,
+      'schedule_adjustment_url': instance.scheduleAdjustmentUrl,
       'created_at':
           const FirestoreTimestampConverter().toJson(instance.createdAt),
       'last_updated_at':

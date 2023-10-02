@@ -41,7 +41,28 @@ class MessageSettingsPage extends HookConsumerWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 128),
             child: OutlinedButton(
-              onPressed: viewModel.saveUrl,
+              onPressed: () async {
+                await viewModel.saveUrl().then(
+                      (value) => ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            '保存しました',
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelMedium!
+                                .copyWith(
+                                  color:
+                                      Theme.of(context).colorScheme.onPrimary,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                          duration: const Duration(seconds: 2),
+                          behavior: SnackBarBehavior.floating,
+                          backgroundColor: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                    );
+              },
               style: ButtonStyle(
                 side: MaterialStateProperty.all(
                   BorderSide(
