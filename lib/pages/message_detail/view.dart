@@ -79,6 +79,7 @@ class _MessageDetailPage extends HookConsumerWidget {
     }
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leadingWidth: 200,
         leading: const Padding(

@@ -7,6 +7,7 @@ class SettingPage extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         body: ListView(
           children: [
+            const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.only(left: 16),
               child: Text(
