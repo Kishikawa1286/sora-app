@@ -2,7 +2,7 @@ name: sora
 description: AI secretary
 publish_to: "none"
 
-version: 1.0.1+4
+version: 1.0.1+6
 
 environment:
   sdk: ">=3.0.3 <4.0.0"
@@ -10,18 +10,19 @@ environment:
 dependencies:
   # If you want to update cloud_firestore, you must reconfigure the precompiled sdk specified in ios/Podfile.
   # See: https://firebase.flutter.dev/docs/firestore/overview/#4-optional-improve-ios--macos-build-times
-  carousel_slider: ^4.2.1
+  carousel_slider: 4.2.1
   cloud_firestore: 4.8.5
   cloud_firestore_odm: 1.0.0-dev.65
   cloud_functions: 4.4.0
   crypto: 3.0.3
-  dismissible_page: ^1.0.2
+  dismissible_page: 1.0.2
   firebase_auth: 4.7.3
   firebase_core: 2.15.1
   firebase_dynamic_links: 5.3.5
   flutter:
     sdk: flutter
   flutter_hooks: 0.20.0
+  flutter_inappwebview: 5.7.2+3
   flutter_slidable: 3.0.0
   flutter_svg: 2.0.7
   freezed_annotation: 2.4.1
