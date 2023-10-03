@@ -4,7 +4,7 @@ import 'package:sora/components/back_navigation_button/view.dart';
 import 'package:sora/env.dart';
 import 'package:sora/pages/account_management/components/slack_user_tile.dart';
 import 'package:sora/pages/account_management/view_model.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:sora/pages/webview/webview_page.dart';
 
 class AccountManagementPage extends HookConsumerWidget {
   const AccountManagementPage({super.key});
@@ -37,7 +37,7 @@ class AccountManagementPage extends HookConsumerWidget {
             padding: const EdgeInsets.only(top: 16, right: 24, left: 24),
             child: ElevatedButton(
               onPressed: () async {
-                await launchUrlString(slackOathUrl);
+                await pushWebViewPage(context, url: slackOathUrl);
               },
               child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
